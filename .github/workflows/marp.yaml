@@ -1,0 +1,24 @@
+name: Publish Marp slides
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build slides
+        uses: docker://marpteam/marp-cli:latest
+        with:
+          args: slides.md --output public/index.html
+        env:
+          MARP_USER: root
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
