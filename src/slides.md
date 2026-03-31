@@ -19,7 +19,6 @@ hhh333
 ### h4
 hjshdfjkshf
 sdfsfsfs
-yacc
 
 ---
 # Next slide
