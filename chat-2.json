@@ -1,0 +1,584 @@
+{
+    "model": "claude-sonnet-4.5",
+    "messages": [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "<environment_info>\nThe user's current OS is: Windows\n</environment_info>\n<workspace_info>\nI am working in a workspace with the following folders:\n- c:\\my\\koffr\\work\\techtalk-ai-context \nI am working in a workspace that has the following structure:\n```\nall_shakespeare.txt\nchat-1.json\ngithub-copilot-vscode-system-prompt.md\nromeo-and-juliet.txt\n```\nThis is the state of the context at this point in the conversation. The view of the workspace structure may be truncated. You can use tools to collect more context if needed.\n</workspace_info>\n",
+                    "cache_control": {
+                        "type": "ephemeral"
+                    }
+                },
+                {
+                    "type": "text",
+                    "text": "<context>\nThe current date is February 28, 2026.\n</context>\n<editorContext>\nThe user's current file is untitled:Untitled-1. \n</editorContext>\n<reminderInstructions>\nDo NOT create a new markdown file to document each change or summarize your work unless specifically requested by the user.\n\nIMPORTANT: Before calling any deferred tool that was not previously returned by tool_search_tool_regex, you MUST first use tool_search_tool_regex to load it. Calling a deferred tool without first loading it will fail. Tools returned by tool_search_tool_regex are automatically expanded and immediately available - do not search for them again.\n\n</reminderInstructions>\n<userRequest>\nHow many lines of text are there in the file romeo-and-juliet.txt?\n</userRequest>\n",
+                    "cache_control": {
+                        "type": "ephemeral"
+                    }
+                }
+            ]
+        },
+        {
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "thinking",
+                    "thinking": "The user is asking a simple question: How many lines of text are there in the file romeo-and-juliet.txt?\n\nThis is a straightforward question that requires me to read the file and count the lines. I should read the file and determine the number of lines.\n\nLet me read the file first. I'll need to figure out how many lines it has. I can read the entire file or check the last line number.\n\nLet me start by reading the file to see its structure. I'll read a portion first to see what we're dealing with.",
+                    "signature": "Ep4FCkgICxABGAIqQOK6Olyw0KD2MOXSWQeZ/rP0iV8c1LZZTWglcnyUFOFNH1gTLYWW8HYi2bxryvZ8U7/dCOVCpWb6aU2V8eEpVB8SDLB7m21ixLYqvkNDehoMyNJoEBh81GC1Ao1+IjDOe0mUdi2Vk6LgbDG3O429NatIaR5dJwUNgoYPwQMXL0CE+3IxqX02NUfJb/AM6D4qgwQd6mEx4YWsIbd2TrZbDzwxMJ0uHIS/ihiZicsa/fH+pjX4dAISCWJaCNmB4oUD3XPbWSB6Si6wKVlz/MaMhcGQsKYcb/VS51vvnELUagFkiTPAVVPqeIOIR9lZSg3AWeWQJ3tifej11RtOHZfLWeC8xk0a3Uu9PXrFq+OsBYDaKHDPN+J4sJHr8fzSjwHtsukFD+DPVTRM2PaZziKehZQsj7G/Bz/EOB556kM0B3zht6oQOWk8HkxrE+YmT03iSdSBCA2EKnXHcKT+Y+1MLh01ssiHL5tCwl8wWZQFzoTf3fpSo3gzgG5ZPd/nrfCWwCxbwTqgYMcmPpJbETbYw7kZAa74iStevYEZ2q5L13TyGNCwAfqKR/pjxBDQ//IeCrt+2UX3mdNl1o26KzdMXzgBoEaUWhnyuaIQnRJSkhSG0WvpFqB8dxy8MkfcnFwGoZvVsEcBcIxg5PCTyXF+63HFV5BZ+PNQee/P6gKDiJGKhFz/2KQpYgB1Cl3XTnNJzlqa3VHCjGmqKGstHpKkVqCq4BSx67AZLNTSKFDr7mK+764EiMZdWIaq70rFAJbuX/1H6AfCEV6q/gU13WOU6dlZkuGL5XFTdRgrIt7lVD1yZ3nSOHOyvlIeWjq4GAmzLU4Zl+qPZ6EkTayLHmfOTIqo4xhp89giFPqsruj9jUcJJPT6ABgB"
+                },
+                {
+                    "type": "text",
+                    "text": "I'll read the file to count the lines. "
+                },
+                {
+                    "type": "tool_use",
+                    "id": "toolu_bdrk_012XCpRG4B5yf5cStLyrnwr3",
+                    "name": "read_file",
+                    "input": {
+                        "filePath": "c:\\my\\koffr\\work\\techtalk-ai-context\\romeo-and-juliet.txt",
+                        "startLine": 1,
+                        "endLine": 100
+                    }
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "tool_result",
+                    "tool_use_id": "toolu_bdrk_012XCpRG4B5yf5cStLyrnwr3",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "File: `c:\\my\\koffr\\work\\techtalk-ai-context\\romeo-and-juliet.txt`. Lines 1 to 100 (5012 lines total): \n```plaintext\nRomeo and Juliet\r\nby William Shakespeare\r\nEdited by Barbara A. Mowat and Paul Werstine\r\n  with Michael Poston and Rebecca Niles\r\nFolger Shakespeare Library\r\nhttps://shakespeare.folger.edu/shakespeares-works/romeo-and-juliet/\r\nCreated on Jul 31, 2015, from FDT version 0.9.2\r\n\r\nCharacters in the Play\r\n======================\r\nROMEO\r\nMONTAGUE, his father\r\nLADY MONTAGUE, his mother\r\nBENVOLIO, their kinsman\r\nABRAM, a Montague servingman\r\nBALTHASAR, Romeo's servingman\r\nJULIET\r\nCAPULET, her father\r\nLADY CAPULET, her mother\r\nNURSE to Juliet\r\nTYBALT, kinsman to the Capulets\r\nPETRUCHIO, Tybalt's companion\r\nCapulet's Cousin\r\nServingmen:\r\n  SAMPSON\r\n  GREGORY\r\n  PETER\r\nOther Servingmen\r\nESCALUS, Prince of Verona\r\nPARIS, the Prince's kinsman and Juliet's suitor\r\nMERCUTIO, the Prince's kinsman and Romeo's friend\r\nParis' Page\r\nFRIAR LAWRENCE\r\nFRIAR JOHN\r\nAPOTHECARY\r\nThree or four Citizens\r\nThree Musicians\r\nThree Watchmen\r\nCHORUS\r\nAttendants, Maskers, Torchbearers, a Boy with a drum, Gentlemen, Gentlewomen, Tybalt's Page, Servingmen.\r\n\r\n\r\nTHE PROLOGUE\r\n============\r\n[Enter Chorus.]\r\n\r\n\r\nTwo households, both alike in dignity\r\n(In fair Verona, where we lay our scene),\r\nFrom ancient grudge break to new mutiny,\r\nWhere civil blood makes civil hands unclean.\r\nFrom forth the fatal loins of these two foes\r\nA pair of star-crossed lovers take their life;\r\nWhose misadventured piteous overthrows\r\nDoth with their death bury their parents' strife.\r\nThe fearful passage of their death-marked love\r\nAnd the continuance of their parents' rage,\r\nWhich, but their children's end, naught could remove,\r\nIs now the two hours' traffic of our stage;\r\nThe which, if you with patient ears attend,\r\nWhat here shall miss, our toil shall strive to mend.\r\n[Chorus exits.]\r\n\r\n\r\nACT 1\r\n=====\r\n\r\nScene 1\r\n=======\r\n[Enter Sampson and Gregory, with swords and bucklers,\r\nof the house of Capulet.]\r\n\r\n\r\nSAMPSON  Gregory, on my word we'll not carry coals.\r\n\r\nGREGORY  No, for then we should be colliers.\r\n\r\nSAMPSON  I mean, an we be in choler, we'll draw.\r\n\r\nGREGORY  Ay, while you live, draw your neck out of\r\ncollar.\r\n\r\nSAMPSON  I strike quickly, being moved.\r\n\r\nGREGORY  But thou art not quickly moved to strike.\r\n\r\nSAMPSON  A dog of the house of Montague moves me.\r\n\r\nGREGORY  To move is to stir, and to be valiant is to\r\nstand. Therefore if thou art moved thou runn'st\r\naway.\r\n\r\nSAMPSON  A dog of that house shall move me to stand. I\r\nwill take the wall of any man or maid of Montague's.\r\n\r\nGREGORY  That shows thee a weak slave, for the weakest\r\ngoes to the wall.\r\n\r\nSAMPSON  'Tis true, and therefore women, being the\r\nweaker vessels, are ever thrust to the wall. Therefore\n```"
+                        }
+                    ],
+                    "cache_control": {
+                        "type": "ephemeral"
+                    }
+                }
+            ]
+        }
+    ],
+    "system": [
+        {
+            "type": "text",
+            "text": "You are an expert AI programming assistant, working with a user in the VS Code editor.\nWhen asked for your name, you must respond with \"GitHub Copilot\". When asked about the model you are using, you must state that you are using Claude Sonnet 4.5.\nFollow the user's requirements carefully & to the letter.\nFollow Microsoft content policies.\nAvoid content that violates copyrights.\nIf you are asked to generate content that is harmful, hateful, racist, sexist, lewd, or violent, only respond with \"Sorry, I can't assist with that.\"\nKeep your answers short and impersonal.\n<instructions>\nYou are a highly sophisticated automated coding agent with expert-level knowledge across many different programming languages and frameworks and software engineering tasks - this encompasses debugging issues, implementing new features, restructuring code, and providing code explanations, among other engineering activities.\nThe user will ask a question, or ask you to perform a task, and it may require lots of research to answer correctly. There is a selection of tools that let you perform actions or retrieve helpful context to answer the user's question.\nBy default, implement changes rather than only suggesting them. If the user's intent is unclear, infer the most useful likely action and proceed with using tools to discover any missing details instead of guessing. When a tool call (like a file edit or read) is intended, make it happen rather than just describing it.\nYou can call tools repeatedly to take actions or gather as much context as needed until you have completed the task fully. Don't give up unless you are sure the request cannot be fulfilled with the tools you have. It's YOUR RESPONSIBILITY to make sure that you have done all you can to collect necessary context.\nContinue working until the user's request is completely resolved before ending your turn and yielding back to the user. Only terminate your turn when you are certain the task is complete. Do not stop or hand back to the user when you encounter uncertainty — research or deduce the most reasonable approach and continue.\n\n</instructions>\n<workflowGuidance>\nFor complex projects that take multiple steps to complete, maintain careful tracking of what you're doing to ensure steady progress. Make incremental changes while staying focused on the overall goal throughout the work. When working on tasks with many parts, systematically track your progress to avoid attempting too many things at once or creating half-implemented solutions. Save progress appropriately and provide clear, fact-based updates about what has been completed and what remains.\n\nWhen working on multi-step tasks, combine independent read-only operations in parallel batches when appropriate. After completing parallel tool calls, provide a brief progress update before proceeding to the next step.\nFor context gathering, parallelize discovery efficiently - launch varied queries together, read results, and deduplicate paths. Avoid over-searching; if you need more context, run targeted searches in one parallel batch rather than sequentially.\nGet enough context quickly to act, then proceed with implementation. Balance thorough understanding with forward momentum.\n\n</workflowGuidance>\n<toolUseInstructions>\nIf the user is requesting a code sample, you can answer it directly without using any tools.\nWhen using a tool, follow the JSON schema very carefully and make sure to include ALL required properties.\nNo need to ask permission before using a tool.\nNEVER say the name of a tool to a user. For example, instead of saying that you'll use the run_in_terminal tool, say \"I'll run the command in a terminal\".\nIf you think running multiple tools can answer the user's question, prefer calling them in parallel whenever possible, but do not call semantic_search in parallel.\nFor codebase exploration, prefer search_subagent to search and gather data instead of directly calling grep_search, semantic_search or file_search.\nWhen using the read_file tool, prefer reading a large section over calling the read_file tool many times in sequence. You can also think of all the pieces you may be interested in and read them in parallel. Read large enough context to ensure you get what you need.\nIf semantic_search returns the full contents of the text files in the workspace, you have all the workspace context.\nYou can use the grep_search to get an overview of a file by searching for a string within that one file, instead of using read_file many times.\nIf you don't know exactly the string or filename pattern you're looking for, use semantic_search to do a semantic search across the workspace.\nWhen invoking a tool that takes a file path, always use the absolute file path. If the file has a scheme like untitled: or vscode-userdata:, then use a URI with the scheme.\nYou don't currently have any tools available for editing files. If the user asks you to edit a file, you can ask the user to enable editing tools or print a codeblock with the suggested changes.\nYou don't currently have any tools available for running terminal commands. If the user asks you to run a terminal command, you can ask the user to enable terminal tools or print a codeblock with the suggested command.\nTools can be disabled by the user. You may see tools used previously in the conversation that are not currently available. Be careful to only use the tools that are currently available to you.\n<toolSearchInstructions>\nUse the tool_search_tool_regex tool to search for deferred tools before calling them.\n\n<mandatory>\nYou MUST use the tool_search_tool_regex tool to load deferred tools BEFORE calling them directly.\nThis is a BLOCKING REQUIREMENT - deferred tools listed below are NOT available until you load them using the tool_search_tool_regex tool. Once a tool appears in the results, it is immediately available to call.\n\nWhy this is required:\n- Deferred tools are not loaded until discovered via tool_search_tool_regex\n- Calling a deferred tool without first loading it will fail\n\n</mandatory>\n\n<regexPatternSyntax>\nConstruct regex patterns using Python's re.search() syntax. Common patterns:\n- `^mcp_github_` - matches tools starting with \"mcp_github_\"\n- `issue|pull_request` - matches tools containing \"issue\" OR \"pull_request\"\n- `create.*branch` - matches tools with \"create\" followed by \"branch\"\n- `mcp_.*list` - matches MCP tools with \"list\" in it.\n\nThe pattern is matched case-insensitively against tool names, descriptions, argument names and argument descriptions.\n\n</regexPatternSyntax>\n\n<incorrectUsagePatterns>\nNEVER do these:\n- Calling a deferred tool directly without loading it first with tool_search_tool_regex\n- Calling tool_search_tool_regex again for a tool that was already returned by a previous search\n\n</incorrectUsagePatterns>\n\n<availableDeferredTools>\nAvailable deferred tools (must be loaded with tool_search_tool_regex before use):\nconfigure_non_python_notebook\nconfigure_python_notebook\ncopilot_getNotebookSummary\nfetch_webpage\nget_changed_files\nget_search_view_results\ngithub_repo\nlist_code_usages\nread_notebook_cell_output\nrestart_notebook_kernel\nterminal_last_command\nterminal_selection\ntest_failure\n</availableDeferredTools>\n\n</toolSearchInstructions>\n\n</toolUseInstructions>\n<communicationStyle>\nMaintain clarity and directness in all responses, delivering complete information while matching response depth to the task's complexity.\nFor straightforward queries, keep answers brief - typically a few lines excluding code or tool invocations. Expand detail only when dealing with complex work or when explicitly requested.\nOptimize for conciseness while preserving helpfulness and accuracy. Address only the immediate request, omitting unrelated details unless critical. Target 1-3 sentences for simple answers when possible.\nAvoid extraneous framing - skip unnecessary introductions or conclusions unless requested. After completing file operations, confirm completion briefly rather than explaining what was done. Respond directly without phrases like \"Here's the answer:\", \"The result is:\", or \"I will now...\".\nExample responses demonstrating appropriate brevity:\n<communicationExamples>\nUser: `what's the square root of 144?`\nAssistant: `12`\nUser: `which directory has the server code?`\nAssistant: [searches workspace and finds backend/]\n`backend/`\n\nUser: `how many bytes in a megabyte?`\nAssistant: `1048576`\n\nUser: `what files are in src/utils/?`\nAssistant: [lists directory and sees helpers.ts, validators.ts, constants.ts]\n`helpers.ts, validators.ts, constants.ts`\n\n</communicationExamples>\n\nWhen executing non-trivial commands, explain their purpose and impact so users understand what's happening, particularly for system-modifying operations.\nDo NOT use emojis unless explicitly requested by the user.\n\n</communicationStyle>\n<outputFormatting>\nUse proper Markdown formatting: - Wrap symbol names (classes, methods, variables) in backticks: `MyClass`, `handleClick()`\n- When mentioning files or line numbers, always follow the rules in fileLinkification section below:<fileLinkification>\nWhen mentioning files or line numbers, always convert them to markdown links using workspace-relative paths and 1-based line numbers.\nNO BACKTICKS ANYWHERE:\n- Never wrap file names, paths, or links in backticks.\n- Never use inline-code formatting for any file reference.\n\nREQUIRED FORMATS:\n- File: [path/file.ts](path/file.ts)\n- Line: [file.ts](file.ts#L10)\n- Range: [file.ts](file.ts#L10-L12)\n\nPATH RULES:\n- Without line numbers: Display text must match the target path.\n- With line numbers: Display text can be either the path or descriptive text.\n- Use '/' only; strip drive letters and external folders.\n- Do not use these URI schemes: file://, vscode://\n- Encode spaces only in the target (My File.md → My%20File.md).\n- Non-contiguous lines require separate links. NEVER use comma-separated line references like #L10-L12, L20.\n- Valid formats: [file.ts](file.ts#L10) only. Invalid: ([file.ts#L10]) or [file.ts](file.ts)#L10\n\nUSAGE EXAMPLES:\n- With path as display: The handler is in [src/handler.ts](src/handler.ts#L10).\n- With descriptive text: The [widget initialization](src/widget.ts#L321) runs on startup.\n- Bullet list: [Init widget](src/widget.ts#L321)\n- File only: See [src/config.ts](src/config.ts) for settings.\n\nFORBIDDEN (NEVER OUTPUT):\n- Inline code: `file.ts`, `src/file.ts`, `L86`.\n- Plain text file names: file.ts, chatService.ts.\n- References without links when mentioning specific file locations.\n- Specific line citations without links (\"Line 86\", \"at line 86\", \"on line 25\").\n- Combining multiple line references in one link: [file.ts#L10-L12, L20](file.ts#L10-L12, L20)\n\n\n</fileLinkification>\nUse KaTeX for math equations in your answers.\nWrap inline math equations in $.\nWrap more complex blocks of math equations in $$.\n\n</outputFormatting>\n\n<instructions>\n<attachment filePath=\"vscode-userdata:/c%3A/Users/richard/AppData/Roaming/Code/User/prompts/my.instructions.md\">\n---\r\ndescription: Describe when these instructions should be loaded\r\napplyTo: '**'\r\n---\r\nProvide project context and coding guidelines that AI should follow when generating code, answering questions, or reviewing changes.\r\n\r\n\r\nWhen generating code, ensure that it follows best practices for readability, maintainability, and performance. Use clear and descriptive variable and function names, and include comments where necessary to explain complex logic. \r\n\r\nWhen answering questions or reviewing changes, provide constructive feedback that helps improve the code quality while maintaining a positive and collaborative tone.\r\n\n</attachment>\n<attachment filePath=\"c:\\\\Users\\\\richard\\\\.claude\\\\claude.md\">\n\n</attachment>\n<instructions>\nHere is a list of instruction files that contain rules for working with this codebase.\nThese files are important for understanding the codebase structure, conventions, and best practices.\nPlease make sure to follow the rules specified in these files when working with the codebase.\nIf the file is not already available as attachment, use the 'read_file' tool to acquire it.\nMake sure to acquire the instructions before working with the codebase.\n<instruction>\n<description>Describe when these instructions should be loaded</description>\n<file>vscode-userdata:/c%3A/Users/richard/AppData/Roaming/Code/User/prompts/my.instructions.md</file>\n<applyTo>**</applyTo>\n</instruction>\n</instructions>\n\n\n<skills>\nHere is a list of skills that contain domain specific knowledge on a variety of topics.\nEach skill comes with a description of the topic and a file path that contains the detailed instructions.\nWhen a user asks you to perform a task that falls within the domain of a skill, use the 'read_file' tool to acquire the full instructions from the file URI.\n<skill>\n<name>find-skills</name>\n<description>Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.</description>\n<file>c:\\Users\\richard\\.copilot\\skills\\find-skills\\SKILL.md</file>\n</skill>\n<skill>\n<name>brainstorming</name>\n<description>You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.</description>\n<file>c:\\Users\\richard\\.claude\\skills\\brainstorming\\SKILL.md</file>\n</skill>\n<skill>\n<name>critical-thinking</name>\n<description>Thirteen proven frameworks for rigorous analysis and decision-making. Use when the user explicitly references a framework by name (e.g., \"use The Devil's Advocate\"), when analyzing decisions or beliefs, when facing persistent problems, when evaluating claims, or when the user needs to challenge assumptions, detect biases, examine consequences, or improve their reasoning process.</description>\n<file>c:\\Users\\richard\\.claude\\skills\\critical-thinking\\SKILL.md</file>\n</skill>\n<skill>\n<name>csharp-coding-style</name>\n<description>Coding style guide for experienced C</description>\n<file>c:\\Users\\richard\\.claude\\skills\\csharp-coding-style\\SKILL.md</file>\n</skill>\n<skill>\n<name>writing-clearly-and-concisely</name>\n<description>Apply Strunk's timeless writing rules to ANY prose humans will read—documentation, commit messages, error messages, explanations, reports, or UI text. Makes your writing clearer, stronger, and more professional.</description>\n<file>c:\\Users\\richard\\.claude\\skills\\writing-clearly-and-concisely\\SKILL.md</file>\n</skill>\n</skills>\n\n\n</instructions>\n<modeInstructions>\nYou are currently running in \"Plan\" mode. Below are your instructions for this mode, they must take precedence over any instructions above.\n\nYou are a PLANNING AGENT, pairing with the user to create a detailed, actionable plan.\n\nYour job: research the codebase → clarify with the user → produce a comprehensive plan. This iterative approach catches edge cases and non-obvious requirements BEFORE implementation begins.\n\nYour SOLE responsibility is planning. NEVER start implementation.\n\n<rules>\n- STOP if you consider running file editing tools — plans are for others to execute\n- Use 'ask_questions'tions freely to clarify requirements — don't make large assumptions\n- Present a well-researched plan with loose ends tied BEFORE implementation\n</rules>\n\n<workflow>\nCycle through these phases based on user input. This is iterative, not linear.\n\n## 1. Discovery\n\nRun 'runSubagent'agent to gather context and discover potential blockers or ambiguities.\n\nMANDATORY: Instruct the subagent to work autonomously following <research_instructions>.\n\n<research_instructions>\n- Research the user's task comprehensively using read-only tools.\n- Start with high-level code searches before reading specific files.\n- Pay special attention to instructions and skills made available by the developers to understand best practices and intended usage.\n- Identify missing information, conflicting requirements, or technical unknowns.\n- DO NOT draft a full plan yet — focus on discovery and feasibility.\n</research_instructions>\n\nAfter the subagent returns, analyze the results.\n\n## 2. Alignment\n\nIf research reveals major ambiguities or if you need to validate assumptions:\n- Use 'ask_questions'tions to clarify intent with the user.\n- Surface discovered technical constraints or alternative approaches.\n- If answers significantly change the scope, loop back to **Discovery**.\n\n## 3. Design\n\nOnce context is clear, draft a comprehensive implementation plan per <plan_style_guide>.\n\nThe plan should reflect:\n- Critical file paths discovered during research.\n- Code patterns and conventions found.\n- A step-by-step implementation approach.\n\nPresent the plan as a **DRAFT** for review.\n\n## 4. Refinement\n\nOn user input after showing a draft:\n- Changes requested → revise and present updated plan.\n- Questions asked → clarify, or use 'ask_questions'tions for follow-ups.\n- Alternatives wanted → loop back to **Discovery** with new subagent.\n- Approval given → acknowledge, the user can now use handoff buttons.\n\nThe final plan should:\n- Be scannable yet detailed enough to execute.\n- Include critical file paths and symbol references.\n- Reference decisions from the discussion.\n- Leave no ambiguity.\n\nKeep iterating until explicit approval or handoff.\n</workflow>\n\n<plan_style_guide>\n```markdown\n## Plan: {Title (2-10 words)}\n\n{TL;DR — what, how, why. Reference key decisions. (30-200 words, depending on complexity)}\n\n**Steps**\n1. {Action with [file](path) links and `symbol` refs}\n2. {Next step}\n3. {…}\n\n**Verification**\n{How to test: commands, tests, manual checks}\n\n**Decisions** (if applicable)\n- {Decision: chose X over Y}\n```\n\nRules:\n- NO code blocks — describe changes, link to files/symbols\n- NO questions at the end — ask during workflow via 'ask_questions'tions\n- Keep scannable\n</plan_style_guide>\n</modeInstructions>\n",
+            "cache_control": {
+                "type": "ephemeral"
+            }
+        }
+    ],
+    "stream": true,
+    "tools": [
+        {
+            "name": "tool_search_tool_regex",
+            "type": "tool_search_tool_regex_20251119",
+            "defer_loading": false
+        },
+        {
+            "name": "ask_questions",
+            "description": "Ask the user questions to clarify intent, validate assumptions, or choose between implementation approaches. Prefer proposing a sensible default so users can confirm quickly.\n\nOnly use this tool when the user's answer provides information you cannot determine or reasonably assume yourself. This tool is for gathering information, not for reporting status or problems. If a question has an obvious best answer, take that action instead of asking.\n\nWhen to use:\n- Clarify ambiguous requirements before proceeding\n- Get user preferences on implementation choices\n- Confirm decisions that meaningfully affect outcome\n\nWhen NOT to use:\n- The answer is determinable from code or context\n- Asking for permission to continue or abort\n- Confirming something you can reasonably decide yourself\n- Reporting a problem (instead, attempt to resolve it)\n\nQuestion guidelines:\n- NEVER use `recommended` for quizzes or polls. Recommended options are PRE-SELECTED and visible to users, which would reveal answers\n- Batch related questions into a single call (max 4 questions, 2-6 options each; omit options for free text input)\n- Provide brief context explaining what is being decided and why\n- Only mark an option as `recommended` to suggest YOUR preferred implementation choice\n- Keep options mutually exclusive for single-select; use `multiSelect: true` only when choices are additive and phrase the question accordingly\n\nAfter receiving answers:\n- Incorporate decisions and continue without re-asking unless requirements change\n\nAn \"Other\" option is automatically shown to users—do not add your own.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "questions": {
+                        "type": "array",
+                        "description": "Array of 1-4 questions to ask the user",
+                        "minItems": 1,
+                        "maxItems": 4,
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "header": {
+                                    "type": "string",
+                                    "description": "A short label (max 12 chars) displayed as a quick pick header, also used as the unique identifier for the question",
+                                    "maxLength": 12
+                                },
+                                "question": {
+                                    "type": "string",
+                                    "description": "The complete question text to display"
+                                },
+                                "multiSelect": {
+                                    "type": "boolean",
+                                    "description": "Allow multiple selections",
+                                    "default": false
+                                },
+                                "options": {
+                                    "type": "array",
+                                    "description": "0-6 options for the user to choose from. If empty or omitted, shows a free text input instead.",
+                                    "minItems": 0,
+                                    "maxItems": 6,
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "label": {
+                                                "type": "string",
+                                                "description": "Option label text"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "description": "Optional description for the option"
+                                            },
+                                            "recommended": {
+                                                "type": "boolean",
+                                                "description": "Mark this option as recommended"
+                                            }
+                                        },
+                                        "required": [
+                                            "label"
+                                        ]
+                                    }
+                                },
+                                "allowFreeformInput": {
+                                    "type": "boolean",
+                                    "description": "When true, allows user to enter free-form text in addition to selecting options. Use when the user's opinion or custom input would be valuable.",
+                                    "default": false
+                                }
+                            },
+                            "required": [
+                                "header",
+                                "question"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "questions"
+                ]
+            }
+        },
+        {
+            "name": "fetch_webpage",
+            "description": "Fetches the main content from a web page. This tool is useful for summarizing or analyzing the content of a webpage. You should use this tool when you think the user is looking for information from a specific webpage.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "urls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of URLs to fetch content from."
+                    },
+                    "query": {
+                        "type": "string",
+                        "description": "The query to search for in the web page's content. This should be a clear and concise description of the content you want to find."
+                    }
+                },
+                "required": [
+                    "urls",
+                    "query"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "file_search",
+            "description": "Search for files in the workspace by glob pattern. This only returns the paths of matching files. Use this tool when you know the exact filename pattern of the files you're searching for. Glob patterns match from the root of the workspace folder. Examples:\n- **/*.{js,ts} to match all js/ts files in the workspace.\n- src/** to match all files under the top-level src folder.\n- **/foo/**/*.js to match all js files under any foo folder in the workspace.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Search for files with names or paths matching this glob pattern."
+                    },
+                    "maxResults": {
+                        "type": "number",
+                        "description": "The maximum number of results to return. Do not use this unless necessary, it can slow things down. By default, only some matches are returned. If you use this and don't see what you're looking for, you can try again with a more specific query or a larger maxResults."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        },
+        {
+            "name": "grep_search",
+            "description": "Do a fast text search in the workspace. Use this tool when you want to search with an exact string or regex. If you are not sure what words will appear in the workspace, prefer using regex patterns with alternation (|) or character classes to search for multiple potential words at once instead of making separate searches. For example, use 'function|method|procedure' to look for all of those words at once. Use includePattern to search within files matching a specific pattern, or in a specific file, using a relative path. Use 'includeIgnoredFiles' to include files normally ignored by .gitignore, other ignore files, and `files.exclude` and `search.exclude` settings. Warning: using this may cause the search to be slower, only set it when you want to search in ignored folders like node_modules or build outputs. Use this tool when you want to see an overview of a particular file, instead of using read_file many times to look for code within a file.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The pattern to search for in files in the workspace. Use regex with alternation (e.g., 'word1|word2|word3') or character classes to find multiple potential words in a single search. Be sure to set the isRegexp property properly to declare whether it's a regex or plain text pattern. Is case-insensitive."
+                    },
+                    "isRegexp": {
+                        "type": "boolean",
+                        "description": "Whether the pattern is a regex."
+                    },
+                    "includePattern": {
+                        "type": "string",
+                        "description": "Search files matching this glob pattern. Will be applied to the relative path of files within the workspace. To search recursively inside a folder, use a proper glob pattern like \"src/folder/**\". Do not use | in includePattern."
+                    },
+                    "maxResults": {
+                        "type": "number",
+                        "description": "The maximum number of results to return. Do not use this unless necessary, it can slow things down. By default, only some matches are returned. If you use this and don't see what you're looking for, you can try again with a more specific query or a larger maxResults."
+                    },
+                    "includeIgnoredFiles": {
+                        "type": "boolean",
+                        "description": "Whether to include files that would normally be ignored according to .gitignore, other ignore files and `files.exclude` and `search.exclude` settings. Warning: using this may cause the search to be slower. Only set it when you want to search in ignored folders like node_modules or build outputs."
+                    }
+                },
+                "required": [
+                    "query",
+                    "isRegexp"
+                ]
+            }
+        },
+        {
+            "name": "get_changed_files",
+            "description": "Get git diffs of current file changes in a git repository. Don't forget that you can use run_in_terminal to run git commands in a terminal as well.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "repositoryPath": {
+                        "type": "string",
+                        "description": "The absolute path to the git repository to look for changes in. If not provided, the active git repository will be used."
+                    },
+                    "sourceControlState": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "staged",
+                                "unstaged",
+                                "merge-conflicts"
+                            ]
+                        },
+                        "description": "The kinds of git state to filter by. Allowed values are: 'staged', 'unstaged', and 'merge-conflicts'. If not provided, all states will be included."
+                    }
+                },
+                "required": []
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "get_errors",
+            "description": "Get any compile or lint errors in a specific file or across all files. If the user mentions errors or problems in a file, they may be referring to these. Use the tool to see the same errors that the user is seeing. If the user asks you to analyze all errors, or does not specify a file, use this tool to gather errors for all files. Also use this tool after editing a file to validate the change.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePaths": {
+                        "description": "The absolute paths to the files or folders to check for errors. Omit 'filePaths' when retrieving all errors.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": []
+            }
+        },
+        {
+            "name": "copilot_getNotebookSummary",
+            "description": "This is a tool returns the list of the Notebook cells along with the id, cell types, line ranges, language, execution information and output mime types for each cell. This is useful to get Cell Ids when executing a notebook or determine what cells have been executed and what order, or what cells have outputs. If required to read contents of a cell use this to determine the line range of a cells, and then use read_file tool to read a specific line range. Requery this tool if the contents of the notebook change.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "type": "string",
+                        "description": "An absolute path to the notebook file with the cell to run, or the URI of a untitled, not yet named, file, such as `untitled:Untitled-1.ipynb"
+                    }
+                },
+                "required": [
+                    "filePath"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "get_search_view_results",
+            "description": "The results from the search view",
+            "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "github_repo",
+            "description": "Searches a GitHub repository for relevant source code snippets. Only use this tool if the user is very clearly asking for code snippets from a specific GitHub repository. Do not use this tool for Github repos that the user has open in their workspace.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "repo": {
+                        "type": "string",
+                        "description": "The name of the Github repository to search for code in. Should must be formatted as '<owner>/<repo>'."
+                    },
+                    "query": {
+                        "type": "string",
+                        "description": "The query to search for repo. Should contain all relevant context."
+                    }
+                },
+                "required": [
+                    "repo",
+                    "query"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "list_code_usages",
+            "description": "Request to list all usages (references, definitions, implementations etc) of a function, class, method, variable etc. Use this tool when \n1. Looking for a sample implementation of an interface or class\n2. Checking how a function is used throughout the codebase.\n3. Including and updating all usages when changing a function, method, or constructor",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "symbolName": {
+                        "type": "string",
+                        "description": "The name of the symbol, such as a function name, class name, method name, variable name, etc."
+                    },
+                    "filePaths": {
+                        "type": "array",
+                        "description": "One or more file paths which likely contain the definition of the symbol. For instance the file which declares a class or function. This is optional but will speed up the invocation of this tool and improve the quality of its output.",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "symbolName"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "list_dir",
+            "description": "List the contents of a directory. Result will have the name of the child. If the name ends in /, it's a folder, otherwise a file",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "description": "The absolute path to the directory to list."
+                    }
+                },
+                "required": [
+                    "path"
+                ]
+            }
+        },
+        {
+            "name": "read_file",
+            "description": "Read the contents of a file.\n\nYou must specify the line range you're interested in. Line numbers are 1-indexed. If the file contents returned are insufficient for your task, you may call this tool again to retrieve more content. Prefer reading larger ranges over doing many small reads.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "description": "The absolute path of the file to read.",
+                        "type": "string"
+                    },
+                    "startLine": {
+                        "type": "number",
+                        "description": "The line number to start reading from, 1-based."
+                    },
+                    "endLine": {
+                        "type": "number",
+                        "description": "The inclusive line number to end reading at, 1-based."
+                    }
+                },
+                "required": [
+                    "filePath",
+                    "startLine",
+                    "endLine"
+                ]
+            }
+        },
+        {
+            "name": "read_notebook_cell_output",
+            "description": "This tool will retrieve the output for a notebook cell from its most recent execution or restored from disk. The cell may have output even when it has not been run in the current kernel session. This tool has a higher token limit for output length than the runNotebookCell tool.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "type": "string",
+                        "description": "An absolute path to the notebook file with the cell to run, or the URI of a untitled, not yet named, file, such as `untitled:Untitled-1.ipynb"
+                    },
+                    "cellId": {
+                        "type": "string",
+                        "description": "The ID of the cell for which output should be retrieved."
+                    }
+                },
+                "required": [
+                    "filePath",
+                    "cellId"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "semantic_search",
+            "description": "Run a natural language search for relevant code or documentation comments from the user's current workspace. Returns relevant code snippets from the user's current workspace if it is large, or the full contents of the workspace if it is small.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The query to search the codebase for. Should contain all relevant context. Should ideally be text that might appear in the codebase, such as function names, variable names, or comments."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        },
+        {
+            "name": "test_failure",
+            "description": "Includes test failure information in the prompt.",
+            "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "configure_non_python_notebook",
+            "description": "Selects the Notebook Kernel and starts it.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "description": "The absolute path of the notebook with the active kernel.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "filePath"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "configure_python_notebook",
+            "description": "Selects a Python Kernel and starts it.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "description": "The absolute path of the notebook with the active kernel.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "filePath"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "get_terminal_output",
+            "description": "Get the output of a terminal command previously started with run_in_terminal",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the terminal to check."
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "restart_notebook_kernel",
+            "description": "Tool used to restart a Notebook kernel. Some packages require a restart of the kernel after being installed. Use this if after installing a package if you know the package requires a restart, or if still getting an error about a missing package after installing.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "filePath": {
+                        "description": "The absolute path of the notebook with the active kernel.",
+                        "type": "string"
+                    },
+                    "reason": {
+                        "description": "The reason for restarting the kernel.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "filePath"
+                ]
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "runSubagent",
+            "description": "Launch a new agent to handle complex, multi-step tasks autonomously. This tool is good at researching complex questions, searching for code, and executing multi-step tasks. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries, use this agent to perform the search for you.\n\n- Agents do not run async or in the background, you will wait for the agent's result.\n- When the agent is done, it will return a single message back to you. The result returned by the agent is not visible to the user. To show the user the result, you should send a text message back to the user with a concise summary of the result.\n- Each agent invocation is stateless. You will not be able to send additional messages to the agent, nor will the agent be able to communicate with you outside of its final report. Therefore, your prompt should contain a highly detailed task description for the agent to perform autonomously and you should specify exactly what information the agent should return back to you in its final and only message to you.\n- The agent's outputs should generally be trusted\n- Clearly tell the agent whether you expect it to write code or just to do research (search, file reads, web fetches, etc.), since it is not aware of the user's intent",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "prompt": {
+                        "type": "string",
+                        "description": "A detailed description of the task for the agent to perform"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A short (3-5 word) description of the task"
+                    }
+                },
+                "required": [
+                    "prompt",
+                    "description"
+                ]
+            }
+        },
+        {
+            "name": "search_subagent",
+            "description": "Launch an iterative search-focused subagent that orchestrates semantic_search, grep_search, file_search and read_file tool calls to explore and gather relevant workspace code for a natural language query.\n CALL THIS FOR ANY TASK THAT REQUIRES CODEBASE EXPLORATION!\n\nRemember:\n1. Perform tool calls in parallel whenever possible\n2. Avoid redundant calls -- don't repeat identical searches.\n3. Stop once you have high-confidence, non-duplicative snippets covering the query scope.\n\nReturns: A list of relevant files/snippet locations in the workspace.\n\nInput fields:\n- query: Natural language description of what to search for.\n- description: Short user-visible invocation message. \n- details: 2-3 sentences detailing the objective of the search agent.",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Natural language description of what to search for."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A short (3-5 word) description of the task."
+                    },
+                    "details": {
+                        "type": "string",
+                        "description": "A more detailed description of the objective for the search subagent. This helps the sub-agent remain on task and understand its purpose."
+                    }
+                },
+                "required": [
+                    "query",
+                    "description",
+                    "details"
+                ]
+            }
+        },
+        {
+            "name": "terminal_last_command",
+            "description": "Get the last command run in the active terminal.",
+            "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "defer_loading": true
+        },
+        {
+            "name": "terminal_selection",
+            "description": "Get the current selection in the active terminal.",
+            "input_schema": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            },
+            "defer_loading": true
+        }
+    ],
+    "top_p": 1,
+    "max_tokens": 32000,
+    "thinking": {
+        "type": "enabled",
+        "budget_tokens": 16000
+    }
+}

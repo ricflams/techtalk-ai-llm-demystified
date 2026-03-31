@@ -1,0 +1,74 @@
+/*
+  marp-theme.css — Custom Marp theme for presentation.md
+  Modern, clean style: blue accent, light background, sans-serif font
+*/
+
+:root {
+  --color-background: #f9fbfd;
+  --color-foreground: #222;
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-accent: #38bdf8;
+  --color-code-bg: #f3f4f6;
+  --color-code: #0f172a;
+  --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+section {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-main);
+  padding: 2.5em 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  font-family: var(--font-main);
+  font-weight: 700;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.2em;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--color-secondary);
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+ul, ol {
+  margin-left: 1.5em;
+}
+
+code, pre {
+  background: var(--color-code-bg);
+  color: var(--color-code);
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Marp slide header/footer example */
+header, footer {
+  color: var(--color-secondary);
+  font-size: 0.9em;
+  padding: 0.5em 0;
+}
