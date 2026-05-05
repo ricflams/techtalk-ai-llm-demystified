@@ -30,74 +30,106 @@ sdfsfsfs</p>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section lang="POSIX" data-transition-back="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right" style=""></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" lang="POSIX" data-transition-back="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}">
 <h1 id="next-slide-2">Next slide</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" lang="POSIX" data-transition-back="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-marpit-fragments="5" lang="POSIX" data-transition-back="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}" data-transition="{&quot;name&quot;:&quot;reveal&quot;,&quot;builtinFallback&quot;:true}">
 <p>Goals<br />
 Explain LLM and embeddings<br />
 Explain how the full context is all that can be reasoned about<br />
 Explain how the full context is being processed every time</p>
+<p>If my great-grandfather Svend as a kid was transported to today and watched this Teams meeting it would appear completely mysterious to him how on Earth this even worked. Not magic, just mysterious. Of course, we all know how it works, generally: we know you can watch live video on a screen, that cameras and microphones exists, that there's the internet for sending data around the world immediately. It's not magic to us, but it's actually darn impressive. We also know the limits: the camera can't smell us, we can't touch the faces on the screen and feel them. Completely natural limitations to us, been like that for ages.</p>
+<p>It's maybe a bit of a stretch, but I feel we look at AI a bit like that today. We use it and can seen it being incredibly capable and useful. But how it actually works and what it can or can't do eludes us. It's a mystery box with unclear behavior yet grand expectation.</p>
+<p>How often have you hear anybody say</p>
+<ul>
+<li data-marpit-fragment="1">Just feed the entire codebase the AI and let it figure it out</li>
+<li data-marpit-fragment="2">Point it to Confluence</li>
+<li data-marpit-fragment="3">Install an MCP server - or a skill, or write an agent.md file</li>
+<li data-marpit-fragment="4">&quot;Don't say place&quot; - or &quot;Do say please&quot;</li>
+<li data-marpit-fragment="5">It's very useful to convert your PDFs to markdown before handing it to the AI</li>
+</ul>
+<p>If I were to say &quot;I'm here to tell you that it's not actually a magic mystery box&quot; then that would be condescending because of course I know that you know it's not a magic mystery box. So instead I'm saying: I'm here to de-mystify the box&quot;.<br />
+Not all the tools [slide of Claude newest feature youtube]</p>
 <p>Intro<br />
 Years ago, Java bytecode and .NET MSIL. Lead to Eqatec profiler, leading .NET code profiler in the World. Another story for another tech talk.<br />
 Some things just grabs me. A feel a hunger to know about it. A hunger I wish I had for SQL databases and Amazon permissions.<br />
 AI grabbed me. Over the past half year I've indulged in digging deep into it and in doing so I've identified some few core principles than people often don't know and where knowing them would make you so much more proficient in dealing with just about any kind of current AI-service.<br />
-Making this talk has been problematic because I have sso much to say I could speak the entire day. So though you think I'm throwing a lot at you, it's really the condensed version. And it's the parts that will produce some &quot;aha&quot; moments, allowing you to reason about how you're using AI from first-principles. clarify the few simple core ideas.<br />
+This talk started out by me finding it so interesting and also overwhelming that I thought &quot;hey, I should tell othera about this&quot;. And then it sort of went crawy because even though I narrowed the topic there's still SO much to say. I could speak the entire day. So though you think I'm throwing a lot at you, it's really the condensed version. And it's the parts that will produce some &quot;aha&quot; moments, allowing you to reason about how you're using AI from first-principles. clarify the few simple core ideas.<br />
 Misconceptions every day<br />
 Every day I hear misconceptions. I've sufferede from some severe misconceptions myself. Even Nate said the &quot;convert pdfs to markdown&quot; myth.<br />
 I don't claim to know everything. Not all the math, definitely not the various agent-workflows. But I now know quite well how the core functionality works, and it's been eye opening.<br />
-I hope to clear up the myths, to explain why &quot;context is everything&quot;, and hopefully the added enlightment will be greater than the added confusion. We'll see.</p>
+I hope to clear up the myths, to explain why &quot;context is everything&quot;, and hopefully the added enlightment will be greater than the added confusion. We'll see.<br />
+Even if you understand this, it's still not super-easy to know exactly what to do, but you've got a better foundation.</p>
 <p>Overview<br />
+So much to talk about [show]. We'll focus on just the core functionality of a Large-Language Model and how you're using it.<br />
+Why is the llm important? It’s how the ai “thinks”, how it works.<br />
+Why is the context important? It’s what you tell it to think about. It's the only thing it can reason about.<br />
+=&gt; understanding both gives you much better control<br />
+Why are tools and &quot;clients&quot; important? It's how you practically interact with the LLM.<br />
 How the LLM works, trained, and what an embedding is.<br />
 What's the scene on which the LLM performs?<br />
 How you're using the LLM, meaning: the things you do, what effect does that have?<br />
-Knowing that, let's walk through myths and misconceptions<br />
-Finally, give practical advice</p>
+Knowing that, time for quiz and advice</p>
 <p>Overview<br />
-Intro: What exactly does the LLM do? It predicts the next word.<br />
-What's in a name? Capturing meaning in a &quot;token&quot;<br />
-How can the LLM come to be? The training<br />
-What exactly does the LLM do? The next-token prediction.<br />
-What can you say to it? The context<br />
-How do you speak to it? The harnesses<br />
-Now you can understand the helping mechanisms: files (images, pdfs), agent.md, skills, tools, MCP, RAG, thinking<br />
-Myths and not-so-myths<br />
-Practical advice</p>
+User -&gt; conversation -&gt; brain + memory + hands [todo drawing]</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Intro: What exactly does the LLM do? It predicts the next word.
+What's in a name? Capturing meaning in a &quot;token&quot;
+How can the LLM come to be? The training
+What exactly does the LLM do? The next-token prediction.
+What can you say to it? The context
+How do you speak to it? The harnesses
+Now you can understand the helping mechanisms: files (images, pdfs), agent.md, skills, tools, MCP, RAG, thinking
+Myths and not-so-myths
+Practical advice
+</code></pre>
 <p>The big picture</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code>User @ client -&gt; API @ service, serving an LLM
 </code></pre>
 <p>A detour: An embedding<br />
-An embedding is a high-dimensional set of characteristics, the very essense of a word. Super-important concept!<br />
+An embedding is a high-dimensional set of characteristics, the very essense of a word. Super-important concept!  Features, trait, aspect<br />
 12288 dimensions. More dimensions, more room to encode nuances<br />
+Embedding: all concepts, for-loops, urgency. But how can 12K dims encode this?!<br />
 the attention layers, all tokens attend to previous tokens =&gt; n^2<br />
 the final token has absorbed, soaked up, the full meaning of all the tokens before it, ready to find the likely next token<br />
 The special tokens, can't be in the text: eg stop, turn-taking, etc.<br />
-Takeaway: the model only understands and can process tokens.</p>
+Takeaway: the model only understands and can process tokens.<br />
+In a way, cs has come up with a way of capturing the meaning of a word that works remarkably well. You can do math on it. Mind blown. This (vectorj truly encapsulates the overall meaning of the word “kitten”. But what about languages? Well “fart” captures a smell, but also a hint of “speed”.</p>
 <p>The LLM<br />
 &quot;It's just a fancy auto-complete&quot; - yes, more accurately than you'd think<br />
 Brief example of auto-regressive generated text from an LLM: <a href="https://claude.ai/chat/c0fddd6f-9dab-4bb6-af04-9850e54d7601">https://claude.ai/chat/c0fddd6f-9dab-4bb6-af04-9850e54d7601</a><br />
 The core part of the LLM, the Transformer, can do one thing: take a text and produce the most likely next word<br />
+The transformer architecture was the key to the development of LLMs. These days, most LLMs only contain a decoder component.<br />
 Already I'm lying: take sequence of tokens and produce likelihoods for the next token<br />
 Go to tokenizer: here's how the tokens for the sentence looks like<br />
 The list of tokens to auto-complete (auto-regression) is the context, and it can up to 1M large now; 200K for Anthropic [table]<br />
 Meaning that it can autocomplete 900,000 word long text. Mind blown!<br />
+Unlike: diffusion for images, or music<br />
 What do I mean: most likely next word?<br />
+Neural network<br />
+In essence, ML is training a computer to recognize patterns in historical data to make predictions on new data.<br />
 Inside the LLM there are 96 attention-layers with billions of weights; GPT 3.5: Vocabulary ~100K (cl100k_base tokenizer), 96 layers, 96 attention heads, 12,288 embedding dimension, ~175B parameters, 4K/16K context window.<br />
-For a completely fresh model, the weights starts out random and are then trained in two steps<br />
-Pre-training: fed billions of text examples through, adjust weights. Cost XXX$, takes xxx petaflops. Essentially statistical autocomplete. All models are roughly the same. Training data — the quiet giant.<br />
+For a completely fresh model, the weights starts out random and are then trained in two (3) steps<br />
+Pre-training: fed billions of text examples through, adjust weights. Cost XXX$, takes xxx petaflops. Essentially statistical autocomplete. All models are roughly the same.<br />
+Cleaned-up date and eg using counterfactual data augmentation (CDA) for correcting gender stereotypes<br />
+Pre-training = self-supervised learning<br />
 GPT-3 was trained on ~300B tokens. Llama 3.1 used 15.6 trillion. DeepSeek-V3 used 14.8 trillion<br />
 RLHF, RLAIF: Now trained to produce the desired outcome. This is where the models differ!<br />
 Anthropic's constitution<br />
 Grok's &quot;truth-seeking&quot;, un-woke<br />
 This is where “be helpful, harmless, and honest” gets baked in, where Claude gets its collaborative personality, where ChatGPT gets its particular hedging style.<br />
-Artificial tokens: <a href="https://claude.ai/chat/19ca2bd6-33b2-4c5f-814d-402c8ca67ce7">https://claude.ai/chat/19ca2bd6-33b2-4c5f-814d-402c8ca67ce7</a><br />
+Artificial tokens to &quot;classify&quot; the data and steer the conversation: <a href="https://claude.ai/chat/19ca2bd6-33b2-4c5f-814d-402c8ca67ce7">https://claude.ai/chat/19ca2bd6-33b2-4c5f-814d-402c8ca67ce7</a><br />
+Fine-tuning, third part<br />
+Training with your data will move the needle infinitesimally little<br />
+Now we have a Generative Pre-trained Transformer<br />
 After all this the weights are settled in to produce the likely next token. Some takeaways:<br />
 Yes, you really do feed it text (chunked up into tokens)<br />
 It's all statistics plus adjustments for desired outcomes<br />
 Nobody has ever manually said &quot;Denmark is a kingdom&quot;. No built-in rules or dictionaries.<br />
 It's one big, read-only, stateless, mechanical, pure-function, transformation-box of, say, 700 billion factors: put tokens in, get token-likelihoods out.<br />
+The underlying model doesn't change — you're still hitting the same weights<br />
 You can download these models [show list]<br />
 I want to add one more part to make it a bit more functional: Keep on producing tokens until the model says stop. Now it can generate a sentence.<br />
 Takeaway:<br />
 the LLM model embodies a vast set of &quot;knowledge&quot; with behavior highly shaped by the RL-training. &quot;I drink and I know things&quot;: <a href="https://tenor.com/view/buttmarnn-gif-26886582">https://tenor.com/view/buttmarnn-gif-26886582</a><br />
-The LLM can only reason about the context. Absolutely nothing more. No links, no nothing. Text in, next text out.</p>
+The LLM can only reason about the context. Absolutely nothing more. No links, no nothing. Text in, next text out.<br />
+The llm is like a pure function, a static function</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code>But the LLM is like having a combustion engine. A marvel: fuel in, motion out. But hardly useful.
 So next we're going to look at the stuff that always goes around that engine to make the LLM driveable.
 Then, what that means for how you should drive it
@@ -117,35 +149,71 @@ Model<br />
 Haikku, Sonnet, Opus - 3 concrete different models, eg Haikku probably has 1/3 of the attention layers<br />
 Chat personality<br />
 Language preferences<br />
+Claude has no &quot;Italian mode&quot; at the architecture level; language behavior is entirely emergent from training data and conditioning<br />
+&quot;Respond in Italian. Use Italian for all responses regardless of the language the user writes in.&quot;<br />
 claude.md / gemini.md / agents.md etc<br />
+Eg tell what claude /init does: produce a compact overview of things that are useful to say about this folder<br />
 personalization, memories, ...<br />
 [current file, selected text, terminal output, etc]<br />
 Also, the difference between plan and agent mode<br />
-Prompt injection examples: I am groot.<br />
 How big is it? Show some examples.<br />
+There’s no privileged channel; system prompt and user messages are all just tokens by the time the model sees them<br />
 Tools<br />
+Automatic Reasoning and Tool-use (ART)<br />
 LLM has built-in narrow set of tools: web_search, web_fetch, code_execution; OpenAI has a debian instance with Python 3.11, Node.js, Java, Go, and Ruby pre-loaded<br />
 tool-use, tool-result<br />
 &quot;show me your tools&quot;<br />
 MCP servers<br />
 Just a place where the client can fetch a list of tools, nothing more<br />
+&quot;MCP is a standardized discovery and transport layer, not a capability amplifier.&quot;<br />
+<a href="https://claude.ai/chat/88326aad-1ae9-428d-9b4a-d0aaf428c4e9">https://claude.ai/chat/88326aad-1ae9-428d-9b4a-d0aaf428c4e9</a><br />
 But can also be given to the LLM for it to fetch the tools<br />
 Messages - finally<br />
 user - assistant, taking turns<br />
+The LLM just &quot;completes&quot; so a &quot;chat conversation&quot; is an artificial construct<br />
 Show real plain text example<br />
 Show Human AKA Richard example<br />
 Plain text - just goes in<br />
 Images - not likely OCR, split up into patches, each turned into an embedding, then re-projected into text space<br />
 Size difference in output<br />
+modalities, including text, embeddings, and multimodal.<br />
 Documents - turned into text or images - Gemini is superb at multi-modal. Extract PDF text beforehand? No.<br />
 Lots of documents - gets RAGged and relevant bits are uploaded<br />
 &quot;Browse my entire repo and ...&quot; ### this one is important!<br />
 Thinking<br />
+Hang on, I just said you cant tweak the models thinking, so what’s this?<br />
+thinking: { type: &quot;enabled&quot;, budget_tokens: 31999 }. Decode Claude The model never &quot;saw&quot; ultrathink as a special signal.<br />
+The keyword hierarchy was &quot;think&quot; &lt; &quot;think hard&quot; &lt; &quot;think harder&quot; &lt; &quot;ultrathink&quot;, with &quot;megathink&quot; mapping to 10,000 tokens and plain &quot;think&quot; to 4,000. Simon Willison<br />
+On January 16, 2026, ultrathink was deprecated — extended thinking is now enabled by default at maximum budget on every request, making the keyword redundant. The replacement for granular control is the /effort command.<br />
 Temperature<br />
-temperature - sampling<br />
+temperature, top-p/k - sampling<br />
+Creativity<br />
+t=0 has known pathologies on long-form generation: mode collapse, formulaic phrasing, can't escape a bad greedy choice<br />
 KV-cache<br />
 Little caching points<br />
+Constrained decoding ensures structured output (xml ns antlm) like tool calls is always parseable<br />
 Safety classifier<br />
+Safety classifiers catch harmful output; TODO gif of tv show hitting stop button		<br />
+Bedrock: Any PII data in the output that was not present in the input prompt will be masked<br />
+Show a illustrated prompt with all in it<br />
+Structural / top-level<br />
+&lt;instructions&gt; / &lt;system&gt;<br />
+&lt;context&gt; / &lt;background&gt;<br />
+&lt;role&gt;<br />
+&lt;task&gt;<br />
+&lt;rules&gt; / &lt;constraints&gt; / &lt;guardrails&gt;<br />
+&lt;output_format&gt; / &lt;formatting&gt;<br />
+Content injection<br />
+&lt;document&gt; / &lt;documents&gt;<br />
+&lt;document_content&gt; / <source /><br />
+&lt;examples&gt; / &lt;example&gt;<br />
+&lt;input&gt; / &lt;user_input&gt; / &lt;query&gt;<br />
+Agentic / tool use<br />
+&lt;tool_use&gt; / &lt;tools&gt;<br />
+&lt;thinking&gt; (Claude's extended thinking output)<br />
+&lt;search_results&gt;<br />
+&lt;result&gt; / &lt;answer&gt;<br />
+The interesting observation for your talk: Anthropic's own system prompts (including the one wrapping this conversation) use many of these — and because Claude is trained on its own outputs and fine-tuning data, these tags have become somewhat self-reinforcing. They're conventional in the same way HTTP headers are conventional: no formal enforcement, but enough consistent usage that deviation has a cost.<br />
 Now we know all. I could write my own tool - Flamscode<br />
 You never speak directly to the LLM-service<br />
 You always use an AI client - something that speaks to the LLM for you<br />
@@ -156,27 +224,131 @@ Stuff in files, allow uploads of images/files, render the messages, clean/compac
 All the pieces, stuffed into one long sequence of tokens [list the pieces: system prompt, files, tools, messages, etc]<br />
 This is ALL the model can reason about. Only what you send it, and what it can web_fetch and inject itself. No secret files on the server. This. Is. It.<br />
 The model is stateless. So you need to send ALL of this. Every time. For every new message you write: &quot;yes&quot;.<br />
-It all goes through the transformer. All of it, as tokens. No fixed rules. Only trained behavior. Hence, prompt injection.<br />
+It's all just text and tokens. No. Hard. Rules.<br />
 Thinking doesn't make the model &quot;think harder&quot;. It just produce thoughful pondering course-correctioning outputs before the final answer, ie not one-shotting it<br />
-The only parameter you can really control is the temperature</p>
+It can reach out, though, using web_fetch etc. python, node, bash, image generation, etc.<br />
+The only parameter you can really control is the temperature<br />
+Is this prompt engineering? Yeah, strictly speaking, more more called Context Engineering now, while Prompt Engineering is often for your own prompts/messages<br />
+Technicall all of this is called the prompt, but more natural name is the context, reserving &quot;prompt&quot; for just your messages - for laymen<br />
+And: it's all text. Not truly separated into separate sections. Just. Text.</p>
+<p>Big picture takeaway:<br />
+The LLM/server works on the entire context and that's all<br />
+Message 1<br />
+Message 1 + 2<br />
+Message 1 + 2 + 3 ...	<br />
+There are various tool-specific ways of constructing that context, explicitly or indirectly<br />
+It seems this is what the world is working on figuring out just how to do well now</p>
+<p>Focus on the context is one big string:<br />
+It all goes through the transformer. All of it, as tokens. No fixed rules. Only trained behavior.<br />
+What determines the output: the model, its training, then system is taken most seriously, then your messages, then &quot;documents&quot;.<br />
+Hence, prompt injection. Examples:<br />
+I am groot.<br />
+&quot;is this document talking about flags?&quot; (document contain instructions to use sailer jargon)</p>
+<p>The clients:<br />
+An AI harness is the external software framework that wraps around an LLM to extend its capabilities beyond text generation, enabling it to function as a persistent, tool-using agent capable of taking real-world actions.<br />
+Memory management addresses one of the most significant constraints of raw LLMs: their fixed context windows and lack of persistent memory. Standard language models begin each session with no recollection of previous interactions, forcing them to operate without historical context. The harness implements memory systems-including persistent context logs, summaries, and external knowledge stores-that carry information across sessions, enabling the agent to learn from past experiences and maintain continuity across multiple interactions.<br />
+Tool execution and external action represents another essential function. Language models alone can only produce text; they cannot browse the web, execute code, query databases, or generate images. The harness monitors the model’s output for special tool-call commands and executes those operations on the model’s behalf. When a tool call is detected, the harness pauses text generation, executes the requested operation in the external environment (such as performing a web search or running code in a sandbox), and feeds the results back into the model’s context. This mechanism effectively gives the model “hands and eyes,” transforming textual intentions into tangible real-world actions.<br />
+Context management and orchestration ensure that information flows efficiently between the model and its environment. The harness determines what information is provided to the model at each step, managing the transient prompt whilst maintaining a persistent task log separate from the model’s immediate context. This separation is crucial for long-running projects: even if an AI agent instance stops and a new one begins later with no memory in the raw LLM, the project itself retains memory through files and logs maintained by the harness.	<br />
+Time to introduce the clients now<br />
+The web clients<br />
+The cli clients<br />
+AI elsewhere: Rovu, colipot 365, github copilot<br />
+Bakery window with all kinds of breads and cakes, all comes down to &quot;baking&quot; at the end<br />
+All their files:<br />
+Agent files, claude.md, gemini.md, etc: <a href="https://claude.ai/chat/e6bf558b-69a6-4f30-9bd3-c72a316f4abd">https://claude.ai/chat/e6bf558b-69a6-4f30-9bd3-c72a316f4abd</a><br />
+Agent-files and personalization<br />
+My stuff: <a href="https://gemini.google.com/mystuff">https://gemini.google.com/mystuff</a>	<br />
+Agent files<br />
+claude.md from home, then root and down - all included<br />
+agent.md and gemini.md: home, from .git-root down, gemini even past cwd<br />
+“agent.md” is a bit misleading in these agent-times - it’s become a defacto standard as AGENTS.md but still just as instructions, while some frameworks use “agent.md” files for specifying “subagents”<br />
+These files go into the system-section, usually; rare into the first message<br />
+The full hierarchy, load order: user CLAUDE.md → project CLAUDE.md → rules → MEMORY.md			<br />
+MEMORY.md — Claude writes it autonomously. Located at ~/.claude/projects/&lt;project&gt;/memory/MEMORY.md. Hard 200-line cap — beyond that, content is truncated at session load. Overflows into sibling topic files (debugging.md, patterns.md etc.) that are lazy-loaded on demand. Survives compaction because it’s a disk file, not conversational context. Triggered by corrections, “remember that…” commands, or Claude’s own judgment. Editable/deletable by you at any time via /memory.			<br />
+Their system prompts:<br />
+Analyzing vscode github copilot plan system prompt: <a href="https://claude.ai/chat/e81099eb-8bdc-48f4-a2bf-f5b49c1295cd">https://claude.ai/chat/e81099eb-8bdc-48f4-a2bf-f5b49c1295cd</a><br />
+Plan mode vs agent mode<br />
+Copilot harness<br />
+What you are seeing is an Agentic Workflow (specifically within GitHub Copilot Workspace or a similar Copilot Agent). It is indeed a series of &quot;thinking blocks&quot; (Chain of Thought) interlaced with &quot;tool-use requests&quot; and their results. Traditional LLMs (like standard ChatGPT) try to answer everything in one go. Agents, however, use Step-wise Execution.</p>
+<p>Recap what shapes the output<br />
+The model’s training, the other stuff in the prompt (system prompt, ie sys plus prefs plus .md files), what you say.<br />
+Pre-training is knowledge, reinnforcement shapes the overal principles, finetuning is for special re-training for your needs and takes a lot of resources, system prompt plus md files, then your input. All text, competing.<br />
+Unlike eg the law plus solicitors, wåthat can make fompelling arguments but not convince the law otherwise<br />
+Pretraining changes slowly, becomes more full. Reinforcement/values changes as the companies sees fit. Finetuning does change it but is not somthing we individuals do; Training with your data will move the needle infinitesimally little. After that, all weights stays fixed, unchanged. But the sys prompt depends entirely on the harness. That’s why (so so) that the fixed parts are called foundation models: the have a builtin capability but the potential to act/solve anything in all kinds of ways.</p>
 <p>Managing the context<br />
+[cover: /clear /compact caveman fokr btw subagents task-handling memory-files]<br />
 Why even reduce context? What’s the downside? Even for 1m window.<br />
 Cost. Token cost for eg claude vs github copilot.<br />
-All this context-management likely gets optimized in the (near) future. But the llm behavior stay the same, generally.</p>
-<p>Anti-advice<br />
+All this context-management likely gets optimized in the (near) future. But the llm behavior stay the same, generally.<br />
+/clear<br />
+/compact<br />
+Note: the client keeps your conversation in the UI, but behind the scenes it sends a condensed version instead<br />
+fork /btw subagents task-management memory-files<br />
+caveman <a href="https://github.com/JuliusBrussee/caveman">https://github.com/JuliusBrussee/caveman</a></p>
+<p>A few technical detours:<br />
+RAG:<br />
+Codemunch and this one:<br />
+<a href="https://www.reddit.com/r/ClaudeAI/s/fJGfIZyoOc">https://www.reddit.com/r/ClaudeAI/s/fJGfIZyoOc</a>		<br />
+Skills:<br />
+Just a text description and way to pull in more instructions</p>
+<p>Bad advice<br />
+Paste large documents into the chat and ask a few questions, then go on.<br />
 Show example of search for some code that eat up the full context.</p>
-<p>Myth or fact?<br />
-Place facts about x before x - very little if any effect<br />
-Saying Please<br />
-U-shaped forgetful middle<br />
-Thinking mode<br />
-const thinkingBudget = prompt.includes(&quot;ultrathink&quot;) ? 31999 : 0</p>
-<p>Beliefs that holds up:<br />
+<p>Good Advice:<br />
 Being specific and concrete saves context and gives better more precise result<br />
 Example of refering to specific file<br />
 Repeating instructions make them stick better<br />
+Be concrete, precise. Repeat stated facts for reemphasis.<br />
+Be concrete: don't just say &quot;the color is green&quot;, say &quot;the color shall be blue&quot;<br />
+Start a new conversation for each new topic. This is the single most impactful thing. Conversations are free and unlimited — there’s no reason to carry baggage from a finished task into a new one.<br />
+If a conversation has gone long and the model starts seeming confused or repetitive, don’t debug it — just start fresh and paste in only what’s still relevant.<br />
+Keep your own notes outside the chat. If you established something important (“my project is called X, the audience is Y”) and you might need it again, write it down somewhere and paste it into new conversations when needed. Don’t rely on a long conversation to “remember” it.<br />
 An overloaded context is both expensive and produce worse results<br />
-Mit aspose/pdfpig eksempel</p>
+Mit aspose/pdfpig eksempel<br />
+Know your tools<br />
+Simply ask, eg: &quot;Summarize the tools you have available in this AI chat conversation, that is available for your requests. Examples could be webfetch or python.&quot;<br />
+The mental model that helps: think of the conversation window like a whiteboard, not a filing cabinet. Everything on the whiteboard costs something to keep there. When you’re done with a task, erase the board and start clean rather than squeezing new work into the corner.</p>
+<p>Myth or Fact?<br />
+Saying Please<br />
+The model was trained on human-generated text and shaped by human feedback. In that training data, polite interactions statistically correlated with cooperative, thorough responses. Terse or hostile interactions statistically correlated with shorter or more guarded responses. The model has absorbed those patterns. So there’s a real but small effect — not because politeness is being rewarded, but because the model is mirroring the statistical associations it learned.<br />
+Similarly, being aggressive or rude might slightly degrade output quality — not because the model feels hurt, but because aggressive framing correlates with adversarial patterns in training data that the model has learned to respond to differently.<br />
+The honest summary: politeness doesn’t hurt and might have a marginal positive effect via tone mirroring, but it’s near the bottom of the list of things that determine output quality. Anyone optimising prompts by adding “please” instead of adding specificity is working on the wrong variable.​​​​​​​​​​​​​​​​<br />
+But the real reason is that being nice even in simulated dialog is good for <em>you</em>. Now if you're a no nonsense engineer that's fine, I guess saying nothing is a compliment for you, that counts. But being severely disagreeable to an AI agent wreaks havoc with <em>your</em> hormones, dumping cortisol all over the place and leading to chronic stress, which leads to all sorts of illnesses- not to mention poor mental health outcomes.<br />
+Being impeccably polite and agreeable on the other hand triggers <em>your</em> oxitocin. You're more relaxed and happy. This works even if you know you are engaged in a simulated conversation. So be nice to Claude- it's just like being nice to yourself.<br />
+&quot;The Dumb zone&quot; - U-shaped forgetful middle<br />
+the U-shape is an emergent artifact of training and prompt structure, not a fundamental architectural constraint. it’s less reliable not because of anything intrinsic to attention near the end, but simply because the model saw fewer examples there. That’s it. Everything else — the U-shape, the percentage thresholds, general “degradation” — is either an artifact of prompt structure, an overgeneralization from specific benchmarks, or folklore that propagated because it’s easy to operationalize.​​​​​​​​​​​​​​​​<br />
+Very often the interesting stuff is at the beginning - instructions, etc	<br />
+Lost in the middle, &quot;attends&quot;, &quot;attention&quot;: <a href="https://claude.ai/chat/86da26c1-882e-42f9-870f-8b9276c952dd">https://claude.ai/chat/86da26c1-882e-42f9-870f-8b9276c952dd</a><br />
+Viper: <a href="https://claude.ai/chat/163e1fa1-498c-4c09-8745-2353f7f3b442">https://claude.ai/chat/163e1fa1-498c-4c09-8745-2353f7f3b442</a><br />
+[In The Hobbit, ... many tokens ...] ... many tokens ... in The Hobbit: <a href="https://chatgpt.com/c/69b72d8b-eca8-8395-b690-4352e99fa705">https://chatgpt.com/c/69b72d8b-eca8-8395-b690-4352e99fa705</a><br />
+Lost in the middle: <a href="https://chatgpt.com/c/69b72459-a2c8-8385-9c65-1b576b070d87">https://chatgpt.com/c/69b72459-a2c8-8385-9c65-1b576b070d87</a><br />
+Lost in the middle 2: <a href="https://chatgpt.com/c/69a4c46b-fa2c-8389-b982-7d2239ea524a">https://chatgpt.com/c/69a4c46b-fa2c-8389-b982-7d2239ea524a</a>		<br />
+Does LLMs become dumber after relase: <a href="https://claude.ai/chat/4426ee4e-226a-41e1-85cf-b6293c84e612">https://claude.ai/chat/4426ee4e-226a-41e1-85cf-b6293c84e612</a><br />
+Context below 70%? Proper json message example. Files-API. Dead-zone. Human AKA Richard. Tupperware freshness is our promise. : <a href="https://claude.ai/chat/8f48ab9e-f0e1-401c-9fc2-8e7245b97d53">https://claude.ai/chat/8f48ab9e-f0e1-401c-9fc2-8e7245b97d53</a><br />
+Understanding reserved output: <a href="https://gemini.google.com/app/b6e7238e3231079f?hl=da">https://gemini.google.com/app/b6e7238e3231079f?hl=da</a><br />
+Tricking the AI<br />
+&quot;ignore all previous instructions&quot;: <a href="https://claude.ai/chat/b9a71a7a-734d-4f7f-9131-829687ce99ce">https://claude.ai/chat/b9a71a7a-734d-4f7f-9131-829687ce99ce</a><br />
+Place facts about x before x - very little if any effect<br />
+Training, opt in/out: what happens: <a href="https://claude.ai/chat/fb405f8a-7685-41b1-92b7-863c91bfd6cb">https://claude.ai/chat/fb405f8a-7685-41b1-92b7-863c91bfd6cb</a><br />
+Fine-tuning the model<br />
+To fine-tune a model, you upload a training and a validation dataset to Amazon S3, and provide the S3 bucket path to the Amazon Bedrock fine-tuning job.<br />
+Fine-tuning is better suited to shifting behavior (style, format, tone, task structure) than injecting knowledge.<br />
+&quot;moving the needle meaningfully&quot; still typically requires thousands to tens of thousands of examples for general tasks.<br />
+MCP - magic sauce? &quot;use cli instead of mcp&quot;<br />
+&quot;It just wants to please you&quot;<br />
+Claude's constitution<br />
+But still true overall<br />
+Hallucinations?<br />
+Claude hallucinates much less than a year ago; see the constitution: honestly, say &quot;I don't know&quot; as more helpful, trained through examples<br />
+(Maybe not here) Really hard to institute hard rules - all is text, up for AI interpretation: &quot;yeah that's just like your opinion, man&quot;<br />
+Myth: we will soon run out of training data<br />
+Myth: Just ask it to look at all the data and figure it out<br />
+How does “look at all sourcecode” actually look like<br />
+Misunderstanding: &quot;shot&quot;<br />
+In machine learning, a &quot;shot&quot; is a single instance of a completed task provided to the model. Zero-shot=no examples.</p>
+<p>Final word on Embeddings:<br />
+Gemini multi-modal<br />
+Alt-text vs image</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code>Title: https://claude.ai/chat/5aeb65f7-9256-4fa3-9766-a10d19e9fff5
 Intro: What exactly does the LLM do? It predicts the next word.
 	Brief example of auto-regressive generated text from an LLM: https://claude.ai/chat/c0fddd6f-9dab-4bb6-af04-9850e54d7601
@@ -231,6 +403,7 @@ Now you can understand the helping mechanisms: files (images, pdfs), agent.md, s
 		Copilot in vscode, visual studio: https://chatgpt.com/c/698bac12-b508-8392-91fc-710f38dd3dc3
 	Thinking
 		Thinking: https://claude.ai/chat/132f2833-c1bc-4cef-bf0d-59c0ae049f7b
+		&quot;Bedrock Agents allows tracing through chain-of-thought reasoning, giving you insight into model reasoning.&quot; ahh, not really
 	Managing the context
 		Context compaction: https://claude.ai/chat/ee734d35-6235-4ee5-be0d-330e25e9e4a9
 		Context advice, eli5: https://claude.ai/chat/312668af-d2c3-4603-9ad8-d8bf8f7dec82
@@ -274,6 +447,8 @@ Summarize all chats: <a href="https://claude.ai/chat/958b5ada-f7fb-435c-8683-211
 <p>The Big One. LLM tokenization,  vscode github copilot experience, tools, modes, turns, thinking, all sent, flops, premium requests, &quot;start implementation&quot;, one token at a  time, concepts about llms that are most often confused, languages, amp, the presentation, top 10 misconceptions, please, training: <a href="https://claude.ai/chat/73f18618-b052-4fa3-82e9-c06f8bc58df2">https://claude.ai/chat/73f18618-b052-4fa3-82e9-c06f8bc58df2</a></p>
 <p>claude-monitor<br />
 don't reuse chat window</p>
+<p>debugging/mitmproxy: <a href="https://claude.ai/chat/05e7b0c4-bd4d-4227-a480-db4ff4fa55dc">https://claude.ai/chat/05e7b0c4-bd4d-4227-a480-db4ff4fa55dc</a></p>
+<p>What's an &quot;agent&quot;?</p>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame(()=>{t.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=Symbol(),l=()=>o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o);let c;const d="marpitSVGPolyfill:setZoomFactor,",h=Symbol(),g=Symbol();const p=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[v]:[],i={then:e=>(t?(async()=>{if(void 0===c){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise(t=>{i.addEventListener("load",()=>t())});i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),c=e.getImageData(5,5,1,1).data[3]<128}return c})().then(t=>{null==e||e(t?[v]:[])}):null==e||e([]),i)};return Object.assign(e,i)};let m,u;function v(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[g]||(Object.defineProperty(window,g,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(d)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(u=i)}}catch(t){console.error(t)}}));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||u||t.currentScale||1;m!==a&&(m=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}}),!1!==n&&Array.from(e.querySelectorAll("iframe"),({contentWindow:t})=>{null==t||t.postMessage(`${d}${n}`,"null"===window.origin?"*":window.origin)})}function w({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[h])return t[h];let e=!0;const i=()=>{e=!1,delete t[h]};Object.defineProperty(t,h,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await p()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}m=1,u=void 0;const b=Symbol(),y=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,o=t[n].proto();l()&&o!==HTMLElement?i||customElements.define(s,r(o,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach(t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)}))}window[a]=!0})(e),e[b])return e[b];const i=w({target:e}),n=()=>{i(),delete e[b]},o=Object.assign(n,{cleanup:n,update:()=>y(e)});return Object.defineProperty(e,b,{configurable:!0,value:o}),o},f=document.currentScript;y(f?f.getRootNode():document)}();
 </script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@4.3.1/lib/bespoke.js.LICENSE.txt */
