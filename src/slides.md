@@ -3,14 +3,18 @@ marp: true
 html: true
 transition: reveal
 theme: ./marp-theme.css
+paginate: true
 ---
 <style>
 h3, h3 ~ * { display: none; }
 </style>
 
-# Your slide deck
+<!-- _class: lead -->
 
-Start writing!
+# AI & LLMs Demystified
+## What you always suspected but never confirmed
+
+Richard Flamsholt · 2026
 
 ### h3
 
@@ -165,6 +169,7 @@ First, what does it mean to "use the engine"
 	Let's start big: the system prompt and model
 		Model
 			Haikku, Sonnet, Opus - 3 concrete different models, eg Haikku probably has 1/3 of the attention layers
+		Claude Code system prompt: https://www.dbreunig.com/2026/04/04/how-claude-code-builds-a-system-prompt.html
 		Chat personality
 		Language preferences
 			Claude has no "Italian mode" at the architecture level; language behavior is entirely emergent from training data and conditioning

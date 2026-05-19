@@ -1,74 +1,308 @@
-/*
-  marp-theme.css — Custom Marp theme for presentation.md
-  Modern, clean style: blue accent, light background, sans-serif font
-*/
+/* @theme demystified */
 
-:root {
-  --color-background: #f9fbfd;
-  --color-foreground: #222;
-  --color-primary: #2563eb;
-  --color-secondary: #64748b;
-  --color-accent: #38bdf8;
-  --color-code-bg: #f3f4f6;
-  --color-code: #0f172a;
-  --font-main: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-}
-
+/* ─── Slide base ─────────────────────────────────────────── */
 section {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-main);
-  padding: 2.5em 2em;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 28px;
+  line-height: 1.6;
+  padding: 2.5rem 3.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--color-primary);
-  font-family: var(--font-main);
-  font-weight: 700;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+/* Thin gradient top bar on every slide */
+section::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #58a6ff 0%, #bc8cff 50%, #58a6ff 100%);
 }
 
+/* ─── Typography ─────────────────────────────────────────── */
 h1 {
-  font-size: 2.5em;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.2em;
+  font-size: 2em;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0.2em 0 0.5em;
+  background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 h2 {
-  font-size: 2em;
-  color: var(--color-secondary);
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #58a6ff;
+  margin: 0 0 0.4em;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1em 0 0.3em;
 }
 
+p {
+  margin: 0.4em 0;
+}
+
+strong {
+  color: #79c0ff;
+  font-weight: 700;
+}
+
+em {
+  color: #d2a8ff;
+  font-style: italic;
+}
+
+/* ─── Lists ──────────────────────────────────────────────── */
 ul, ol {
-  margin-left: 1.5em;
+  margin: 0.3em 0;
+  padding-left: 1.4em;
 }
 
-code, pre {
-  background: var(--color-code-bg);
-  color: var(--color-code);
-  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-  border-radius: 4px;
-  padding: 0.2em 0.4em;
+li {
+  margin: 0.25em 0;
+}
+
+li::marker {
+  color: #58a6ff;
+}
+
+li > ul,
+li > ol {
+  margin: 0.1em 0;
+}
+
+li > ul > li::marker {
+  color: #bc8cff;
+}
+
+li > ul > li > ul > li::marker {
+  color: #8b949e;
+}
+
+/* ─── Code ───────────────────────────────────────────────── */
+code {
+  background: #161b22;
+  color: #79c0ff;
+  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 0.82em;
+  padding: 0.15em 0.45em;
+  border-radius: 5px;
+  border: 1px solid #30363d;
 }
 
 pre {
-  padding: 1em;
-  overflow-x: auto;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 1.1em 1.4em;
+  overflow: auto;
+  margin: 0.8em 0;
 }
 
-a {
-  color: var(--color-accent);
-  text-decoration: underline;
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #c9d1d9;
+  font-size: 0.88em;
 }
 
-/* Marp slide header/footer example */
-header, footer {
-  color: var(--color-secondary);
+/* ─── Blockquote ─────────────────────────────────────────── */
+blockquote {
+  border-left: 4px solid #58a6ff;
+  margin: 0.8em 0;
+  padding: 0.6em 1.2em;
+  background: rgba(88, 166, 255, 0.08);
+  border-radius: 0 8px 8px 0;
+  color: #8b949e;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* ─── Tables ─────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.8em 0;
   font-size: 0.9em;
-  padding: 0.5em 0;
+}
+
+th {
+  background: #161b22;
+  color: #58a6ff;
+  padding: 0.55em 1em;
+  border: 1px solid #30363d;
+  font-weight: 600;
+  text-align: left;
+}
+
+td {
+  padding: 0.45em 1em;
+  border: 1px solid #21262d;
+  color: #c9d1d9;
+}
+
+tr:nth-child(even) td {
+  background: rgba(22, 27, 34, 0.6);
+}
+
+/* ─── Images ─────────────────────────────────────────────── */
+img {
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+/* ─── Header / footer ────────────────────────────────────── */
+header, footer {
+  color: #484f58;
+  font-size: 0.65em;
+}
+
+/* ─── Pagination ─────────────────────────────────────────── */
+section::after {
+  font-size: 0.65em;
+  color: #484f58;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SLIDE CLASSES  — use with <!-- _class: lead -->  etc.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Lead / title slide ──────────────────────────────────── */
+section.lead {
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 3.5rem;
+}
+
+section.lead::after {
+  /* hide page number on title */
+  display: none;
+}
+
+/* Glowing orb decoration */
+section.lead::before {
+  content: '';
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.18) 0%, rgba(188, 140, 255, 0.12) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  pointer-events: none;
+  /* override the top-bar ::before */
+  inset: unset;
+  height: 280px;
+}
+
+section.lead h1 {
+  font-size: 2.8em;
+  max-width: 68%;
+  margin-bottom: 0.4em;
+}
+
+section.lead h2 {
+  font-size: 1.1em;
+  color: #8b949e;
+  font-weight: 400;
+}
+
+section.lead p {
+  color: #8b949e;
+  font-size: 0.85em;
+}
+
+/* ── Chapter / section break ──────────────────────────────── */
+section.chapter {
+  justify-content: center;
+  align-items: flex-start;
+  background: #0d1117;
+  border-left: 6px solid #58a6ff;
+  padding-left: 3rem;
+}
+
+section.chapter h1 {
+  font-size: 2.4em;
+}
+
+section.chapter h2 {
+  color: #8b949e;
+  font-weight: 400;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── Invert / light slide ────────────────────────────────── */
+section.invert {
+  background: #f6f8fa;
+  color: #24292f;
+}
+
+section.invert h1 {
+  background: linear-gradient(135deg, #0969da, #8250df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+section.invert h2 {
+  color: #0969da;
+}
+
+section.invert h3 {
+  color: #57606a;
+}
+
+section.invert code {
+  background: #f0f0f0;
+  color: #0550ae;
+  border-color: #d0d7de;
+}
+
+section.invert li::marker {
+  color: #0969da;
+}
+
+section.invert::before {
+  background: linear-gradient(90deg, #0969da 0%, #8250df 50%, #0969da 100%);
+}
+
+/* ── Emphasis / highlight slide ──────────────────────────── */
+section.highlight {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+section.highlight h1 {
+  font-size: 2.6em;
+}
+
+section.highlight p {
+  font-size: 1.1em;
+  color: #8b949e;
+  max-width: 75%;
 }
