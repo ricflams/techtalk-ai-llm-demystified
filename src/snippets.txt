@@ -1,0 +1,19 @@
+English words often produce individualized tokens
+
+I andre sprog splittes ordene typisk mere op
+
+한국어의토큰화는복잡합니다
+
+物出新參照致重繪
+
+// Everything becomes tokens everywhere
+for (var i = 0; i < N; i++)
+	sum += func(_data[i]);
+
+I fart in the elevator.
+I en elevator der viser "I fart".	
+
+
+
+
+Please tell me: what is an LLM?

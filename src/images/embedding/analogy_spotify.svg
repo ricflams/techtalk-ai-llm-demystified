@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 902 372" width="902" height="372" font-family="system-ui, -apple-system, sans-serif">
+<rect width="902" height="372" fill="#1a1a2e" rx="12"/>
+<text x="360.0" y="22" text-anchor="middle" fill="#c8b890" font-size="14">Hotel California</text>
+<text x="360.0" y="41" text-anchor="middle" fill="#a09880" font-size="11">by Eagles</text>
+<text x="478.0" y="22" text-anchor="middle" fill="#c8b890" font-size="14">Bohemian Rhapsody</text>
+<text x="478.0" y="41" text-anchor="middle" fill="#a09880" font-size="11">by Queen</text>
+<text x="596.0" y="22" text-anchor="middle" fill="#c8b890" font-size="14">Lose Yourself</text>
+<text x="596.0" y="41" text-anchor="middle" fill="#a09880" font-size="11">by Eminem</text>
+<text x="714.0" y="22" text-anchor="middle" fill="#c8b890" font-size="14">Dancing Queen</text>
+<text x="714.0" y="41" text-anchor="middle" fill="#a09880" font-size="11">by ABBA</text>
+<text x="832.0" y="22" text-anchor="middle" fill="#c8b890" font-size="14">Baby Shark</text>
+<text x="832.0" y="41" text-anchor="middle" fill="#a09880" font-size="11">by Pinkfong</text>
+<text x="300" y="74" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">tempo</text>
+<path d="M316,56 Q310,56 404,56 Q410,56 410,62 L410,92 410,92 L310,92 310,92 L310,62 Q310,56 Z" fill="#bc8cff"/>
+<text x="360.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">5</text>
+<path d="M434,56 Q428,56 522,56 Q528,56 528,62 L528,92 528,92 L428,92 428,92 L428,62 Q428,56 Z" fill="#9f6fe1"/>
+<text x="478.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">6</text>
+<path d="M552,56 Q546,56 640,56 Q646,56 646,62 L646,92 646,92 L546,92 546,92 L546,62 Q546,56 Z" fill="#6636a7"/>
+<text x="596.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">8</text>
+<path d="M670,56 Q664,56 758,56 Q764,56 764,62 L764,92 764,92 L664,92 664,92 L664,62 Q664,56 Z" fill="#8353c4"/>
+<text x="714.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">7</text>
+<path d="M788,56 Q782,56 876,56 Q882,56 882,62 L882,92 882,92 L782,92 782,92 L782,62 Q782,56 Z" fill="#6636a7"/>
+<text x="832.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">8</text>
+<text x="300" y="110" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">energy</text>
+<path d="M310,92 410,92 410,92 L410,128 410,128 L310,128 310,128 L310,92 Z" fill="#bc8cff"/>
+<text x="360.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">5</text>
+<path d="M428,92 528,92 528,92 L528,128 528,128 L428,128 428,128 L428,92 Z" fill="#6636a7"/>
+<text x="478.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">8</text>
+<path d="M546,92 646,92 646,92 L646,128 646,128 L546,128 546,128 L546,92 Z" fill="#2d0d6e"/>
+<text x="596.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">10</text>
+<path d="M664,92 764,92 764,92 L764,128 764,128 L664,128 664,128 L664,92 Z" fill="#8353c4"/>
+<text x="714.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">7</text>
+<path d="M782,92 882,92 882,92 L882,128 882,128 L782,128 782,128 L782,92 Z" fill="#8353c4"/>
+<text x="832.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">7</text>
+<line x1="310" y1="92" x2="410" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="92" x2="528" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="92" x2="646" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="92" x2="764" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="92" x2="882" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="300" y="146" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">danceability</text>
+<path d="M310,128 410,128 410,128 L410,164 410,164 L310,164 310,164 L310,128 Z" fill="#bc8cff"/>
+<text x="360.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">5</text>
+<path d="M428,128 528,128 528,128 L528,164 528,164 L428,164 428,164 L428,128 Z" fill="#c8a2ff"/>
+<text x="478.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">4</text>
+<path d="M546,128 646,128 646,128 L646,164 646,164 L546,164 546,164 L546,128 Z" fill="#c8a2ff"/>
+<text x="596.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">4</text>
+<path d="M664,128 764,128 764,128 L764,164 764,164 L664,164 664,164 L664,128 Z" fill="#4a1a8a"/>
+<text x="714.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<path d="M782,128 882,128 882,128 L882,164 882,164 L782,164 782,164 L782,128 Z" fill="#2d0d6e"/>
+<text x="832.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">10</text>
+<line x1="310" y1="128" x2="410" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="128" x2="528" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="128" x2="646" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="128" x2="764" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="128" x2="882" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="300" y="182" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">acousticness</text>
+<path d="M310,164 410,164 410,164 L410,200 410,200 L310,200 310,200 L310,164 Z" fill="#bc8cff"/>
+<text x="360.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">5</text>
+<path d="M428,164 528,164 528,164 L528,200 528,200 L428,200 428,200 L428,164 Z" fill="#d4b8ff"/>
+<text x="478.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">3</text>
+<path d="M546,164 646,164 646,164 L646,200 646,200 L546,200 546,200 L546,164 Z" fill="#ede4ff"/>
+<text x="596.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">1</text>
+<path d="M664,164 764,164 764,164 L764,200 764,200 L664,200 664,200 L664,164 Z" fill="#e0ceff"/>
+<text x="714.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">2</text>
+<path d="M782,164 882,164 882,164 L882,200 882,200 L782,200 782,200 L782,164 Z" fill="#ede4ff"/>
+<text x="832.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">1</text>
+<line x1="310" y1="164" x2="410" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="164" x2="528" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="164" x2="646" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="164" x2="764" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="164" x2="882" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="300" y="215" text-anchor="end" fill="#666" font-size="22">⋯</text>
+<line x1="310" y1="210" x2="882" y2="210" stroke="#2a2a44" stroke-width="1" stroke-dasharray="4,5"/>
+<text x="300" y="238" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">dim_047 · stadium singalong</text>
+<path d="M310,220 410,220 410,220 L410,256 410,256 L310,256 310,256 L310,220 Z" fill="#9f6fe1"/>
+<text x="360.0" y="238.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">6</text>
+<path d="M428,220 528,220 528,220 L528,256 528,256 L428,256 428,256 L428,220 Z" fill="#4a1a8a"/>
+<text x="478.0" y="238.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<path d="M546,220 646,220 646,220 L646,256 646,256 L546,256 546,256 L546,220 Z" fill="#8353c4"/>
+<text x="596.0" y="238.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">7</text>
+<path d="M664,220 764,220 764,220 L764,256 764,256 L664,256 664,256 L664,220 Z" fill="#4a1a8a"/>
+<text x="714.0" y="238.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<path d="M782,220 882,220 882,220 L882,256 882,256 L782,256 782,256 L782,220 Z" fill="#4a1a8a"/>
+<text x="832.0" y="238.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<line x1="310" y1="220" x2="410" y2="220" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="220" x2="528" y2="220" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="220" x2="646" y2="220" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="220" x2="764" y2="220" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="220" x2="882" y2="220" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="300" y="274" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">dim_112 · sounds like it has a story</text>
+<path d="M310,256 410,256 410,256 L410,292 410,292 L310,292 310,292 L310,256 Z" fill="#4a1a8a"/>
+<text x="360.0" y="274.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<path d="M428,256 528,256 528,256 L528,292 528,292 L428,292 428,292 L428,256 Z" fill="#2d0d6e"/>
+<text x="478.0" y="274.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">10</text>
+<path d="M546,256 646,256 646,256 L646,292 646,292 L546,292 546,292 L546,256 Z" fill="#4a1a8a"/>
+<text x="596.0" y="274.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">9</text>
+<path d="M664,256 764,256 764,256 L764,292 764,292 L664,292 664,292 L664,256 Z" fill="#c8a2ff"/>
+<text x="714.0" y="274.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">4</text>
+<path d="M782,256 882,256 882,256 L882,292 882,292 L782,292 782,292 L782,256 Z" fill="#ede4ff"/>
+<text x="832.0" y="274.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">1</text>
+<line x1="310" y1="256" x2="410" y2="256" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="256" x2="528" y2="256" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="256" x2="646" y2="256" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="256" x2="764" y2="256" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="256" x2="882" y2="256" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="300" y="310" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">dim_203 · defiant outsider energy</text>
+<path d="M310,292 410,292 410,292 L410,322 Q410,328 404,328 L316,328 Q310,328 310,322 L310,292 Z" fill="#c8a2ff"/>
+<text x="360.0" y="310.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">4</text>
+<path d="M428,292 528,292 528,292 L528,322 Q528,328 522,328 L434,328 Q428,328 428,322 L428,292 Z" fill="#bc8cff"/>
+<text x="478.0" y="310.0" text-anchor="middle" dominant-baseline="central" fill="#2a1050" font-size="18" font-weight="600">5</text>
+<path d="M546,292 646,292 646,292 L646,322 Q646,328 640,328 L552,328 Q546,328 546,322 L546,292 Z" fill="#2d0d6e"/>
+<text x="596.0" y="310.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="18" font-weight="600">10</text>
+<path d="M664,292 764,292 764,292 L764,322 Q764,328 758,328 L670,328 Q664,328 664,322 L664,292 Z" fill="#ede4ff"/>
+<text x="714.0" y="310.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">1</text>
+<path d="M782,292 882,292 882,292 L882,322 Q882,328 876,328 L788,328 Q782,328 782,322 L782,292 Z" fill="#ede4ff"/>
+<text x="832.0" y="310.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="18" font-weight="600">1</text>
+<line x1="310" y1="292" x2="410" y2="292" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="428" y1="292" x2="528" y2="292" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="546" y1="292" x2="646" y2="292" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="664" y1="292" x2="764" y2="292" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="782" y1="292" x2="882" y2="292" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="245.0" y="360" fill="#a09880" font-size="14">low</text>
+<rect x="277.0" y="346" width="30" height="18" rx="3" fill="#ede4ff"/>
+<text x="292.0" y="359" text-anchor="middle" fill="#3a1a6a" font-size="12">1</text>
+<rect x="311.0" y="346" width="30" height="18" rx="3" fill="#e0ceff"/>
+<text x="326.0" y="359" text-anchor="middle" fill="#3a1a6a" font-size="12">2</text>
+<rect x="345.0" y="346" width="30" height="18" rx="3" fill="#d4b8ff"/>
+<text x="360.0" y="359" text-anchor="middle" fill="#3a1a6a" font-size="12">3</text>
+<rect x="379.0" y="346" width="30" height="18" rx="3" fill="#c8a2ff"/>
+<text x="394.0" y="359" text-anchor="middle" fill="#3a1a6a" font-size="12">4</text>
+<rect x="413.0" y="346" width="30" height="18" rx="3" fill="#bc8cff"/>
+<text x="428.0" y="359" text-anchor="middle" fill="#2a1050" font-size="12">5</text>
+<rect x="447.0" y="346" width="30" height="18" rx="3" fill="#9f6fe1"/>
+<text x="462.0" y="359" text-anchor="middle" fill="#2a1050" font-size="12">6</text>
+<rect x="481.0" y="346" width="30" height="18" rx="3" fill="#8353c4"/>
+<text x="496.0" y="359" text-anchor="middle" fill="#ede4ff" font-size="12">7</text>
+<rect x="515.0" y="346" width="30" height="18" rx="3" fill="#6636a7"/>
+<text x="530.0" y="359" text-anchor="middle" fill="#ede4ff" font-size="12">8</text>
+<rect x="549.0" y="346" width="30" height="18" rx="3" fill="#4a1a8a"/>
+<text x="564.0" y="359" text-anchor="middle" fill="#ede4ff" font-size="12">9</text>
+<rect x="583.0" y="346" width="30" height="18" rx="3" fill="#2d0d6e"/>
+<text x="598.0" y="359" text-anchor="middle" fill="#ede4ff" font-size="12">10</text>
+<text x="621.0" y="360" fill="#a09880" font-size="14">high</text>
+</svg>

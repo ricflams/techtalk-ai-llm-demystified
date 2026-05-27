@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 490" width="1060" height="490" font-family="'Courier New', Courier, monospace">
+  <rect width="1060" height="490" fill="#0a0a0a"/>
+
+
+
+  <!-- ── OUTPUT VECTOR BOX ── -->
+  <rect x="30" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#666666" stroke-width="1.5"/>
+  <text x="85" y="75" text-anchor="middle" fill="#ffffff" font-size="14" letter-spacing="1">output</text>
+  <text x="85" y="116" text-anchor="middle" fill="#ffffff" font-size="16">7.8</text>
+  <text x="85" y="140" text-anchor="middle" fill="#ffffff" font-size="16">5.2</text>
+  <text x="85" y="164" text-anchor="middle" fill="#ffffff" font-size="16">5.6</text>
+  <text x="85" y="188" text-anchor="middle" fill="#ffffff" font-size="16">9.2</text>
+  <text x="85" y="212" text-anchor="middle" fill="#ffffff" font-size="16">0.7</text>
+  <text x="85" y="236" text-anchor="middle" fill="#ffffff" font-size="16">0.9</text>
+  <text x="85" y="260" text-anchor="middle" fill="#ffffff" font-size="16">0.2</text>
+  <text x="85" y="284" text-anchor="middle" fill="#ffffff" font-size="16">8.2</text>
+  <text x="85" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="85" y="336" text-anchor="middle" fill="#ffffff" font-size="16">8.6</text>
+  <text x="85" y="378" text-anchor="middle" fill="#ffffff" font-size="12" letter-spacing="1">12 288 dims</text>
+
+  <!-- ── ARROW ── -->
+  <line x1="148" y1="228" x2="198" y2="228" stroke="#666666" stroke-width="1.5"/>
+  <polygon points="198,223 210,228 198,233" fill="#666666"/>
+  <text x="179" y="218" text-anchor="middle" fill="#ffffff" font-size="11" letter-spacing="1">W_U</text>
+
+  <!-- horizontal separator lines -->
+  <line x1="220" y1="88" x2="1030" y2="88" stroke="#333333" stroke-width="1"/>
+  <line x1="220" y1="370" x2="1030" y2="370" stroke="#333333" stroke-width="1"/>
+
+  <!-- ── STRONGER (highlight) ── -->
+  <rect x="220" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#3a7a50" stroke-width="1.5"/>
+  <text x="275" y="75" text-anchor="middle" fill="#4cff80" font-size="15" font-weight="bold">stronger</text>
+  <text x="275" y="116" text-anchor="middle" fill="#c8ecd4" font-size="16">7.6</text>
+  <text x="275" y="140" text-anchor="middle" fill="#c8ecd4" font-size="16">5.1</text>
+  <text x="275" y="164" text-anchor="middle" fill="#c8ecd4" font-size="16">5.5</text>
+  <text x="275" y="188" text-anchor="middle" fill="#c8ecd4" font-size="16">9.0</text>
+  <text x="275" y="212" text-anchor="middle" fill="#c8ecd4" font-size="16">0.8</text>
+  <text x="275" y="236" text-anchor="middle" fill="#c8ecd4" font-size="16">0.9</text>
+  <text x="275" y="260" text-anchor="middle" fill="#c8ecd4" font-size="16">0.3</text>
+  <text x="275" y="284" text-anchor="middle" fill="#c8ecd4" font-size="16">8.1</text>
+  <text x="275" y="308" text-anchor="middle" fill="#3a7a50" font-size="16">⋮</text>
+  <text x="275" y="336" text-anchor="middle" fill="#c8ecd4" font-size="16">8.4</text>
+  <text x="275" y="392" text-anchor="middle" fill="#4cff80" font-size="26" font-weight="bold">0.97</text>
+  <text x="275" y="410" text-anchor="middle" fill="#3a7a50" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="225" y="425" width="100" height="11" rx="3" fill="#1a3a25"/>
+  <rect x="225" y="425" width="96" height="11" rx="3" fill="#4cff80"/>
+  <text x="275" y="455" text-anchor="middle" fill="#4cff80" font-size="16" font-weight="bold">91%</text>
+
+  <!-- ── STRANGER ── -->
+  <rect x="345" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#333333" stroke-width="1"/>
+  <text x="400" y="75" text-anchor="middle" fill="#ffffff" font-size="15">stranger</text>
+  <text x="400" y="116" text-anchor="middle" fill="#ffffff" font-size="16">4.1</text>
+  <text x="400" y="140" text-anchor="middle" fill="#ffffff" font-size="16">7.3</text>
+  <text x="400" y="164" text-anchor="middle" fill="#ffffff" font-size="16">1.2</text>
+  <text x="400" y="188" text-anchor="middle" fill="#ffffff" font-size="16">3.4</text>
+  <text x="400" y="212" text-anchor="middle" fill="#ffffff" font-size="16">−2.1</text>
+  <text x="400" y="236" text-anchor="middle" fill="#ffffff" font-size="16">6.6</text>
+  <text x="400" y="260" text-anchor="middle" fill="#ffffff" font-size="16">−0.4</text>
+  <text x="400" y="284" text-anchor="middle" fill="#ffffff" font-size="16">2.9</text>
+  <text x="400" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="400" y="336" text-anchor="middle" fill="#ffffff" font-size="16">1.1</text>
+  <text x="400" y="392" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="bold">0.41</text>
+  <text x="400" y="410" text-anchor="middle" fill="#666666" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="350" y="425" width="100" height="11" rx="3" fill="#1e1e1e"/>
+  <rect x="350" y="425" width="3" height="11" rx="3" fill="#ffffff"/>
+  <text x="400" y="455" text-anchor="middle" fill="#ffffff" font-size="16">2%</text>
+
+  <!-- ── MORE ── -->
+  <rect x="470" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="525" y="75" text-anchor="middle" fill="#ffffff" font-size="15">more</text>
+  <text x="525" y="116" text-anchor="middle" fill="#ffffff" font-size="16">−1.2</text>
+  <text x="525" y="140" text-anchor="middle" fill="#ffffff" font-size="16">8.8</text>
+  <text x="525" y="164" text-anchor="middle" fill="#ffffff" font-size="16">−3.3</text>
+  <text x="525" y="188" text-anchor="middle" fill="#ffffff" font-size="16">2.1</text>
+  <text x="525" y="212" text-anchor="middle" fill="#ffffff" font-size="16">7.4</text>
+  <text x="525" y="236" text-anchor="middle" fill="#ffffff" font-size="16">−5.1</text>
+  <text x="525" y="260" text-anchor="middle" fill="#ffffff" font-size="16">3.3</text>
+  <text x="525" y="284" text-anchor="middle" fill="#ffffff" font-size="16">−0.9</text>
+  <text x="525" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="525" y="336" text-anchor="middle" fill="#ffffff" font-size="16">4.4</text>
+  <text x="525" y="392" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="bold">0.18</text>
+  <text x="525" y="410" text-anchor="middle" fill="#666666" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="475" y="425" width="100" height="11" rx="3" fill="#1e1e1e"/>
+  <rect x="475" y="425" width="1" height="11" rx="3" fill="#ffffff"/>
+  <text x="525" y="455" text-anchor="middle" fill="#ffffff" font-size="16">0%</text>
+
+  <!-- ── ellipsis left ── -->
+  <text x="622" y="220" text-anchor="middle" fill="#555555" font-size="28">· · ·</text>
+  <text x="622" y="420" text-anchor="middle" fill="#555555" font-size="22">·  ·  ·</text>
+
+  <!-- ── KITTEN ── -->
+  <rect x="660" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="715" y="75" text-anchor="middle" fill="#ffffff" font-size="15">kitten</text>
+  <text x="715" y="116" text-anchor="middle" fill="#ffffff" font-size="16">−8.3</text>
+  <text x="715" y="140" text-anchor="middle" fill="#ffffff" font-size="16">2.1</text>
+  <text x="715" y="164" text-anchor="middle" fill="#ffffff" font-size="16">9.7</text>
+  <text x="715" y="188" text-anchor="middle" fill="#ffffff" font-size="16">−4.4</text>
+  <text x="715" y="212" text-anchor="middle" fill="#ffffff" font-size="16">−7.2</text>
+  <text x="715" y="236" text-anchor="middle" fill="#ffffff" font-size="16">3.8</text>
+  <text x="715" y="260" text-anchor="middle" fill="#ffffff" font-size="16">−1.1</text>
+  <text x="715" y="284" text-anchor="middle" fill="#ffffff" font-size="16">6.5</text>
+  <text x="715" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="715" y="336" text-anchor="middle" fill="#ffffff" font-size="16">−3.7</text>
+  <text x="715" y="392" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="bold">0.03</text>
+  <text x="715" y="410" text-anchor="middle" fill="#666666" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="665" y="425" width="100" height="11" rx="3" fill="#1e1e1e"/>
+  <text x="715" y="455" text-anchor="middle" fill="#ffffff" font-size="16">0%</text>
+
+  <!-- ── SW DEVELOPER ── -->
+  <rect x="785" y="55" width="120" height="310" rx="4" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="845" y="64" text-anchor="middle" fill="#ffffff" font-size="13">sw</text>
+  <text x="845" y="80" text-anchor="middle" fill="#ffffff" font-size="13">developer</text>
+  <text x="845" y="116" text-anchor="middle" fill="#ffffff" font-size="16">3.3</text>
+  <text x="845" y="140" text-anchor="middle" fill="#ffffff" font-size="16">−9.1</text>
+  <text x="845" y="164" text-anchor="middle" fill="#ffffff" font-size="16">−2.2</text>
+  <text x="845" y="188" text-anchor="middle" fill="#ffffff" font-size="16">7.7</text>
+  <text x="845" y="212" text-anchor="middle" fill="#ffffff" font-size="16">−8.8</text>
+  <text x="845" y="236" text-anchor="middle" fill="#ffffff" font-size="16">1.4</text>
+  <text x="845" y="260" text-anchor="middle" fill="#ffffff" font-size="16">−6.3</text>
+  <text x="845" y="284" text-anchor="middle" fill="#ffffff" font-size="16">−0.1</text>
+  <text x="845" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="845" y="336" text-anchor="middle" fill="#ffffff" font-size="16">5.5</text>
+  <text x="845" y="392" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="bold">0.01</text>
+  <text x="845" y="410" text-anchor="middle" fill="#666666" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="790" y="425" width="110" height="11" rx="3" fill="#1e1e1e"/>
+  <text x="845" y="455" text-anchor="middle" fill="#ffffff" font-size="16">0%</text>
+
+  <!-- ── DANCING ── -->
+  <rect x="920" y="55" width="110" height="310" rx="4" fill="#111111" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="975" y="75" text-anchor="middle" fill="#ffffff" font-size="15">dancing</text>
+  <text x="975" y="116" text-anchor="middle" fill="#ffffff" font-size="16">−5.5</text>
+  <text x="975" y="140" text-anchor="middle" fill="#ffffff" font-size="16">1.8</text>
+  <text x="975" y="164" text-anchor="middle" fill="#ffffff" font-size="16">−8.9</text>
+  <text x="975" y="188" text-anchor="middle" fill="#ffffff" font-size="16">−3.3</text>
+  <text x="975" y="212" text-anchor="middle" fill="#ffffff" font-size="16">4.1</text>
+  <text x="975" y="236" text-anchor="middle" fill="#ffffff" font-size="16">−7.7</text>
+  <text x="975" y="260" text-anchor="middle" fill="#ffffff" font-size="16">9.2</text>
+  <text x="975" y="284" text-anchor="middle" fill="#ffffff" font-size="16">−2.6</text>
+  <text x="975" y="308" text-anchor="middle" fill="#ffffff" font-size="16">⋮</text>
+  <text x="975" y="336" text-anchor="middle" fill="#ffffff" font-size="16">−6.1</text>
+  <text x="975" y="392" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="bold">0.00</text>
+  <text x="975" y="410" text-anchor="middle" fill="#666666" font-size="11" letter-spacing="1">cosine sim</text>
+  <rect x="925" y="425" width="100" height="11" rx="3" fill="#1e1e1e"/>
+  <text x="975" y="455" text-anchor="middle" fill="#ffffff" font-size="16">0%</text>
+
+
+
+
+
+</svg>

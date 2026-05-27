@@ -1,0 +1,8 @@
+{
+  "markdown.marp.themes": [
+    "./src/marp-theme.css"
+  ],
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
+  "markdown.marp.outlineExtension": false,
+  "json.schemaDownload.enable": true
+}

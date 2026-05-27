@@ -1,12 +1,38 @@
 /* @theme demystified */
 
+/* ─── Layout helpers (shared with .crossnote/style.less for MPE) ─── */
+.cols { display: flex; width: 100%; align-items: center; gap: 0; }
+.cols > * { flex: 1 1 0; min-width: 0; margin: 0; }
+.cols > .col-2 { flex: 2 1 0; }
+.cols > .col-3 { flex: 3 1 0; }
+.cols img { width: 100%; max-width: none; height: auto; display: block; border-radius: 0; }
+img.full { max-width: 100%; max-height: 100%; width: auto; height: auto; min-height: 0; display: block; margin: 0 auto; border-radius: 0; }
+img.half { max-width: 50%; max-height: 100%; width: auto; height: auto; min-height: 0; display: block; margin: 0 auto; }
+
+/* Mixed image + non-image cols get a gap (~1.5 M-widths) and rounded images */
+.cols:has(> img):has(> *:not(img)) { gap: 1.5em; }
+.cols:has(> img):has(> *:not(img)) img { border-radius: 10px; }
+
+/* Inline logo / icon for use next to text (overrides .cols img). Order matters: must come after .cols img. */
+img.logo, .cols img.logo {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: -0.3em;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  margin: 0 0.4em 0 0;
+}
+
+
 /* ─── Slide base ─────────────────────────────────────────── */
 section {
   background: #0d1117;
   color: #c9d1d9;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: 28px;
-  line-height: 1.6;
+  line-height: 1.;
   padding: 2.5rem 3.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -31,7 +57,7 @@ h1 {
   font-weight: 800;
   line-height: 1.15;
   margin: 0.2em 0 0.5em;
-  background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+  background: linear-gradient(135deg, #3fb950 0%, #39d0d8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -72,6 +98,8 @@ ul, ol {
   margin: 0.3em 0;
   padding-left: 1.4em;
 }
+
+ul + ul, ol + ol { margin-top: 1.2em; }
 
 li {
   margin: 0.25em 0;
@@ -168,6 +196,7 @@ tr:nth-child(even) td {
 img {
   border-radius: 10px;
   max-width: 100%;
+  max-height: 100%;
 }
 
 /* ─── Header / footer ────────────────────────────────────── */
@@ -183,23 +212,70 @@ section::after {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SLIDE CLASSES  — use with <!-- _class: lead -->  etc.
+   SLIDE LAYOUTS  — driven by which heading is on the slide:
+     h1 → Act     (top-level break, centered, largest)
+     h2 → Chapter (section break, gradient title, right orb)
+     h3 → Section (sub-section heading)
+     h4 → Notes   (minor heading)
+   No <!-- _class: ... --> directives needed.
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Lead / title slide ──────────────────────────────────── */
-section.lead {
+/* ── Act — slides containing h1 ─────────────────────────────── */
+section:has(h1) {
   justify-content: center;
-  align-items: flex-start;
-  padding-left: 3.5rem;
+  align-items: center;
+  text-align: center;
 }
 
-section.lead::after {
-  /* hide page number on title */
-  display: none;
+section:has(h1)::after { display: none; }
+
+section:has(h1)::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.18) 0%, rgba(188, 140, 255, 0.12) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  pointer-events: none;
+  inset: unset;
+  z-index: 0;
 }
 
-/* Glowing orb decoration */
-section.lead::before {
+section:has(h1) > * { position: relative; z-index: 1; }
+
+section:has(h1) h1 {
+  font-size: 3.6em;
+  max-width: 100%;
+  margin: 0 0 0.4em;
+  padding-bottom: 0.1em;
+}
+
+section:has(h1) h2 {
+  font-size: 1.3em;
+  color: #8b949e;
+  font-weight: 400;
+  margin: 0 0 0.4em;
+}
+
+section:has(h1) p {
+  color: #8b949e;
+  font-size: 0.9em;
+}
+
+/* ── Chapter — slides containing h2 but no h1 ───────────────── */
+section:has(h2):not(:has(h1)) {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section:has(h2):not(:has(h1))::after { display: none; }
+
+section:has(h2):not(:has(h1))::before {
   content: '';
   position: absolute;
   right: 4rem;
@@ -211,48 +287,85 @@ section.lead::before {
   border-radius: 50%;
   filter: blur(20px);
   pointer-events: none;
-  /* override the top-bar ::before */
   inset: unset;
-  height: 280px;
 }
 
-section.lead h1 {
+section:has(h2):not(:has(h1)) h2 {
   font-size: 2.8em;
-  max-width: 68%;
+  max-width: 100%;
   margin-bottom: 0.4em;
+  padding-bottom: 0.1em;
+  background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
-section.lead h2 {
-  font-size: 1.1em;
-  color: #8b949e;
-  font-weight: 400;
+/* Lists and body text on Chapter slides: left-aligned, normal color */
+section:has(h2):not(:has(h1)) p,
+section:has(h2):not(:has(h1)) ul,
+section:has(h2):not(:has(h1)) ol {
+  text-align: left;
+  width: 100%;
 }
 
-section.lead p {
-  color: #8b949e;
-  font-size: 0.85em;
-}
-
-/* ── Chapter / section break ──────────────────────────────── */
-section.chapter {
+/* ── Section — slides containing h3 but no h2/h1 ────────────── */
+section:has(h3):not(:has(h2)):not(:has(h1)) {
   justify-content: center;
-  align-items: flex-start;
-  background: #0d1117;
-  border-left: 6px solid #58a6ff;
-  padding-left: 3rem;
 }
 
-section.chapter h1 {
-  font-size: 2.4em;
+section:has(h3):not(:has(h2)):not(:has(h1))::after { display: none; }
+
+section:has(h3):not(:has(h2)):not(:has(h1))::before {
+  content: '';
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(88, 166, 255, 0.18) 0%, rgba(188, 140, 255, 0.12) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  pointer-events: none;
+  inset: unset;
 }
 
-section.chapter h2 {
+section:has(h3):not(:has(h2)):not(:has(h1)) h3 {
+  font-size: 2em;
+  font-weight: 700;
+  max-width: 100%;
+  margin-bottom: 0.4em;
+  padding-bottom: 0.1em;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: normal;
+  background: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+section:has(h3):not(:has(h2)):not(:has(h1)) p {
   color: #8b949e;
-  font-weight: 400;
-  font-size: 1em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
+
+/* h3 + full-size image: tighten top space so the image gets more room */
+section:has(h3):not(:has(h2)):not(:has(h1)):has(img.full) {
+  justify-content: flex-start;
+  padding-top: 1.2rem;
+}
+
+section:has(h3):not(:has(h2)):not(:has(h1)):has(img.full) h3 {
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+/* ── Notes — h4 is used as hidden speaker notes (see slides.md
+   <style> block: `h4, h4 ~ * { display: none; }`), so no Notes
+   layout is applied. h4 styling left as a no-op for the future. */
 
 /* ── Invert / light slide ────────────────────────────────── */
 section.invert {
@@ -261,7 +374,7 @@ section.invert {
 }
 
 section.invert h1 {
-  background: linear-gradient(135deg, #0969da, #8250df);
+  background: linear-gradient(135deg, #1a7f37, #0e7490);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

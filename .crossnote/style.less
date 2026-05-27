@@ -1,0 +1,23 @@
+/* MPE workspace custom CSS — mirrors layout helpers from src/marp-theme.css */
+
+.cols { display: flex; width: 100%; align-items: center; gap: 0; }
+.cols > * { flex: 1 1 0; min-width: 0; margin: 0; }
+.cols > .col-2 { flex: 2 1 0; }
+.cols > .col-3 { flex: 3 1 0; }
+.cols img { width: 100%; max-width: none; height: auto; display: block; border-radius: 0; }
+img.full { max-width: 100%; max-height: 60vh; width: auto; height: auto; display: block; margin: 0 auto; border-radius: 0; }
+img.half { max-width: 50%; max-height: 60vh; width: auto; height: auto; display: block; margin: 0 auto; }
+
+.cols:has(> img):has(> *:not(img)) { gap: 1.5em; }
+.cols:has(> img):has(> *:not(img)) img { border-radius: 10px; }
+
+img.logo, .cols img.logo {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: -0.3em;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  margin: 0 0.4em 0 0;
+}

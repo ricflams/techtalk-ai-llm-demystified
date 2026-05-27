@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 772 298" width="772" height="298" font-family="system-ui, -apple-system, sans-serif">
+<rect width="772" height="298" fill="#1a1a2e" rx="12"/>
+<text x="230.0" y="20" text-anchor="middle" fill="#c8b890" font-size="14">Richard</text>
+<text x="230.0" y="40" text-anchor="middle" fill="#c8b890" font-size="14">Feynman</text>
+<text x="348.0" y="20" text-anchor="middle" fill="#c8b890" font-size="14">Richard</text>
+<text x="348.0" y="40" text-anchor="middle" fill="#c8b890" font-size="14">the Lionheart</text>
+<text x="466.0" y="20" text-anchor="middle" fill="#c8b890" font-size="14">Richard</text>
+<text x="466.0" y="40" text-anchor="middle" fill="#c8b890" font-size="14">Nixon</text>
+<text x="584.0" y="20" text-anchor="middle" fill="#c8b890" font-size="14">Richard</text>
+<text x="584.0" y="40" text-anchor="middle" fill="#c8b890" font-size="14">Attenborough</text>
+<text x="702.0" y="20" text-anchor="middle" fill="#c8b890" font-size="14">Richard</text>
+<text x="702.0" y="40" text-anchor="middle" fill="#c8b890" font-size="14">Flamsholt</text>
+<text x="170" y="74" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">Openness</text>
+<path d="M186,56 Q180,56 274,56 Q280,56 280,62 L280,92 280,92 L180,92 180,92 L180,62 Q180,56 Z" fill="rgb(58,22,123)"/>
+<text x="230.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">97</text>
+<path d="M304,56 Q298,56 392,56 Q398,56 398,62 L398,92 398,92 L298,92 298,92 L298,62 Q298,56 Z" fill="rgb(176,128,242)"/>
+<text x="348.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">55</text>
+<path d="M422,56 Q416,56 510,56 Q516,56 516,62 L516,92 516,92 L416,92 416,92 L416,62 Q416,56 Z" fill="rgb(209,178,255)"/>
+<text x="466.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">28</text>
+<path d="M540,56 Q534,56 628,56 Q634,56 634,62 L634,92 634,92 L534,92 534,92 L534,62 Q534,56 Z" fill="rgb(80,38,145)"/>
+<text x="584.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">92</text>
+<path d="M658,56 Q652,56 746,56 Q752,56 752,62 L752,92 752,92 L652,92 652,92 L652,62 Q652,56 Z" fill="rgb(131,83,196)"/>
+<text x="702.0" y="74.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">75</text>
+<text x="170" y="110" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">Conscientiousness</text>
+<path d="M180,92 280,92 280,92 L280,128 280,128 L180,128 180,128 L180,92 Z" fill="rgb(195,154,255)"/>
+<text x="230.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">42</text>
+<path d="M298,92 398,92 398,92 L398,128 398,128 L298,128 298,128 L298,92 Z" fill="rgb(202,166,255)"/>
+<text x="348.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">35</text>
+<path d="M416,92 516,92 516,92 L516,128 516,128 L416,128 416,128 L416,92 Z" fill="rgb(93,48,158)"/>
+<text x="466.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">89</text>
+<path d="M534,92 634,92 634,92 L634,128 634,128 L534,128 534,128 L534,92 Z" fill="rgb(114,66,179)"/>
+<text x="584.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">82</text>
+<path d="M652,92 752,92 752,92 L752,128 752,128 L652,128 652,128 L652,92 Z" fill="rgb(169,121,235)"/>
+<text x="702.0" y="110.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">58</text>
+<line x1="180" y1="92" x2="280" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="298" y1="92" x2="398" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="416" y1="92" x2="516" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="534" y1="92" x2="634" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="652" y1="92" x2="752" y2="92" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="170" y="146" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">Extraversion</text>
+<path d="M180,128 280,128 280,128 L280,164 280,164 L180,164 180,164 L180,128 Z" fill="rgb(107,59,172)"/>
+<text x="230.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">85</text>
+<path d="M298,128 398,128 398,128 L398,164 398,164 L298,164 298,164 L298,128 Z" fill="rgb(98,51,163)"/>
+<text x="348.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">88</text>
+<path d="M416,128 516,128 516,128 L516,164 516,164 L416,164 416,164 L416,128 Z" fill="rgb(202,166,255)"/>
+<text x="466.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">35</text>
+<path d="M534,128 634,128 634,128 L634,164 634,164 L534,164 534,164 L534,128 Z" fill="rgb(153,105,218)"/>
+<text x="584.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">65</text>
+<path d="M652,128 752,128 752,128 L752,164 752,164 L652,164 652,164 L652,128 Z" fill="rgb(121,73,186)"/>
+<text x="702.0" y="146.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">79</text>
+<line x1="180" y1="128" x2="280" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="298" y1="128" x2="398" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="416" y1="128" x2="516" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="534" y1="128" x2="634" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="652" y1="128" x2="752" y2="128" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="170" y="182" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">Agreeableness</text>
+<path d="M180,164 280,164 280,164 L280,200 280,200 L180,200 180,200 L180,164 Z" fill="rgb(205,171,255)"/>
+<text x="230.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">32</text>
+<path d="M298,164 398,164 398,164 L398,200 398,200 L298,200 298,200 L298,164 Z" fill="rgb(215,189,255)"/>
+<text x="348.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">22</text>
+<path d="M416,164 516,164 516,164 L516,200 516,200 L416,200 416,200 L416,164 Z" fill="rgb(224,206,255)"/>
+<text x="466.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">12</text>
+<path d="M534,164 634,164 634,164 L634,200 634,200 L534,200 534,200 L534,164 Z" fill="rgb(80,38,145)"/>
+<text x="584.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">92</text>
+<path d="M652,164 752,164 752,164 L752,200 752,200 L652,200 652,200 L652,164 Z" fill="rgb(112,64,177)"/>
+<text x="702.0" y="182.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">83</text>
+<line x1="180" y1="164" x2="280" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="298" y1="164" x2="398" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="416" y1="164" x2="516" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="534" y1="164" x2="634" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="652" y1="164" x2="752" y2="164" stroke="#1a1a2e" stroke-width="1.2"/>
+<text x="170" y="218" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="16">Neuroticism</text>
+<path d="M180,200 280,200 280,200 L280,230 Q280,236 274,236 L186,236 Q180,236 180,230 L180,200 Z" fill="rgb(209,178,255)"/>
+<text x="230.0" y="218.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">28</text>
+<path d="M298,200 398,200 398,200 L398,230 Q398,236 392,236 L304,236 Q298,236 298,230 L298,200 Z" fill="rgb(188,140,255)"/>
+<text x="348.0" y="218.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">50</text>
+<path d="M416,200 516,200 516,200 L516,230 Q516,236 510,236 L422,236 Q416,236 416,230 L416,200 Z" fill="rgb(107,59,172)"/>
+<text x="466.0" y="218.0" text-anchor="middle" dominant-baseline="central" fill="#ede4ff" font-size="16" font-weight="600">85</text>
+<path d="M534,200 634,200 634,200 L634,230 Q634,236 628,236 L540,236 Q534,236 534,230 L534,200 Z" fill="rgb(224,206,255)"/>
+<text x="584.0" y="218.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">12</text>
+<path d="M652,200 752,200 752,200 L752,230 Q752,236 746,236 L658,236 Q652,236 652,230 L652,200 Z" fill="rgb(228,213,255)"/>
+<text x="702.0" y="218.0" text-anchor="middle" dominant-baseline="central" fill="#3a1a6a" font-size="16" font-weight="600">8</text>
+<line x1="180" y1="200" x2="280" y2="200" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="298" y1="200" x2="398" y2="200" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="416" y1="200" x2="516" y2="200" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="534" y1="200" x2="634" y2="200" stroke="#1a1a2e" stroke-width="1.2"/>
+<line x1="652" y1="200" x2="752" y2="200" stroke="#1a1a2e" stroke-width="1.2"/>
+<defs><linearGradient id="purpleramp" x1="0" x2="1" y1="0" y2="0">
+  <stop offset="0%" stop-color="rgb(237,228,255)"/>
+  <stop offset="12%" stop-color="rgb(224,206,255)"/>
+  <stop offset="25%" stop-color="rgb(212,184,255)"/>
+  <stop offset="37%" stop-color="rgb(200,162,255)"/>
+  <stop offset="50%" stop-color="rgb(188,140,255)"/>
+  <stop offset="62%" stop-color="rgb(159,111,225)"/>
+  <stop offset="75%" stop-color="rgb(131,83,196)"/>
+  <stop offset="87%" stop-color="rgb(102,54,167)"/>
+  <stop offset="100%" stop-color="rgb(45,13,110)"/>
+</linearGradient></defs>
+<rect x="246.0" y="256" width="280" height="14" rx="4" fill="url(#purpleramp)"/>
+<text x="246.0" y="282" text-anchor="middle" fill="#a09880" font-size="11">0</text>
+<text x="316.0" y="282" text-anchor="middle" fill="#a09880" font-size="11">25</text>
+<text x="386.0" y="282" text-anchor="middle" fill="#a09880" font-size="11">50</text>
+<text x="456.0" y="282" text-anchor="middle" fill="#a09880" font-size="11">75</text>
+<text x="526.0" y="282" text-anchor="middle" fill="#a09880" font-size="11">100</text>
+</svg>

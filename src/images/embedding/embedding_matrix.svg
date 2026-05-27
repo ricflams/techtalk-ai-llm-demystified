@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 994 598" width="994" height="598" font-family="'Courier New', Courier, monospace">
+<rect width="994" height="598" fill="white"/>
+<text x="470.0" y="22" text-anchor="middle" fill="#222" font-size="16" font-family="system-ui, sans-serif" font-style="italic">"Please tell me: what is an LLM?"</text>
+<text x="155.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">Please</text>
+<text x="233.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">tell</text>
+<text x="311.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">me</text>
+<text x="389.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">:</text>
+<text x="467.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">what</text>
+<text x="545.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">is</text>
+<text x="623.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">an</text>
+<text x="701.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">L</text>
+<text x="779.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">LM</text>
+<text x="857.0" y="68" text-anchor="middle" fill="#222" font-size="14" font-weight="bold">?</text>
+<line x1="102" y1="76" x2="114" y2="76" stroke="#333" stroke-width="2.5"/>
+<line x1="102" y1="76" x2="102" y2="552" stroke="#333" stroke-width="2.5"/>
+<line x1="102" y1="552" x2="114" y2="552" stroke="#333" stroke-width="2.5"/>
+<line x1="910" y1="76" x2="898" y2="76" stroke="#333" stroke-width="2.5"/>
+<line x1="910" y1="76" x2="910" y2="552" stroke="#333" stroke-width="2.5"/>
+<line x1="910" y1="552" x2="898" y2="552" stroke="#333" stroke-width="2.5"/>
+<text x="98" y="99.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">1</text>
+<text x="155.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.75</text>
+<text x="233.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.20</text>
+<text x="311.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.84</text>
+<text x="389.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.45</text>
+<text x="467.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.70</text>
+<text x="545.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.15</text>
+<text x="623.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.22</text>
+<text x="701.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.32</text>
+<text x="779.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.22</text>
+<text x="857.0" y="99.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.60</text>
+<text x="98" y="135.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">2</text>
+<text x="155.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.12</text>
+<text x="233.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.17</text>
+<text x="311.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.62</text>
+<text x="389.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.53</text>
+<text x="467.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.45</text>
+<text x="545.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.39</text>
+<text x="623.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.43</text>
+<text x="701.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.65</text>
+<text x="779.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.12</text>
+<text x="857.0" y="135.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.89</text>
+<text x="98" y="171.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">3</text>
+<text x="155.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.54</text>
+<text x="233.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.61</text>
+<text x="311.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.35</text>
+<text x="389.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.22</text>
+<text x="467.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.88</text>
+<text x="545.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.91</text>
+<text x="623.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.58</text>
+<text x="701.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.16</text>
+<text x="779.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.51</text>
+<text x="857.0" y="171.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.44</text>
+<text x="98" y="207.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">4</text>
+<text x="155.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.30</text>
+<text x="233.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.44</text>
+<text x="311.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.22</text>
+<text x="389.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.13</text>
+<text x="467.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.44</text>
+<text x="545.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.26</text>
+<text x="623.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.18</text>
+<text x="701.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.97</text>
+<text x="779.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.48</text>
+<text x="857.0" y="207.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.09</text>
+<text x="98" y="243.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">5</text>
+<text x="155.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.81</text>
+<text x="233.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.97</text>
+<text x="311.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.47</text>
+<text x="389.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.76</text>
+<text x="467.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.17</text>
+<text x="545.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.51</text>
+<text x="623.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+2.20</text>
+<text x="701.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.95</text>
+<text x="779.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.29</text>
+<text x="857.0" y="243.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.24</text>
+<text x="98" y="279.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">6</text>
+<text x="155.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.06</text>
+<text x="233.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.20</text>
+<text x="311.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.80</text>
+<text x="389.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.93</text>
+<text x="467.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.05</text>
+<text x="545.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.80</text>
+<text x="623.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.77</text>
+<text x="701.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.36</text>
+<text x="779.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.83</text>
+<text x="857.0" y="279.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.55</text>
+<text x="98" y="315.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">7</text>
+<text x="155.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.14</text>
+<text x="233.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.42</text>
+<text x="311.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.04</text>
+<text x="389.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.53</text>
+<text x="467.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.47</text>
+<text x="545.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.54</text>
+<text x="623.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.19</text>
+<text x="701.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.20</text>
+<text x="779.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.98</text>
+<text x="857.0" y="315.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.35</text>
+<text x="66.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="155.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="233.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="311.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="389.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="467.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="545.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="623.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="701.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="779.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="857.0" y="351.0" text-anchor="middle" dominant-baseline="central" fill="#555" font-size="20">⋮</text>
+<text x="98" y="387.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">12284</text>
+<text x="155.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.71</text>
+<text x="233.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.96</text>
+<text x="311.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.05</text>
+<text x="389.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.15</text>
+<text x="467.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.16</text>
+<text x="545.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.88</text>
+<text x="623.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.99</text>
+<text x="701.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.44</text>
+<text x="779.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.43</text>
+<text x="857.0" y="387.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.28</text>
+<text x="98" y="423.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">12285</text>
+<text x="155.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.78</text>
+<text x="233.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.61</text>
+<text x="311.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.07</text>
+<text x="389.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.33</text>
+<text x="467.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.30</text>
+<text x="545.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.39</text>
+<text x="623.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.64</text>
+<text x="701.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.51</text>
+<text x="779.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.91</text>
+<text x="857.0" y="423.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.06</text>
+<text x="98" y="459.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">12286</text>
+<text x="155.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.88</text>
+<text x="233.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.28</text>
+<text x="311.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.47</text>
+<text x="389.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.48</text>
+<text x="467.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.88</text>
+<text x="545.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.13</text>
+<text x="623.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.68</text>
+<text x="701.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.05</text>
+<text x="779.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.92</text>
+<text x="857.0" y="459.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.10</text>
+<text x="98" y="495.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">12287</text>
+<text x="155.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.72</text>
+<text x="233.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.73</text>
+<text x="311.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.99</text>
+<text x="389.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.03</text>
+<text x="467.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.76</text>
+<text x="545.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.25</text>
+<text x="623.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+1.26</text>
+<text x="701.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.14</text>
+<text x="779.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.25</text>
+<text x="857.0" y="495.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.67</text>
+<text x="98" y="531.0" text-anchor="end" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">12288</text>
+<text x="155.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.24</text>
+<text x="233.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.92</text>
+<text x="311.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.03</text>
+<text x="389.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.05</text>
+<text x="467.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.56</text>
+<text x="545.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.95</text>
+<text x="623.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-1.01</text>
+<text x="701.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.70</text>
+<text x="779.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">-0.13</text>
+<text x="857.0" y="531.0" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="14" font-weight="bold">+0.14</text>
+<line x1="924" y1="82" x2="924" y2="546" stroke="#999" stroke-width="1"/>
+<line x1="924" y1="82" x2="920" y2="82" stroke="#999" stroke-width="1"/>
+<line x1="924" y1="546" x2="920" y2="546" stroke="#999" stroke-width="1"/>
+<text x="930" y="314.0" text-anchor="start" dominant-baseline="central" fill="#888" font-size="13" font-family="system-ui, sans-serif">12,288</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="760" height="600" font-family="system-ui, -apple-system, sans-serif">
+<rect width="760" height="600" fill="#1a1a2e" rx="12"/>
+<text x="120" y="30" fill="#a09880" font-size="21">next-token probabilities for:</text>
+<text x="120" y="62" fill="#e8e0d0" font-size="28" font-weight="600">you</text>
+<text x="108" y="100.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">can</text>
+<rect x="120" y="80" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="80" width="500.0" height="38" rx="4" fill="#7f77dd"/>
+<text x="632" y="100.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">10.66%</text>
+<text x="108" y="150.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">are</text>
+<rect x="120" y="130" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="130" width="458.3" height="38" rx="4" fill="#8880df"/>
+<text x="632" y="150.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">9.77%</text>
+<text x="108" y="200.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">have</text>
+<rect x="120" y="180" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="180" width="318.0" height="38" rx="4" fill="#918ae1"/>
+<text x="632" y="200.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">6.78%</text>
+<text x="108" y="250.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">know</text>
+<rect x="120" y="230" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="230" width="260.8" height="38" rx="4" fill="#9a94e4"/>
+<text x="632" y="250.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">5.56%</text>
+<text x="108" y="300.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">will</text>
+<rect x="120" y="280" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="280" width="203.6" height="38" rx="4" fill="#a39de6"/>
+<text x="632" y="300.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">4.34%</text>
+<text x="108" y="350.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">do</text>
+<rect x="120" y="330" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="330" width="201.2" height="38" rx="4" fill="#aca7e9"/>
+<text x="632" y="350.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">4.29%</text>
+<text x="108" y="400.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">want</text>
+<rect x="120" y="380" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="380" width="191.8" height="38" rx="4" fill="#b5b1eb"/>
+<text x="632" y="400.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">4.09%</text>
+<text x="108" y="450.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">don</text>
+<rect x="120" y="430" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="430" width="114.9" height="38" rx="4" fill="#bebaee"/>
+<text x="632" y="450.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">2.45%</text>
+<text x="108" y="500.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">see</text>
+<rect x="120" y="480" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="480" width="82.6" height="38" rx="4" fill="#c7c4f0"/>
+<text x="632" y="500.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">1.76%</text>
+<text x="108" y="550.0" text-anchor="end" dominant-baseline="central" fill="#d8d0c0" font-size="22" font-weight="500">think</text>
+<rect x="120" y="530" width="500" height="38" rx="4" fill="#252540"/>
+<rect x="120" y="530" width="80.7" height="38" rx="4" fill="#d0cef3"/>
+<text x="632" y="550.0" text-anchor="start" dominant-baseline="central" fill="#a09880" font-size="20">1.72%</text>
+</svg>

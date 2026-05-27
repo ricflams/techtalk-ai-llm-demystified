@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config *)",
+      "Bash(python -c \"data=open\\('src/slides.md','rb'\\).read\\(\\); crlf=data.count\\(b'\\\\r\\\\n'\\); lf=data.count\\(b'\\\\n'\\)-crlf; cr=data.count\\(b'\\\\r'\\)-crlf; print\\(f'CRLF:{crlf} LF-only:{lf} CR-only:{cr}'\\)\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\my\\\\code\\\\techtalk-ai-llm-demystified\" -Force)",
+      "Bash(Select-Object Name)",
+      "WebSearch",
+      "Skill(keybindings-help)",
+      "Bash(python3 *)",
+      "PowerShell(cd \"C:\\\\my\\\\code\\\\techtalk-ai-llm-demystified\" && pwsh -File split_plays.ps1)",
+      "Bash(cp tmp-zhipu.svg logo-zhipu.svg)",
+      "Bash(cp tmp-chatglm.svg logo-glm.svg)",
+      "Bash(rm -f tmp-*.svg tmp.svg)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(awk '{$1=\"\"; sub\\(/^ /, \"\"\\); print}')",
+      "Bash(cat)",
+      "Bash(python /tmp/all_tools.py)"
+    ]
+  }
+}
