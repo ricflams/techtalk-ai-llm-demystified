@@ -78,6 +78,8 @@ The commercial **AI Services** run in massive data centers.
 
 <img class="logo" src="images/intro/logo-mistral.svg"> **Le Chat** by Mistral AI *(French)*
 
+<br/>
+
 <img class="logo" src="images/intro/logo-copilot.png"> Copilot by Microsoft is *not a model*
 
 </div>
@@ -98,11 +100,15 @@ The commercial **AI Services** run in massive data centers.
 ---
 ### A token is
 
-* The **chunks** the AI break your text into
-
+* Practically, for you: it's **a word**
 <!-- -->
+* More precisely: it is the **chunks** the AI break your text into
+<!-- -->
+* What you ultimately **pay for** - it's the **unit of work** for the LLM
 
-* What you ultimately **pay for**, since all the hard work is about tokens
+---
+### "hello" is token 24912 (in gpt-4o)
+<img class="full" src="images/token/tokenize-detokenize-hello.png">
 
 ---
 ### ChatGPT 3.5's token vocabulary
@@ -224,7 +230,10 @@ For English, one token generally corresponds to about 4 characters. For a text t
 
 This will sound confusing
 
-Stay with me
+Stay with me.
+
+
+Computers don't understand the word "cat." They understand numbers. So we need a way to turn "cat" into numbers in a way that preserves its meaning. That's what an embedding does.
 
 <img class="half" src="images/embedding/confused.png">
 
@@ -235,7 +244,7 @@ Stay with me
 #### Notes
 In everyday English, "embedding" sounds like something you do: the act of placing something into something else.
 
-In AI, it means the concrete vector of numbers that represent the characteristics of something. It's a noun, not a verb. It's a "thing", not something that "happens".
+In AI, it means the concrete vector of numbers that _somehow_ represent the characteristics of something. It's a noun, not a verb. It's a "thing", not something that "happens".
 
 
 ---
@@ -270,9 +279,13 @@ In AI, it means the concrete vector of numbers that represent the characteristic
 
 Every **column** here is an embedding:
 
-An embedding is **list of numbers** (a *vector*) that characterise **everything imaginable!**
+An embedding is **list of numbers** (a *vector*) that _somehow_ characterise **everything imaginable!** I say somehow because we don't know what each part of the dimensions does - it's just math that works our.
 
 For example: Any **word** you know. Any **sentence** there exist. Any **feeling** you can have. The concept of **keeping an audience in suspense, eager for the next slide**, too.
+
+####
+
+Also called _tensor_ in python, or _hidden state_ when speaking about the LLM.
 
 ---
 ### More of "everything imaginable"
@@ -467,6 +480,12 @@ The cosine similarity of 0.97 is computed in isolation — it's purely a geometr
 ####
 
 ---
+### Input tokens vs output tokens
+<img class="full" src="images/llm/final-output-token.png">
+
+####
+
+---
 ### Nerd movie night: Karpathy builds a GPT
 
 Only 600 lines of Python code: 300 for `train.py`, 300 for `model.py`
@@ -476,7 +495,8 @@ Only 600 lines of Python code: 300 for `train.py`, 300 for `model.py`
 ####
 2 hours of Andrej Karpathy building a small GPT model, fully.
 
-[Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+[Let's build GPT from scratch (2 hours)](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+[Let's reproduce GPT-2 (4 hours)](https://www.youtube.com/watch?v=l8pRSuU81PU)
 [Github repo for nanoGPT](https://github.com/karpathy/nanoGPT)
 
 ---
@@ -503,12 +523,41 @@ Plus a few things on its own; caching, safeguards
 
 
 ---
+### But but but - what about...?
+
+* all those agents.md files you hear about?
+* skills
+* setting the language
+* modes - plan, autopilot, and so on?
+* conversation tone?
+
+
+
+---
 ### Overview
 <img class="full" src="images/ai-service/top-level.png">
 
 
 ---
+### The full monty
+
+
+####
+Your diagram is the undisputed Common Core of the modern LLM runtime. For standard open-weight architectures (like Meta's Llama series or Mistral) and classic chat endpoints, this blueprint captures the system flawlessly.
+
+Your diagram captures the Canonical Engine Blueprint. It cleanly outlines the immutable data flow, boundary gates, and structural contracts of modern AI. Leaving the vendor-specific bells and whistles off the page isn't an omission—it's good engineering discipline.
+
+
+---
+### Token spree
+
+
+hotdog-zoom-in analogy
+
+---
 # The AI Agent
+
+What is an AI Agent?
 
 ---
 ## Choosing of AI Service and LLM-model
@@ -542,6 +591,8 @@ Skills aren't self-activating. The description is a hint, not a contract. If you
 
 ---
 ## Level 3c: MCP
+
+my mcp poc example
 
 ---
 ## Level 4: Go crazy with subagents, agent-specific commands, openclaw, etc

@@ -215,6 +215,7 @@ First, what does it mean to "use the engine"
 			The keyword hierarchy was "think" < "think hard" < "think harder" < "ultrathink", with "megathink" mapping to 10,000 tokens and plain "think" to 4,000. Simon Willison
 			On January 16, 2026, ultrathink was deprecated — extended thinking is now enabled by default at maximum budget on every request, making the keyword redundant. The replacement for granular control is the /effort command.
 			For reasoning-heavy tasks, thinking tokens can multiply your effective output costs by 3-10x. Both Gemini 2.5 Pro and Claude's models generate internal reasoning tokens that are billed at output token rates but do not appear in the visible response. 
+			 (4m 14s · ↓ 15.1k tokens · almost done thinking)
 	Temperature
 		temperature, top-p/k - sampling
 		Creativity
@@ -508,6 +509,7 @@ What's an "agent"?
 [LLM Visualization](https://bbycroft.net/llm)
 [Transformer explained](https://poloclub.github.io/transformer-explainer/)
 
+https://projector.tensorflow.org/
 
 --------
 
