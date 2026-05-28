@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gone in 60 Seconds 🔥</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #f7f5f0; color: #1a1810; padding: 10px 14px 6px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+
+h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
+.subtitle { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; color: #2a2418; margin-bottom: 8px; }
+
+.layout { display: flex; gap: 16px; align-items: stretch; flex: 1; min-height: 0; }
+
+/* --- Sidebar --- */
+.sidebar { display: flex; flex-direction: column; gap: 7px; width: 192px; flex-shrink: 0; overflow-y: auto; }
+.card {
+  border: 5px solid #d0cbc0; border-radius: 7px; padding: 7px 10px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  background: #fff; user-select: none;
+}
+.card:hover:not(.active) { border-color: #b0a898; }
+.card.active { border: 5px solid var(--cc); background: var(--bg); }
+.label-row { display: flex; align-items: baseline; }
+.teaser { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 16px; font-weight: 800; line-height: 1.2; white-space: nowrap; color: #1a1810; }
+.effect { font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 12px; font-weight: 600; color: #1a1810; margin-top: 3px; line-height: 1.35; white-space: nowrap; }
+
+/* --- Right column --- */
+.right { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.chart-wrap { position: relative; width: 100%; flex: 1; min-height: 0; }
+.chart-wrap canvas { display: block; }
+
+/* --- Mode toggle --- */
+.mode-toggle { display: flex; gap: 6px; margin-top: 6px; flex-shrink: 0; align-items: center; }
+.turns-control { display: flex; align-items: center; gap: 5px; margin-left: auto;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px; font-weight: 600; color: #3a3028; }
+.turns-btn { font-size: 15px; font-weight: 700; width: 22px; height: 22px;
+  border: 1.5px solid #d0cbc0; border-radius: 5px; background: #fff; color: #3a3028;
+  cursor: pointer; line-height: 1; padding: 0; }
+.turns-btn:hover { border-color: #a0988a; }
+.mode-btn {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px; font-weight: 600; padding: 4px 14px;
+  border: 1.5px solid #d0cbc0; border-radius: 5px;
+  background: #fff; color: #3a3028; cursor: pointer;
+}
+.mode-btn.active { background: #1a1810; color: #fff; border-color: #1a1810; }
+
+/* --- Settings panel --- */
+.settings-panel {
+  margin-top: 6px; flex-shrink: 0;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.settings-section {
+  background: #fff; border: 2px solid #e0dbd0; border-radius: 7px; padding: 8px 12px;
+  min-width: 0;
+}
+.settings-section:first-child { flex: 2; }
+.settings-section:last-child  { flex: 3; }
+.settings-grid { display: grid; gap: 6px 10px; }
+.settings-grid-base  { grid-template-columns: repeat(2, 1fr); }
+.settings-grid-spree { grid-template-columns: repeat(3, 1fr); }
+.setting-field { display: flex; flex-direction: column; gap: 2px; }
+.setting-label { font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 9px; font-weight: 600; color: #7a7060; }
+.setting-input {
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 12px; font-weight: 600;
+  color: #1a1810; background: #f7f5f0; border: 1.5px solid #d8d3c8;
+  border-radius: 4px; padding: 3px 6px; width: 100%;
+}
+.setting-input:focus { outline: none; border-color: #a09080; background: #fff; }
+
+</style>
+</head>
+<body>
+
+<h1>Gone in 60 Seconds 🔥</h1>
+<p class="subtitle">Spend your tokens like a pro</p>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="right">
+    <div class="chart-wrap" id="chartWrap">
+      <canvas id="mainChart"></canvas>
+    </div>
+  </div>
+</div>
+<div class="mode-toggle">
+  <button class="mode-btn active" data-mode="pertokens">Per-turn tokens</button>
+  <button class="mode-btn" data-mode="percost">Per-turn cost</button>
+  <button class="mode-btn" data-mode="total">Total cost</button>
+  <span class="turns-control">
+    <button class="turns-btn" id="turnsDown">−</button>
+    <span id="turnsLabel">Turns: 40</span>
+    <button class="turns-btn" id="turnsUp">+</button>
+  </span>
+</div>
+<div class="settings-panel">
+  <div class="settings-section">
+    <div class="settings-grid settings-grid-base" id="settingsGridBase"></div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-grid settings-grid-spree" id="settingsGridSpree"></div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// PARAMETERS (all editable via settings panel)
+// ─────────────────────────────────────────────
+const PARAMS = {
+  // base (quota is hardcoded, not shown in UI)
+  quota:        { label: 'Session quota',      value: 500000 },
+  systemTok:    { label: 'System prompt',      value: 4000 },
+  inputTok:     { label: 'Input per turn',     value: 200 },
+  outFactor:    { label: 'Cost factor',        value: 5 },
+  outputTok:    { label: 'Output per turn',    value: 600 },
+  // spending spree
+  modelMult:    { label: 'Model multiplier',   value: 3 },
+  mcpCount:     { label: 'MCP services',       value: 5 },
+  outputTokLong:{ label: 'Long output tokens', value: 2000 },
+  thinkingTok:  { label: 'Thinking tokens',    value: 1500 },
+  bustEvery:    { label: 'Bust every N turns', value: 4 },
+  docTok:       { label: 'Doc size',           value: 20000 },
+};
+
+// ─────────────────────────────────────────────
+// CONSTANTS
+// ─────────────────────────────────────────────
+const TURN_STEPS = [1, 2, 3, 5, 10, 20, 30, 40, 50, 70, 100];
+let   turnStepIdx = TURN_STEPS.indexOf(40);
+let   TURNS       = TURN_STEPS[turnStepIdx];
+const EXP_ID = 's2';
+
+// ─────────────────────────────────────────────
+// SPREES
+// ─────────────────────────────────────────────
+const sprees = [
+  { id:'s2', color:'#c04a10', teaser:'Ex...', num:'spree #1', secret:'Expensive model',   effectFn: () => `${PARAMS.modelMult.value}× weight per token`,   apply: p => ({...p, modelMult: PARAMS.modelMult.value}) },
+  { id:'s6', color:'#1a7a8a', teaser:'5 M...', num:'spree #2', secret: () => `${PARAMS.mcpCount.value} MCP services`, effectFn: () => `${PARAMS.mcpCount.value} × 1K schema`, apply: p => ({...p, mcpTok: PARAMS.mcpCount.value * 1000}) },
+  { id:'s1', color:'#2563b8', teaser:'Lo...', num:'spree #3', secret:'Long outputs',      effectFn: () => `Plans, essays, code`,                               apply: p => ({...p, outputTok: PARAMS.outputTokLong.value}) },
+  { id:'s4', color:'#1a8a40', teaser:'Th...', num:'spree #4', secret:'Think harder',      effectFn: () => `+${PARAMS.thinkingTok.value.toLocaleString()} hidden tokens`, apply: p => ({...p, thinkingTok: PARAMS.thinkingTok.value}) },
+  { id:'s3', color:'#a07800', teaser:'Bu...', num:'spree #5', secret:'Bust the cache',    effectFn: () => `>5 min or model swap`,                              apply: p => ({...p, bustCache: true}) },
+  { id:'s5', color:'#902878', teaser:'Bi...', num:'spree #6', secret:'Big doc up front',  effectFn: () => `${(PARAMS.docTok.value/1000).toFixed(0)} K tokens every turn`, apply: p => ({...p, docTok: PARAMS.docTok.value}) },
+];
+
+function getBase() {
+  return {
+    outputTok: PARAMS.outputTok.value,
+    outFactor: PARAMS.outFactor.value,
+    modelMult: 1,
+    thinkingTok: 0,
+    docTok: 0,
+    mcpTok: 0,
+    systemTok: PARAMS.systemTok.value,
+    bustCache: false,
+    inputTok: PARAMS.inputTok.value,
+  };
+}
+
+function hexAlpha(hex, a) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function fmtK(v) {
+  const a = Math.abs(v);
+  if (a >= 1e6) return (v/1e6).toFixed(1) + 'M';
+  return Math.round(v/1000) + ' K';
+}
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let mode = 'pertokens';
+const state = {};
+sprees.forEach(s => { state[s.id] = { active: false }; });
+
+// ─────────────────────────────────────────────
+// BUILD SIDEBAR
+// ─────────────────────────────────────────────
+const sidebar = document.getElementById('sidebar');
+sprees.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-' + s.id;
+  card.style.setProperty('--cc', s.color);
+  card.style.setProperty('--bg', hexAlpha(s.color, 0.08));
+  card.innerHTML = `
+    <div class="label-row">
+      <span class="teaser" id="teaser-${s.id}">${typeof s.secret === 'function' ? s.secret() : s.secret}</span>
+    </div>
+    <div class="effect" id="effect-${s.id}">${s.effectFn()}</div>`;
+  card.addEventListener('click', () => toggleSpree(s.id));
+  sidebar.appendChild(card);
+});
+
+function updateCard(id) {
+  const s = sprees.find(x => x.id === id);
+  document.getElementById('card-' + id).classList.toggle('active', state[id].active);
+  if (typeof s.secret === 'function') document.getElementById('teaser-' + id).textContent = s.secret();
+  document.getElementById('effect-' + id).textContent = s.effectFn();
+}
+
+function toggleSpree(id) {
+  state[id].active = !state[id].active;
+  updateCard(id);
+  redraw();
+}
+
+// ─────────────────────────────────────────────
+// BUILD SETTINGS PANEL
+// ─────────────────────────────────────────────
+function buildParamGrid(gridId, keys) {
+  const grid = document.getElementById(gridId);
+  keys.forEach(key => {
+    const param = PARAMS[key];
+    const field = document.createElement('div');
+    field.className = 'setting-field';
+    field.innerHTML = `<label class="setting-label">${param.label}</label>
+      <input class="setting-input" type="number" id="param-${key}" value="${param.value}">`;
+    grid.appendChild(field);
+    field.querySelector('input').addEventListener('change', e => {
+      param.value = parseFloat(e.target.value) || 0;
+      sprees.forEach(s => updateCard(s.id));
+      redraw();
+    });
+  });
+}
+buildParamGrid('settingsGridBase',  ['systemTok','inputTok','outFactor','outputTok']);
+buildParamGrid('settingsGridSpree', ['modelMult','mcpCount','outputTokLong','thinkingTok','bustEvery','docTok']);
+
+// ─────────────────────────────────────────────
+// SIMULATION
+// ─────────────────────────────────────────────
+function simulate(p) {
+  // DO NOT REFACTOR into formulas. Keep as explicit step-by-step loop.
+
+  // ─── Initial context ───────────────────────────────────────────────────────
+  let contextLen  = p.systemTok;
+  contextLen     += p.mcpTok;    // "5 MCP services" spree
+  let docInCtx    = 0;           // doc not yet added; inserted at t=1 if spree active
+  let cacheIsCold = true;
+
+  // ─── Cumulative cost layers ────────────────────────────────────────────────
+  // Layers 1–4 (sys/mcp/doc/input) are normalised to the 10% hot-cache rate.
+  // cumBust holds the cold-cache premium for turns where the cache is busted.
+  // cumMult holds the expensive-model premium.
+  // Their sum equals cumCost (the total).
+  let cumSys     = 0;
+  let cumMcp     = 0;
+  let cumDoc     = 0;
+  let cumInput   = 0;   // conversation history (10%) + fresh user message (100%)
+  let cumBaseOut = 0;   // base output tokens × outFactor
+  let cumLong    = 0;   // extra output from "Long outputs" spree × outFactor
+  let cumThink   = 0;   // thinking tokens × outFactor  ("Think harder" spree)
+  let cumBust    = 0;   // cold-cache premium = context × (cacheFactor − 0.1)
+  let cumMult    = 0;   // model-multiplier premium = sumBefore × (mult − 1)
+  let cumCost    = 0;
+
+  // ─── Raw token counts (no weighting) ──────────────────────────────────────
+  let cumTokSys     = 0;
+  let cumTokMcp     = 0;
+  let cumTokDoc     = 0;
+  let cumTokInput   = 0;
+  let cumTokBaseOut = 0;
+  let cumTokLong    = 0;
+  let cumTokThink   = 0;
+  let cumTokens     = 0;
+
+  const results = [];
+
+  for (let t = 1; t <= TURNS; t++) {
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // PHASE 1 — context state
+    // ══════════════════════════════════════════════════════════════════════════
+
+    // "Big doc up front" spree: added once at turn 1, stays in context forever.
+    if (p.docTok > 0 && t === 1) {
+      contextLen += p.docTok;
+      docInCtx    = p.docTok;
+    }
+
+    // "Bust the cache" spree: every bustEvery turns the cache expires.
+    if (p.bustCache && t % PARAMS.bustEvery.value === 0) {
+      cacheIsCold = true;
+    }
+
+    // Conversation history = context beyond the fixed parts.
+    const histLen = contextLen - p.systemTok - p.mcpTok - docInCtx;
+
+    // Sent to LLM: cached context + fresh user message.
+    // Received:    assistant reply + hidden thinking tokens.
+    const sentNew      = p.inputTok;
+    const replyTokens  = p.outputTok;
+    const thinkTokens  = p.thinkingTok;   // "Think harder" spree
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // PHASE 2 — cost, layer by layer
+    // ══════════════════════════════════════════════════════════════════════════
+
+    // Hot cache → 10%.  Cold cache → 100%.
+    const cacheFactor = cacheIsCold ? 1.0 : 0.1;
+
+    // ── Fixed context at normalised (10%) cache rate ──────────────────────────
+    const layerSys  = p.systemTok * 0.1;
+    const layerMcp  = p.mcpTok    * 0.1;
+    const layerDoc  = docInCtx    * 0.1;
+
+    // ── Variable input: history at 10% + fresh user message at 100% ──────────
+    const layerInput = histLen * 0.1 + sentNew;
+
+    // ── Output: base, long-output extra, thinking ─────────────────────────────
+    const baseOutTok   = PARAMS.outputTok.value;   // base output regardless of spree
+    const layerBaseOut = baseOutTok                               * p.outFactor;
+    const layerLong    = Math.max(0, replyTokens - baseOutTok)   * p.outFactor;
+    const layerThink   = thinkTokens                              * p.outFactor;
+
+    // ── Cache-bust premium: extra cost when cold vs. hot ─────────────────────
+    const layerBust = contextLen * (cacheFactor - 0.1);   // 0 on hot-cache turns
+
+    // ── Sum at mult = 1 ───────────────────────────────────────────────────────
+    const sumBefore = layerSys + layerMcp + layerDoc + layerInput
+                    + layerBaseOut + layerLong + layerThink + layerBust;
+
+    // ── "Expensive model" spree: premium on top of everything ────────────────
+    const layerMult = sumBefore * (p.modelMult - 1);   // 0 when mult = 1
+
+    const turnCost  = sumBefore * p.modelMult;         // = sumBefore + layerMult
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // PHASE 3 — running totals
+    // ══════════════════════════════════════════════════════════════════════════
+
+    cumSys     += layerSys;
+    cumMcp     += layerMcp;
+    cumDoc     += layerDoc;
+    cumInput   += layerInput;
+    cumBaseOut += layerBaseOut;
+    cumLong    += layerLong;
+    cumThink   += layerThink;
+    cumBust    += layerBust;
+    cumMult    += layerMult;
+    cumCost    += turnCost;
+
+    cumTokSys     += p.systemTok;
+    cumTokMcp     += p.mcpTok;
+    cumTokDoc     += docInCtx;
+    cumTokInput   += histLen + sentNew;
+    cumTokBaseOut += baseOutTok;
+    cumTokLong    += Math.max(0, replyTokens - baseOutTok);
+    cumTokThink   += thinkTokens;
+    cumTokens     += contextLen + sentNew + replyTokens + thinkTokens;
+
+    results.push({
+      t, cumCost,
+      cumSys, cumMcp, cumDoc, cumInput,
+      cumBaseOut, cumLong, cumThink, cumBust, cumMult,
+      cumTokSys, cumTokMcp, cumTokDoc, cumTokInput,
+      cumTokBaseOut, cumTokLong, cumTokThink, cumTokens,
+      cacheBusted: cacheIsCold,
+    });
+
+    // ── Grow context ───────────────────────────────────────────────────────────
+    contextLen  += p.inputTok;    // user message → history
+    contextLen  += p.outputTok;   // assistant reply → history
+    // Thinking tokens NOT added — internal, not in the transcript.
+
+    cacheIsCold  = false;
+  }
+
+  return results;
+}
+
+// Multi-session quota hits — same cost model as simulate().
+// contextLen persists across sessions; doc is folded in from the start
+// since it was uploaded at turn 1 and stays in context permanently.
+function computeQuotaHits(p) {
+  const hits = [];
+  let contextLen = p.systemTok + p.mcpTok + p.docTok;
+  let absT = 0;
+
+  while (true) {
+    let cacheIsCold = true;
+    let sessionCost = 0;
+    let found       = false;
+
+    for (let step = 1; step <= 2000; step++) {
+      if (p.bustCache && step % PARAMS.bustEvery.value === 0) {
+        cacheIsCold = true;
+      }
+
+      const cacheFactor  = cacheIsCold ? 1.0 : 0.1;
+      const contextCost  = contextLen * cacheFactor;
+      const newInputCost = p.inputTok;
+      const responseCost = (p.outputTok + p.thinkingTok) * p.outFactor;
+      const mult         = p.modelMult;
+
+      sessionCost += (contextCost + newInputCost) * mult + responseCost * mult;
+      contextLen  += p.inputTok + p.outputTok;
+      cacheIsCold  = false;
+
+      if (sessionCost >= PARAMS.quota.value) {
+        hits.push(absT + step);
+        absT  += step;
+        found  = true;
+        break;
+      }
+    }
+
+    if (!found) break;
+    if (hits[hits.length - 1] > TURNS) break;
+  }
+
+  return hits;
+}
+
+function getFullParams() {
+  let p = getBase();
+  sprees.forEach(s => { if (state[s.id].active) p = s.apply(p); });
+  return p;
+}
+
+function buildCurves() {
+  // Context-sizing sprees change what is IN the context (MCP schemas, big doc).
+  // They are shown as grey layers inside the bar, not as coloured bands.
+  const CONTEXT_IDS = new Set(['s6', 's5']);
+  const expActive = state[EXP_ID].active;
+
+  // Build the context base: getBase() + any active context-sizing sprees.
+  // This becomes curves[0] so the grey bar layers always reflect active context.
+  let pCtx = getBase();
+  sprees.forEach(s => {
+    if (CONTEXT_IDS.has(s.id) && state[s.id].active) pCtx = s.apply(pCtx);
+  });
+
+  // Stack behavioural sprees on top (everything except context-sizing and EXP).
+  const curves = [simulate(pCtx)];
+  let p = pCtx;
+  sprees.forEach(s => {
+    if (s.id === EXP_ID || CONTEXT_IDS.has(s.id)) return;
+    if (state[s.id].active) { p = s.apply(p); curves.push(simulate(p)); }
+  });
+  if (expActive) curves.push(simulate(sprees.find(s => s.id === EXP_ID).apply(p)));
+
+  // Coloured bands only for behavioural sprees.
+  const bandsActive = sprees.filter(s => s.id !== EXP_ID && !CONTEXT_IDS.has(s.id) && state[s.id].active);
+  if (expActive) bandsActive.push(sprees.find(s => s.id === EXP_ID));
+
+  const quotaHits = computeQuotaHits(getFullParams());
+  return { curves, active: bandsActive, quotaHits };
+}
+
+function toPerturn(curve) {
+  return curve.map((pt, i) => {
+    const p = i > 0 ? curve[i-1] : null;
+    const d = f => pt[f] - (p ? p[f] : 0);
+    return {
+      ...pt,
+      cumCost:      d('cumCost'),
+      cumSys:       d('cumSys'),    cumMcp:       d('cumMcp'),
+      cumDoc:       d('cumDoc'),    cumInput:     d('cumInput'),
+      cumBaseOut:   d('cumBaseOut'),cumLong:      d('cumLong'),
+      cumThink:     d('cumThink'),  cumBust:      d('cumBust'),
+      cumMult:      d('cumMult'),
+      cumTokSys:    d('cumTokSys'), cumTokMcp:    d('cumTokMcp'),
+      cumTokDoc:    d('cumTokDoc'), cumTokInput:  d('cumTokInput'),
+      cumTokBaseOut:d('cumTokBaseOut'),cumTokLong:d('cumTokLong'),
+      cumTokThink:  d('cumTokThink'),cumTokens:   d('cumTokens'),
+    };
+  });
+}
+
+// Remaps raw token counts into the cost slots so the band plugin renders
+// token quantities in "per-turn tokens" mode without any code changes.
+function toTokenView(curve) {
+  return curve.map(pt => ({
+    ...pt,
+    cumCost:    pt.cumTokens,
+    cumSys:     pt.cumTokSys,    cumMcp:    pt.cumTokMcp,
+    cumDoc:     pt.cumTokDoc,    cumInput:  pt.cumTokInput,
+    cumBaseOut: pt.cumTokBaseOut,cumLong:   pt.cumTokLong,
+    cumThink:   pt.cumTokThink,
+    cumBust:    0,   // cache busting adds no tokens
+    cumMult:    0,   // model multiplier adds no tokens
+  }));
+}
+
+function niceMax(v) {
+  if (v <= 0) return 10000;
+  const mag = Math.pow(10, Math.floor(Math.log10(v)));
+  for (const s of [1,2,2.5,5,10]) { const c = Math.ceil(v/(mag*s))*(mag*s); if (c >= v) return c; }
+  return Math.ceil(v/mag)*mag;
+}
+
+// ─────────────────────────────────────────────
+// CHART
+// ─────────────────────────────────────────────
+let _curves = [], _active = [], _quotaHits = [];
+
+const bandPlugin = {
+  id: 'bandPlugin',
+  beforeDatasetsDraw(ch) {
+    const curves = _curves, active = _active;
+    if (!curves.length) return;
+    const xs = ch.scales.x, ys = ch.scales.y, ctx = ch.ctx;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(xs.left, ys.top, xs.right - xs.left, ys.bottom - ys.top);
+    ctx.clip();
+    function py(v) { return ys.getPixelForValue(v); }
+    // Each bar is centred on its turn number and spans exactly one x-axis unit.
+    const barW = xs.getPixelForValue(1.5) - xs.getPixelForValue(0.5);
+    function barX(t) { return xs.getPixelForValue(t) - barW / 2; }
+
+    const base = curves[0];
+
+    for (let i = 0; i < TURNS; i++) {
+      const t  = i + 1;
+      const bx = barX(t);
+      const b  = base[i];
+
+      // Layer boundaries from bottom (l0=0) to top (cumCost).
+      const l0 = 0;
+      const l1 = l0 + b.cumSys;       // top of system-prompt layer
+      const l2 = l1 + b.cumMcp;       // top of MCP-schemas layer
+      const l3 = l2 + b.cumDoc;       // top of big-doc layer
+      const l4 = l3 + b.cumInput;     // top of input layer
+      const l5 = l4 + b.cumBaseOut;   // top of base-output layer
+      const l6 = l5 + b.cumLong;      // top of long-output-extra layer
+      const l7 = l6 + b.cumThink;     // top of thinking layer
+      const l8 = l7 + b.cumBust;      // top of cache-bust-premium layer
+      // b.cumCost = top of multiplier-premium layer
+
+      ctx.fillStyle = 'rgba(70,65,57,0.65)';    // system prompt
+      ctx.fillRect(bx, py(l1), barW, py(l0) - py(l1));
+
+      ctx.fillStyle = 'rgba(102,96,86,0.6)';    // MCP schemas
+      ctx.fillRect(bx, py(l2), barW, py(l1) - py(l2));
+
+      ctx.fillStyle = 'rgba(128,121,110,0.55)'; // big doc
+      ctx.fillRect(bx, py(l3), barW, py(l2) - py(l3));
+
+      ctx.fillStyle = 'rgba(158,151,139,0.5)';  // input (history + new msg)
+      ctx.fillRect(bx, py(l4), barW, py(l3) - py(l4));
+
+      ctx.fillStyle = 'rgba(195,189,180,0.45)'; // base output
+      ctx.fillRect(bx, py(l5), barW, py(l4) - py(l5));
+
+      ctx.fillStyle = 'rgba(37,99,184,0.45)';   // long-output extra (#2563b8)
+      ctx.fillRect(bx, py(l6), barW, py(l5) - py(l6));
+
+      ctx.fillStyle = 'rgba(26,138,64,0.45)';   // thinking output (#1a8a40)
+      ctx.fillRect(bx, py(l7), barW, py(l6) - py(l7));
+
+      ctx.fillStyle = 'rgba(185,120,85,0.45)';  // cache-bust premium
+      ctx.fillRect(bx, py(l8), barW, py(l7) - py(l8));
+
+      ctx.fillStyle = 'rgba(85,130,175,0.38)';  // multiplier premium
+      ctx.fillRect(bx, py(b.cumCost), barW, py(l8) - py(b.cumCost));
+    }
+
+    // Coloured spree bands stacked on top of the baseline bars
+    active.forEach((s, bi) => {
+      const bot = curves[bi], top = curves[bi + 1];
+      const r = parseInt(s.color.slice(1,3),16);
+      const g = parseInt(s.color.slice(3,5),16);
+      const b = parseInt(s.color.slice(5,7),16);
+      for (let i = 0; i < TURNS; i++) {
+        ctx.fillStyle = `rgba(${r},${g},${b},0.55)`;
+        ctx.fillRect(barX(i+1), py(top[i].cumCost), barW, py(bot[i].cumCost) - py(top[i].cumCost));
+      }
+    });
+
+    ctx.restore();
+  },
+  afterDraw(ch) {
+    const xs = ch.scales.x, ys = ch.scales.y, ctx = ch.ctx;
+    ctx.save();
+    // red quota-hit ticks — top flush with x-axis line
+    _quotaHits.filter(t => t <= TURNS).forEach(turn => {
+      const x = xs.getPixelForValue(turn);
+      ctx.beginPath(); ctx.moveTo(x, ys.bottom); ctx.lineTo(x, ys.bottom + 20);
+      ctx.strokeStyle = '#e03020'; ctx.lineWidth = 5; ctx.setLineDash([]); ctx.stroke();
+      ctx.fillStyle = '#e03020';
+      ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(turn, x, ys.bottom + 44);
+    });
+    // green spend tick — right of y-axis, label follows
+    if (_curves.length) {
+      const finalCost = _curves[_curves.length - 1][TURNS - 1].cumCost;
+      const y = ys.getPixelForValue(finalCost);
+      if (y >= ys.top && y <= ys.bottom) {
+        ctx.beginPath(); ctx.moveTo(xs.left, y); ctx.lineTo(xs.left + 20, y);
+        ctx.strokeStyle = '#1a8a40'; ctx.lineWidth = 5; ctx.setLineDash([]); ctx.stroke();
+        ctx.fillStyle = '#1a8a40';
+        ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(fmtK(finalCost), xs.left + 26, y + 8);
+      }
+    }
+    ctx.restore();
+  }
+};
+
+Chart.register(bandPlugin);
+
+const chart = new Chart(document.getElementById('mainChart'), {
+  type: 'line',
+  data: { datasets: [
+    { label:'quota', data: simulate(getBase()).map((_,i) => ({x:i+1, y:PARAMS.quota.value})), borderColor:'#e03020', borderWidth:1.5, borderDash:[6,3], fill:false, tension:0, pointRadius:0, pointHoverRadius:0 }
+  ]},
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{display:false}, tooltip:{enabled:false}, bandPlugin:{} },
+    animation: { duration: 0 },
+    layout: { padding: { bottom: 44 } },
+    scales: {
+      x: { type:'linear', min:0.5, max:TURNS+0.5, ticks:{ color:'#3a3028', font:{weight:'600',size:11}, values: Array.from({length:TURNS},(_,i)=>i+1), callback: v => (v===1||v%5===0)?v:'' }, grid:{ color:'#eeece8' } },
+      y: { ticks:{ color:'#3a3028', font:{weight:'600',size:11}, callback: v => fmtK(v) }, grid:{ color:'#eeece8' }, min:0 }
+    }
+  }
+});
+
+function sizeChart() {
+  chart.resize();
+}
+
+// ─────────────────────────────────────────────
+// REDRAW
+// ─────────────────────────────────────────────
+function redraw() {
+  const { curves, active, quotaHits } = buildCurves();
+  let displayCurves;
+  if      (mode === 'total')     { displayCurves = curves; }
+  else if (mode === 'percost')   { displayCurves = curves.map(toPerturn); }
+  else                           { displayCurves = curves.map(toPerturn).map(toTokenView); }
+  _curves = displayCurves; _active = active; _quotaHits = mode === 'total' ? quotaHits : [];
+  const top = displayCurves[displayCurves.length - 1];
+  const total = top.map(t => t.cumCost);
+  chart.data.datasets[0].data = total.map((_, i) => ({x:i+1, y:PARAMS.quota.value}));
+  chart.data.datasets[0].hidden = mode !== 'total';
+  const vals = [...total, ...displayCurves[0].map(t => t.cumCost)];
+  if (mode === 'total') vals.push(PARAMS.quota.value);
+  chart.options.scales.y.max = niceMax(Math.max(...vals) * 1.05);
+  chart.update('none');
+  setTimeout(sizeChart, 20);
+}
+
+// ─────────────────────────────────────────────
+// MODE TOGGLE
+// ─────────────────────────────────────────────
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    mode = btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    redraw();
+  });
+});
+
+// ─────────────────────────────────────────────
+// TURNS CONTROL
+// ─────────────────────────────────────────────
+function applyTurns() {
+  TURNS = TURN_STEPS[turnStepIdx];
+  document.getElementById('turnsLabel').textContent = 'Turns: ' + TURNS;
+  const tickStep = TURNS <= 5 ? 1 : TURNS <= 20 ? 5 : 10;
+  chart.options.scales.x.max = TURNS + 0.5;
+  chart.options.scales.x.ticks.values = Array.from({length: TURNS}, (_, i) => i + 1);
+  chart.options.scales.x.ticks.callback = v => (v === 1 || v % tickStep === 0) ? v : '';
+  redraw();
+}
+document.getElementById('turnsDown').addEventListener('click', () => {
+  if (turnStepIdx > 0) { turnStepIdx--; applyTurns(); }
+});
+document.getElementById('turnsUp').addEventListener('click', () => {
+  if (turnStepIdx < TURN_STEPS.length - 1) { turnStepIdx++; applyTurns(); }
+});
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+redraw();
+setTimeout(sizeChart, 100);
+window.addEventListener('resize', () => setTimeout(() => { sizeChart(); chart.update('none'); }, 150));
+</script>
+</body>
+</html>
