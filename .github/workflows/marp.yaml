@@ -18,7 +18,7 @@ jobs:
           MARP_USER: root
 
       - name: Copy game
-        run: cp -r tokenspree public/tokenspree
+        run: sudo cp -r tokenspree public/tokenspree
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
