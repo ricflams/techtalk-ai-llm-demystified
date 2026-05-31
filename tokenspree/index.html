@@ -11,8 +11,7 @@
 html { height: 100%; }
 body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #f7f5f0; color: #1a1810; padding: 10px 14px 6px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
 
-h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
-.subtitle { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; color: #2a2418; margin-bottom: 8px; }
+h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; text-align: center; }
 
 .layout { display: flex; gap: 16px; align-items: stretch; flex: 1; min-height: 0; }
 
@@ -51,15 +50,14 @@ h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-se
 }
 .mode-btn.active { background: #1a1810; color: #fff; border-color: #1a1810; }
 .toggle-sep { color: #c0bab0; font-size: 14px; margin: 0 2px; user-select: none; }
-#breakdownToggle { display: flex; gap: 6px; }
-.breakdown-btn {
+#breakdownToggle {
+  display: flex; align-items: center; gap: 5px;
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  font-size: 11px; font-weight: 600; padding: 4px 11px;
-  border: 1.5px solid #d0cbc0; border-radius: 5px;
-  background: #fff; color: #7a7060; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: #3a3028; cursor: pointer; user-select: none;
 }
-.breakdown-btn.active { background: #5a5040; color: #fff; border-color: #5a5040; }
-.breakdown-btn:disabled { opacity: 0.35; cursor: default; }
+#breakdownToggle input { cursor: pointer; }
+#breakdownToggle.forced { opacity: 0.35; cursor: default; }
+#breakdownToggle.forced input { cursor: default; }
 
 /* --- Settings panel --- */
 .settings-panel {
@@ -86,9 +84,8 @@ h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-se
 
 /* --- Mitigations --- */
 .sidebar-section-label {
-  font-family: 'Inter', system-ui, sans-serif; font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em; color: #8a8070;
-  padding: 4px 2px 0; user-select: none;
+  font-family: 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 400;
+  color: #1a1810; padding: 4px 2px 0; user-select: none;
 }
 .card.mitig { border-color: #b8c8d8; }
 .card.mitig.active { border: 5px solid var(--cc); background: var(--bg); }
@@ -99,10 +96,14 @@ h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-se
 <body>
 
 <h1>Seven Habits of Highly Effective Token Burners</h1>
-<p class="subtitle">Spend your tokens like a pro</p>
 
 <div class="layout">
-  <div class="sidebar" id="sidebar"></div>
+  <div class="sidebar">
+    <div class="sidebar-section-label">Token sprees</div>
+    <div id="sprees"></div>
+    <div class="sidebar-section-label">Mitigations</div>
+    <div id="mitigations"></div>
+  </div>
   <div class="right">
     <div class="chart-wrap" id="chartWrap">
       <canvas id="mainChart"></canvas>
@@ -114,10 +115,9 @@ h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-se
   <button class="mode-btn" data-mode="percost">Per-turn cost</button>
   <button class="mode-btn" data-mode="total">Total cost</button>
   <span class="toggle-sep">·</span>
-  <span id="breakdownToggle">
-    <button class="breakdown-btn active" data-breakdown="slot">By slot</button>
-    <button class="breakdown-btn" data-breakdown="type">By type</button>
-  </span>
+  <label id="breakdownToggle">
+    <input type="checkbox" id="combinedCheck"> Combined
+  </label>
   <span class="turns-control">
     <button class="turns-btn" id="turnsDown">−</button>
     <span id="turnsLabel">Turns: 40</span>
@@ -223,7 +223,7 @@ mitigations.forEach(m => { mstate[m.id] = { active: m.defaultActive }; });
 // ─────────────────────────────────────────────
 // BUILD SIDEBAR
 // ─────────────────────────────────────────────
-const sidebar = document.getElementById('sidebar');
+const spreesEl = document.getElementById('sprees');
 sprees.forEach(s => {
   const card = document.createElement('div');
   card.className = 'card';
@@ -236,7 +236,7 @@ sprees.forEach(s => {
     </div>
     <div class="effect" id="effect-${s.id}">${s.effectFn()}</div>`;
   card.addEventListener('click', () => toggleSpree(s.id));
-  sidebar.appendChild(card);
+  spreesEl.appendChild(card);
 });
 
 function updateCard(id) {
@@ -252,12 +252,7 @@ function toggleSpree(id) {
   redraw(true);
 }
 
-// Mitigations
-const mlabel = document.createElement('div');
-mlabel.className = 'sidebar-section-label';
-mlabel.textContent = 'Mitigations';
-sidebar.appendChild(mlabel);
-
+const mitigationsEl = document.getElementById('mitigations');
 mitigations.forEach(m => {
   const card = document.createElement('div');
   card.className = 'card mitig' + (mstate[m.id].active ? ' active' : '');
@@ -270,7 +265,7 @@ mitigations.forEach(m => {
     </div>
     <div class="effect" id="effect-${m.id}">${m.effectFn()}</div>`;
   card.addEventListener('click', () => toggleMitig(m.id));
-  sidebar.appendChild(card);
+  mitigationsEl.appendChild(card);
 });
 
 function toggleMitig(id) {
@@ -620,7 +615,16 @@ const chart = new Chart(document.getElementById('mainChart'), {
     animation: { duration: 0 },
     layout: { padding: { bottom: 44 } },
     scales: {
-      x: { type:'linear', min:0.5, max:TURNS+0.5, ticks:{ color:'#3a3028', font:{weight:'600',size:11}, values: Array.from({length:TURNS},(_,i)=>i+1), callback: makeTick(5) }, grid:{ color:'#eeece8' } },
+      x: { type:'linear', min:0.5, max:TURNS+0.5,
+           afterBuildTicks(axis) {
+             const step = TURNS <= 5 ? 1 : TURNS <= 20 ? 5 : 10;
+             axis.ticks = [];
+             for (let i = 1; i <= TURNS; i++) {
+               if (i === 1 || i % step === 0) axis.ticks.push({ value: i });
+             }
+           },
+           ticks:{ color:'#3a3028', font:{weight:'600',size:11}, callback: v => _quotaHits.includes(v) ? '' : v },
+           grid:{ color:'#eeece8' } },
       y: { ticks:{ color:'#3a3028', font:{weight:'600',size:11}, callback: v => fmtK(v) }, grid:{ color:'#eeece8' }, min:0 }
     }
   }
@@ -630,12 +634,6 @@ function sizeChart() {
   chart.resize();
 }
 
-function makeTick(step) {
-  return v => {
-    if (_quotaHits.includes(v)) return '';
-    return (v === 1 || v % step === 0) ? v : '';
-  };
-}
 
 // ─────────────────────────────────────────────
 // ANIMATION
@@ -738,11 +736,10 @@ function redraw(animate = false) {
 function applyBreakdownConstraint() {
   const forced = mode === 'total' && TURNS > 5;
   _breakdown = forced ? 'type' : _breakdownPref;
-  document.querySelectorAll('.breakdown-btn').forEach(btn => {
-    const isSlot = btn.dataset.breakdown === 'slot';
-    btn.disabled = forced && isSlot;
-    btn.classList.toggle('active', btn.dataset.breakdown === _breakdown);
-  });
+  const cb = document.getElementById('combinedCheck');
+  cb.checked = _breakdown === 'type';
+  cb.disabled = forced;
+  document.getElementById('breakdownToggle').classList.toggle('forced', forced);
 }
 
 // ─────────────────────────────────────────────
@@ -760,14 +757,10 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
 // ─────────────────────────────────────────────
 // BREAKDOWN TOGGLE
 // ─────────────────────────────────────────────
-document.querySelectorAll('.breakdown-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (btn.disabled) return;
-    _breakdownPref = btn.dataset.breakdown;
-    _breakdown = _breakdownPref;
-    document.querySelectorAll('.breakdown-btn').forEach(b => b.classList.toggle('active', b === btn));
-    redraw();
-  });
+document.getElementById('combinedCheck').addEventListener('change', e => {
+  _breakdownPref = e.target.checked ? 'type' : 'slot';
+  _breakdown = _breakdownPref;
+  redraw();
 });
 
 // ─────────────────────────────────────────────
@@ -776,10 +769,7 @@ document.querySelectorAll('.breakdown-btn').forEach(btn => {
 function applyTurns() {
   TURNS = TURN_STEPS[turnStepIdx];
   document.getElementById('turnsLabel').textContent = 'Turns: ' + TURNS;
-  const tickStep = TURNS <= 5 ? 1 : TURNS <= 20 ? 5 : 10;
   chart.options.scales.x.max = TURNS + 0.5;
-  chart.options.scales.x.ticks.values = Array.from({length: TURNS}, (_, i) => i + 1);
-  chart.options.scales.x.ticks.callback = makeTick(tickStep);
   applyBreakdownConstraint();
   redraw();
 }
