@@ -787,6 +787,14 @@ applyBreakdownConstraint();
 redraw();
 setTimeout(sizeChart, 100);
 window.addEventListener('resize', () => setTimeout(() => { sizeChart(); chart.update('none'); }, 150));
+
+// After clicking non-input elements, return focus to parent so Marp arrow-key
+// navigation keeps working. Inputs retain focus so the user can type values.
+document.addEventListener('mousedown', e => {
+  if (e.target.tagName !== 'INPUT') {
+    try { window.parent.focus(); } catch (_) {}
+  }
+});
 </script>
 </body>
 </html>
