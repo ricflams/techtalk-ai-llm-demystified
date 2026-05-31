@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seven Habits of Highly Effective Token Burners</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { height: 100%; }
+body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #f7f5f0; color: #1a1810; padding: 10px 14px 6px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+
+h1 { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
+.subtitle { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 600; color: #2a2418; margin-bottom: 8px; }
+
+.layout { display: flex; gap: 16px; align-items: stretch; flex: 1; min-height: 0; }
+
+/* --- Sidebar --- */
+.sidebar { display: flex; flex-direction: column; gap: 7px; width: 192px; flex-shrink: 0; overflow-y: auto; }
+.card {
+  border: 5px solid #d0cbc0; border-radius: 7px; padding: 7px 10px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  background: #fff; user-select: none;
+}
+.card:hover:not(.active) { border-color: #b0a898; }
+.card.active { border: 5px solid var(--cc); background: var(--bg); }
+.label-row { display: flex; align-items: baseline; }
+.teaser { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; font-size: 16px; font-weight: 800; line-height: 1.2; white-space: nowrap; color: #1a1810; }
+.effect { font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 12px; font-weight: 600; color: #1a1810; margin-top: 3px; line-height: 1.35; white-space: nowrap; }
+
+/* --- Right column --- */
+.right { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.chart-wrap { position: relative; width: 100%; flex: 1; min-height: 0; }
+.chart-wrap canvas { display: block; }
+
+/* --- Mode toggle --- */
+.mode-toggle { display: flex; gap: 6px; margin-top: 6px; flex-shrink: 0; align-items: center; }
+.turns-control { display: flex; align-items: center; gap: 5px; margin-left: auto;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px; font-weight: 600; color: #3a3028; }
+.turns-btn { font-size: 15px; font-weight: 700; width: 22px; height: 22px;
+  border: 1.5px solid #d0cbc0; border-radius: 5px; background: #fff; color: #3a3028;
+  cursor: pointer; line-height: 1; padding: 0; }
+.turns-btn:hover { border-color: #a0988a; }
+.mode-btn {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px; font-weight: 600; padding: 4px 14px;
+  border: 1.5px solid #d0cbc0; border-radius: 5px;
+  background: #fff; color: #3a3028; cursor: pointer;
+}
+.mode-btn.active { background: #1a1810; color: #fff; border-color: #1a1810; }
+.toggle-sep { color: #c0bab0; font-size: 14px; margin: 0 2px; user-select: none; }
+#breakdownToggle { display: flex; gap: 6px; }
+.breakdown-btn {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px; font-weight: 600; padding: 4px 11px;
+  border: 1.5px solid #d0cbc0; border-radius: 5px;
+  background: #fff; color: #7a7060; cursor: pointer;
+}
+.breakdown-btn.active { background: #5a5040; color: #fff; border-color: #5a5040; }
+.breakdown-btn:disabled { opacity: 0.35; cursor: default; }
+
+/* --- Settings panel --- */
+.settings-panel {
+  margin-top: 6px; flex-shrink: 0;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.settings-section {
+  background: #fff; border: 2px solid #e0dbd0; border-radius: 7px; padding: 8px 12px;
+  min-width: 0;
+}
+.settings-section:first-child { flex: 2; }
+.settings-section:last-child  { flex: 3; }
+.settings-grid { display: grid; gap: 6px 10px; }
+.settings-grid-base  { grid-template-columns: repeat(2, 1fr); }
+.settings-grid-spree { grid-template-columns: repeat(3, 1fr); }
+.setting-field { display: flex; flex-direction: column; gap: 2px; }
+.setting-label { font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 9px; font-weight: 600; color: #7a7060; }
+.setting-input {
+  font-family: 'JetBrains Mono', ui-monospace, Consolas, 'Menlo', monospace; font-size: 12px; font-weight: 600;
+  color: #1a1810; background: #f7f5f0; border: 1.5px solid #d8d3c8;
+  border-radius: 4px; padding: 3px 6px; width: 100%;
+}
+.setting-input:focus { outline: none; border-color: #a09080; background: #fff; }
+
+/* --- Mitigations --- */
+.sidebar-section-label {
+  font-family: 'Inter', system-ui, sans-serif; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; color: #8a8070;
+  padding: 4px 2px 0; user-select: none;
+}
+.card.mitig { border-color: #b8c8d8; }
+.card.mitig.active { border: 5px solid var(--cc); background: var(--bg); }
+.card.mitig:hover:not(.active) { border-color: #7090b0; }
+
+</style>
+</head>
+<body>
+
+<h1>Seven Habits of Highly Effective Token Burners</h1>
+<p class="subtitle">Spend your tokens like a pro</p>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="right">
+    <div class="chart-wrap" id="chartWrap">
+      <canvas id="mainChart"></canvas>
+    </div>
+  </div>
+</div>
+<div class="mode-toggle">
+  <button class="mode-btn active" data-mode="pertokens">Per-turn tokens</button>
+  <button class="mode-btn" data-mode="percost">Per-turn cost</button>
+  <button class="mode-btn" data-mode="total">Total cost</button>
+  <span class="toggle-sep">·</span>
+  <span id="breakdownToggle">
+    <button class="breakdown-btn active" data-breakdown="slot">By slot</button>
+    <button class="breakdown-btn" data-breakdown="type">By type</button>
+  </span>
+  <span class="turns-control">
+    <button class="turns-btn" id="turnsDown">−</button>
+    <span id="turnsLabel">Turns: 40</span>
+    <button class="turns-btn" id="turnsUp">+</button>
+  </span>
+</div>
+<div class="settings-panel">
+  <div class="settings-section">
+    <div class="settings-grid settings-grid-base" id="settingsGridBase"></div>
+  </div>
+  <div class="settings-section">
+    <div class="settings-grid settings-grid-spree" id="settingsGridSpree"></div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// CONSTANTS
+// ─────────────────────────────────────────────
+const MCP_TOK_PER_SERVICE = 400;
+const TURN_STEPS = [1, 2, 3, 5, 10, 20, 30, 40, 50, 70, 100];
+let   turnStepIdx = TURN_STEPS.indexOf(5);
+let   TURNS       = TURN_STEPS[turnStepIdx];
+
+// ─────────────────────────────────────────────
+// PARAMETERS (all editable via settings panel)
+// ─────────────────────────────────────────────
+const PARAMS = {
+  quota:        { label: 'Session quota',      value: 1000000 },
+  systemTok:    { label: 'System prompt',      value: 3000 },
+  inputTok:     { label: 'Input per turn',     value: 100 },
+  outFactor:    { label: 'Cost factor',        value: 5 },
+  outputTok:    { label: 'Output per turn',    value: 800 },
+  // spending spree
+  modelMult:    { label: 'Model multiplier',   value: 3 },
+  mcpCount:     { label: `MCP services (${MCP_TOK_PER_SERVICE} tokens each)`, value: 6 },
+  ideTok:       { label: 'IDE context tokens', value: 5000 },
+  outputTokLong:{ label: 'Long output tokens', value: 5000 },
+  thinkTok:     { label: 'Thinking tokens',    value: 5000 },
+  bustEvery:    { label: 'Bust every N turns', value: 4 },
+  docTok:       { label: 'Doc size',           value: 15000 },
+  // mitigations
+  compactClearEvery: { label: 'Compact/clear every N turns', value: 10 },
+};
+
+// ─────────────────────────────────────────────
+// SPREES
+// ─────────────────────────────────────────────
+const sprees = [
+  { id:'s6', color:'#1a7a8a', teaser:'5 M...', num:'spree #1', secret: () => `${PARAMS.mcpCount.value} MCP services`, effectFn: () => `${PARAMS.mcpCount.value} × ${MCP_TOK_PER_SERVICE} tok schema`, apply: p => ({...p, mcpTok: PARAMS.mcpCount.value * MCP_TOK_PER_SERVICE}) },
+  { id:'s5', color:'#902878', teaser:'Bi...', num:'spree #2', secret:'Big doc up front',  effectFn: () => `${(PARAMS.docTok.value/1000).toFixed(0)} K tokens every turn`, apply: p => ({...p, docTok: PARAMS.docTok.value}) },
+  { id:'s7', color:'#7a5ab8', teaser:'A h...', num:'spree #3', secret:'A helpful IDE',   effectFn: () => `+${PARAMS.ideTok.value} input tok/turn`,              apply: p => ({...p, inputTok: p.inputTok + PARAMS.ideTok.value}) },
+  { id:'s4', color:'#1a8a40', teaser:'Th...', num:'spree #4', secret:'Think harder',      effectFn: () => `+${PARAMS.thinkTok.value.toLocaleString()} hidden tokens`, apply: p => ({...p, thinkTok: PARAMS.thinkTok.value}) },
+  { id:'s1', color:'#2563b8', teaser:'Lo...', num:'spree #5', secret:'Long outputs',      effectFn: () => `Plans, essays, code`,                               apply: p => ({...p, outputTok: PARAMS.outputTokLong.value}) },
+  { id:'s3', color:'#a07800', teaser:'Bu...', num:'spree #6', secret:'Bust the cache',    effectFn: () => `>5 min or model swap`,                              apply: p => ({...p, bustCache: true}) },
+  { id:'s2', color:'#c04a10', teaser:'Ex...', num:'spree #6', secret:'Expensive model',   effectFn: () => `${PARAMS.modelMult.value}× weight per token`,   apply: p => ({...p, modelMult: PARAMS.modelMult.value}) },
+];
+
+const mitigations = [
+  { id:'m1', color:'#0868a8', secret:'Use KV-cache',    effectFn: () => '90% cache discount',                          apply: p => ({...p, kvCache: true}),                                         defaultActive: false },
+  { id:'m2', color:'#1a4090', secret:'Compact context', effectFn: () => `every ${PARAMS.compactClearEvery.value} turns → 10%`, apply: p => ({...p, compactEvery: PARAMS.compactClearEvery.value}), defaultActive: false },
+  { id:'m3', color:'#3a1880', secret:'Clear context',   effectFn: () => `every ${PARAMS.compactClearEvery.value} turns`,        apply: p => ({...p, clearEvery:   PARAMS.compactClearEvery.value}), defaultActive: false },
+];
+
+function getBase() {
+  return {
+    outputTok:    PARAMS.outputTok.value,
+    outFactor:    PARAMS.outFactor.value,
+    modelMult:    1,
+    thinkTok:     0,
+    docTok:       0,
+    mcpTok:       0,
+    systemTok:    PARAMS.systemTok.value,
+    bustCache:    false,
+    inputTok:     PARAMS.inputTok.value,
+    kvCache:      false,    // set to true by KV-cache mitigation
+    compactEvery: 0,        // 0 = disabled
+    clearEvery:   0,        // 0 = disabled
+  };
+}
+
+function hexAlpha(hex, a) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+function fmtK(v) {
+  const a = Math.abs(v);
+  if (a >= 1e6) return (v/1e6).toFixed(1) + 'M';
+  return Math.round(v/1000) + ' K';
+}
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let mode = 'pertokens';
+let _breakdown = 'slot';
+let _breakdownPref = 'slot';
+const state  = {};
+const mstate = {};
+sprees.forEach(s => { state[s.id]  = { active: false }; });
+mitigations.forEach(m => { mstate[m.id] = { active: m.defaultActive }; });
+
+// ─────────────────────────────────────────────
+// BUILD SIDEBAR
+// ─────────────────────────────────────────────
+const sidebar = document.getElementById('sidebar');
+sprees.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-' + s.id;
+  card.style.setProperty('--cc', s.color);
+  card.style.setProperty('--bg', hexAlpha(s.color, 0.08));
+  card.innerHTML = `
+    <div class="label-row">
+      <span class="teaser" id="teaser-${s.id}">${typeof s.secret === 'function' ? s.secret() : s.secret}</span>
+    </div>
+    <div class="effect" id="effect-${s.id}">${s.effectFn()}</div>`;
+  card.addEventListener('click', () => toggleSpree(s.id));
+  sidebar.appendChild(card);
+});
+
+function updateCard(id) {
+  const s = sprees.find(x => x.id === id);
+  document.getElementById('card-' + id).classList.toggle('active', state[id].active);
+  if (typeof s.secret === 'function') document.getElementById('teaser-' + id).textContent = s.secret();
+  document.getElementById('effect-' + id).textContent = s.effectFn();
+}
+
+function toggleSpree(id) {
+  state[id].active = !state[id].active;
+  updateCard(id);
+  redraw(true);
+}
+
+// Mitigations
+const mlabel = document.createElement('div');
+mlabel.className = 'sidebar-section-label';
+mlabel.textContent = 'Mitigations';
+sidebar.appendChild(mlabel);
+
+mitigations.forEach(m => {
+  const card = document.createElement('div');
+  card.className = 'card mitig' + (mstate[m.id].active ? ' active' : '');
+  card.id = 'card-' + m.id;
+  card.style.setProperty('--cc', m.color);
+  card.style.setProperty('--bg', hexAlpha(m.color, 0.08));
+  card.innerHTML = `
+    <div class="label-row">
+      <span class="teaser" id="teaser-${m.id}">${m.secret}</span>
+    </div>
+    <div class="effect" id="effect-${m.id}">${m.effectFn()}</div>`;
+  card.addEventListener('click', () => toggleMitig(m.id));
+  sidebar.appendChild(card);
+});
+
+function toggleMitig(id) {
+  mstate[id].active = !mstate[id].active;
+  if (mstate[id].active && (id === 'm2' || id === 'm3')) {
+    const other = id === 'm2' ? 'm3' : 'm2';
+    mstate[other].active = false;
+    document.getElementById('card-' + other).classList.remove('active');
+  }
+  const m = mitigations.find(x => x.id === id);
+  document.getElementById('card-' + id).classList.toggle('active', mstate[id].active);
+  document.getElementById('effect-' + id).textContent = m.effectFn();
+  redraw(true);
+}
+
+// ─────────────────────────────────────────────
+// BUILD SETTINGS PANEL
+// ─────────────────────────────────────────────
+function buildParamGrid(gridId, keys) {
+  const grid = document.getElementById(gridId);
+  keys.forEach(key => {
+    const param = PARAMS[key];
+    const field = document.createElement('div');
+    field.className = 'setting-field';
+    field.innerHTML = `<label class="setting-label">${param.label}</label>
+      <input class="setting-input" type="number" id="param-${key}" value="${param.value}">`;
+    grid.appendChild(field);
+    field.querySelector('input').addEventListener('change', e => {
+      param.value = parseFloat(e.target.value) || 0;
+      sprees.forEach(s => updateCard(s.id));
+      mitigations.forEach(m => { document.getElementById('effect-' + m.id).textContent = m.effectFn(); });
+      redraw();
+    });
+  });
+}
+buildParamGrid('settingsGridBase',  ['quota','systemTok','inputTok','outFactor','outputTok']);
+buildParamGrid('settingsGridSpree', ['modelMult','mcpCount','ideTok','outputTokLong','thinkTok','bustEvery','docTok','compactClearEvery']);
+
+// ─────────────────────────────────────────────
+// SIMULATION
+// Returns array of per-turn block arrays: turns[t] = [{type, tokens, factor}, ...]
+// Each turn: context blocks billed at cacheCost, then new user/think/assist at full cost.
+// Context always starts with [sys, mcp, doc?, compact?]; each turn appends (user,think,assist).
+// doc and compact blocks are always emitted (tokens=0 when absent) so array lengths stay uniform.
+// ─────────────────────────────────────────────
+function turnCost(blocks) { return blocks.reduce((s, b) => s + b.tokens * b.factor, 0); }
+
+function simulate(p) {
+  let docTok     = p.docTok > 0 ? p.docTok : 0;
+  let compactTok = 0;
+  let history    = [];   // {type,tokens} triplets of past turns
+  let cacheCost  = 1;
+  const mm = p.modelMult;
+  const of = p.outFactor;
+  const turns = [];
+
+  for (let t = 1; t <= TURNS; t++) {
+    if (p.bustCache && t % PARAMS.bustEvery.value === 0) cacheCost = 1;
+
+    if (p.compactEvery > 0 && t % p.compactEvery === 0) {
+      const compactible = docTok + compactTok + history.reduce((s, b) => s + b.tokens, 0);
+      compactTok = Math.round(compactible * 0.1);
+      docTok     = 0;
+      history    = [];
+    }
+    if (p.clearEvery > 0 && t % p.clearEvery === 0) {
+      docTok     = 0;
+      compactTok = 0;
+      history    = [];
+    }
+
+    const cf = cacheCost;
+    const blocks = [
+      { type:'sys',     tokens: p.systemTok, factor: cf * mm },
+      { type:'mcp',     tokens: p.mcpTok,    factor: cf * mm },
+      { type:'doc',     tokens: docTok,       factor: cf * mm },
+      { type:'compact', tokens: compactTok,   factor: cf * mm },
+      ...history.map(b => ({ ...b, factor: cf * mm })),
+      { type:'user',   tokens: p.inputTok,  factor: 1  * mm },
+      { type:'think',  tokens: p.thinkTok,  factor: of * mm },
+      { type:'assist', tokens: p.outputTok, factor: of * mm },
+    ];
+    turns.push(blocks);
+
+    history.push(
+      { type:'user',   tokens: p.inputTok  },
+      { type:'think',  tokens: p.thinkTok  },
+      { type:'assist', tokens: p.outputTok },
+    );
+
+    if (p.kvCache) cacheCost = 0.1;
+  }
+  return turns;
+}
+
+function computeQuotaHits(p) {
+  const hits = [];
+  let docTok     = p.docTok > 0 ? p.docTok : 0;
+  let compactTok = 0;
+  let histTok    = 0;
+  let cacheCost  = 1;
+  let sessionCost = 0;
+  const mm = p.modelMult, of = p.outFactor;
+
+  for (let t = 1; t <= TURNS * 4 && hits.length < 20; t++) {
+    if (p.bustCache && t % PARAMS.bustEvery.value === 0) cacheCost = 1;
+
+    if (p.compactEvery > 0 && t % p.compactEvery === 0) {
+      compactTok = Math.round((docTok + compactTok + histTok) * 0.1);
+      docTok = 0; histTok = 0;
+    }
+    if (p.clearEvery > 0 && t % p.clearEvery === 0) {
+      docTok = 0; compactTok = 0; histTok = 0;
+    }
+
+    const cf = cacheCost;
+    sessionCost += (p.systemTok + p.mcpTok + docTok + compactTok + histTok) * cf * mm
+                 + p.inputTok * mm
+                 + (p.thinkTok + p.outputTok) * of * mm;
+    histTok += p.inputTok + p.thinkTok + p.outputTok;
+    if (p.kvCache) cacheCost = 0.1;
+
+    if (sessionCost >= PARAMS.quota.value) { hits.push(t); sessionCost = 0; }
+    if (t > TURNS && hits.length && hits[hits.length - 1] <= TURNS) break;
+  }
+  return hits;
+}
+
+function getFullParams() {
+  let p = getBase();
+  mitigations.forEach(m => { if (mstate[m.id].active) p = m.apply(p); });
+  sprees.forEach(s => { if (state[s.id].active) p = s.apply(p); });
+  return p;
+}
+
+function buildCurves() {
+  const CONTEXT_IDS = new Set(['s6', 's5', 's3', 's2']);
+
+  // Base = getBase() + mitigations + context-sizing sprees.
+  let pCtx = getBase();
+  mitigations.forEach(m => { if (mstate[m.id].active) pCtx = m.apply(pCtx); });
+  sprees.forEach(s => {
+    if (CONTEXT_IDS.has(s.id) && state[s.id].active) pCtx = s.apply(pCtx);
+  });
+
+  // Stack behavioural sprees on top (everything except context-sizing sprees).
+  const curves = [simulate(pCtx)];
+  let p = pCtx;
+  sprees.forEach(s => {
+    if (CONTEXT_IDS.has(s.id)) return;
+    if (state[s.id].active) { p = s.apply(p); curves.push(simulate(p)); }
+  });
+
+  // Coloured bands only for behavioural sprees.
+  const bandsActive = sprees.filter(s => !CONTEXT_IDS.has(s.id) && state[s.id].active);
+
+  const quotaHits = computeQuotaHits(getFullParams());
+  return { curves, active: bandsActive, quotaHits };
+}
+
+
+function niceMax(v) {
+  if (v <= 0) return 10000;
+  const mag = Math.pow(10, Math.floor(Math.log10(v)) - 1);
+  for (const s of [1,2,2.5,5,10,20,25,50,100]) { const c = Math.ceil(v/(mag*s))*(mag*s); if (c >= v) return c; }
+  return Math.ceil(v/mag)*mag;
+}
+
+// ─────────────────────────────────────────────
+// CHART
+// ─────────────────────────────────────────────
+let _curves = [], _active = [], _quotaHits = [];
+let _renderMode = 'pertokens';
+
+const bandPlugin = {
+  id: 'bandPlugin',
+  beforeDatasetsDraw(ch) {
+    const curves = _curves, active = _active;
+    if (!curves.length) return;
+    const xs = ch.scales.x, ys = ch.scales.y, ctx = ch.ctx;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(xs.left, ys.top, xs.right - xs.left, ys.bottom - ys.top);
+    ctx.clip();
+    const py  = v => ys.getPixelForValue(v);
+    const barW = (xs.getPixelForValue(1.5) - xs.getPixelForValue(0.5)) * 0.96;
+    const barX = t => xs.getPixelForValue(t) - barW / 2;
+    const C = {
+      sys:'rgba(188,22,22,0.92)', mcp:'rgba(26,122,138,0.90)',
+      compact:'rgba(30,72,192,0.88)', doc:'rgba(144,40,120,0.90)',
+      user:'rgba(220,172,0,0.92)', think:'rgba(26,138,64,0.90)', assist:'rgba(205,78,15,0.90)',
+    };
+    const CONV = new Set(['user','think','assist']);
+
+    // Block arrays always: [sys, mcp, doc, compact, ...history×(u,th,a), user, think, assist]
+    // PREAMBLE = 4, CURRENT = 3; histSlots = (blocks.length - 7) / 3
+    const PREAMBLE = 4, CURRENT = 3;
+
+    for (let i = 0; i < TURNS; i++) {
+      const bx = barX(i + 1);
+      let y = 0;
+      const seg = (h, color) => {
+        if (h <= 0) return;
+        ctx.fillStyle = color;
+        ctx.fillRect(bx, py(y + h), barW, py(y) - py(y + h));
+        y += h;
+      };
+      const sep = () => {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(bx, py(y) - 1, barW, 2);
+      };
+
+      if (_renderMode === 'pertokens') {
+        const blocks = curves[0][i];
+        const histSlots = (blocks.length - (PREAMBLE + CURRENT)) / 3;
+        // Preamble
+        for (let j = 0; j < PREAMBLE; j++) seg(blocks[j].tokens, C[blocks[j].type]);
+        // History and current
+        const curr = PREAMBLE + histSlots * 3;
+        if (_breakdown === 'slot') {
+          for (let k = 0; k < histSlots; k++) {
+            const base = PREAMBLE + k * 3;
+            seg(blocks[base].tokens,   C.user);
+            seg(blocks[base+1].tokens, C.think);
+            seg(blocks[base+2].tokens, C.assist);
+            sep();
+          }
+          seg(blocks[curr].tokens,   C.user);
+          seg(blocks[curr+1].tokens, C.think);
+          seg(blocks[curr+2].tokens, C.assist);
+        } else {
+          // Aggregate ALL turns (history + current) by type
+          let tu = blocks[curr].tokens, tth = blocks[curr+1].tokens, ta = blocks[curr+2].tokens;
+          for (let k = 0; k < histSlots; k++) {
+            const base = PREAMBLE + k * 3;
+            tu  += blocks[base].tokens;
+            tth += blocks[base+1].tokens;
+            ta  += blocks[base+2].tokens;
+          }
+          seg(tu, C.user); seg(tth, C.think); seg(ta, C.assist);
+        }
+
+      } else if (_breakdown === 'slot') {
+        const srcCurve = curves[curves.length - 1];
+
+        if (_renderMode === 'total') {
+          for (let k = 0; k <= i; k++) {
+            const costs = {};
+            for (const b of srcCurve[k]) costs[b.type] = (costs[b.type] || 0) + b.tokens * b.factor;
+            seg(costs.sys     || 0, C.sys);
+            seg(costs.mcp     || 0, C.mcp);
+            seg(costs.compact || 0, C.compact);
+            seg(costs.doc     || 0, C.doc);
+            seg(costs.user    || 0, C.user);
+            seg(costs.think   || 0, C.think);
+            seg(costs.assist  || 0, C.assist);
+            if (k < i) sep();
+          }
+        } else {
+          // percost by slot
+          const blocks = srcCurve[i];
+          const histSlots = (blocks.length - (PREAMBLE + CURRENT)) / 3;
+          for (let j = 0; j < PREAMBLE; j++) seg(blocks[j].tokens * blocks[j].factor, C[blocks[j].type]);
+          for (let k = 0; k < histSlots; k++) {
+            const base = PREAMBLE + k * 3;
+            seg(blocks[base].tokens   * blocks[base].factor,   C.user);
+            seg(blocks[base+1].tokens * blocks[base+1].factor, C.think);
+            seg(blocks[base+2].tokens * blocks[base+2].factor, C.assist);
+            sep();
+          }
+          const curr = PREAMBLE + histSlots * 3;
+          seg(blocks[curr].tokens   * blocks[curr].factor,   C.user);
+          seg(blocks[curr+1].tokens * blocks[curr+1].factor, C.think);
+          seg(blocks[curr+2].tokens * blocks[curr+2].factor, C.assist);
+        }
+
+      } else {
+        // by type
+        if (_renderMode === 'total') {
+          const costs = {};
+          for (let k = 0; k <= i; k++)
+            for (const b of curves[curves.length-1][k]) costs[b.type] = (costs[b.type] || 0) + b.tokens * b.factor;
+          ['sys','mcp','compact','doc','user','think','assist'].forEach(t => seg(costs[t] || 0, C[t]));
+        } else {
+          const costs = {};
+          for (const b of curves[curves.length-1][i]) costs[b.type] = (costs[b.type]||0) + b.tokens * b.factor;
+          ['sys','mcp','compact','doc','user','think','assist'].forEach(t => seg(costs[t] || 0, C[t]));
+        }
+      }
+    }
+
+    ctx.restore();
+  },
+  afterDraw(ch) {
+    const xs = ch.scales.x, ys = ch.scales.y, ctx = ch.ctx;
+    ctx.save();
+    // quota line — both cost views, full width, only when within y range
+    if (_renderMode !== 'pertokens') {
+      const qy = ys.getPixelForValue(PARAMS.quota.value);
+      if (qy >= ys.top && qy <= ys.bottom) {
+        ctx.beginPath(); ctx.moveTo(xs.left, qy); ctx.lineTo(xs.right, qy);
+        ctx.strokeStyle = '#e03020'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 3]); ctx.stroke();
+        ctx.setLineDash([]);
+      }
+    }
+    // red quota-hit ticks — top flush with x-axis line
+    _quotaHits.filter(t => t <= TURNS).forEach(turn => {
+      const x = xs.getPixelForValue(turn);
+      ctx.beginPath(); ctx.moveTo(x, ys.bottom); ctx.lineTo(x, ys.bottom + 20);
+      ctx.strokeStyle = '#e03020'; ctx.lineWidth = 5; ctx.setLineDash([]); ctx.stroke();
+      ctx.fillStyle = '#e03020';
+      ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(turn, x, ys.bottom + 44);
+    });
+    // green spend tick — top of last bar, label centred above
+    if (_curves.length) {
+      const lastCurve = _curves[_curves.length - 1];
+      const finalCost = _renderMode === 'total'
+        ? lastCurve.reduce((s, t) => s + turnCost(t), 0)
+        : turnCost(lastCurve[TURNS - 1]);
+      const x = xs.getPixelForValue(TURNS + 0.5);
+      const y = ys.getPixelForValue(finalCost);
+      if (y >= ys.top && y <= ys.bottom) {
+        ctx.beginPath(); ctx.moveTo(x - 20, y); ctx.lineTo(x, y);
+        ctx.strokeStyle = '#1a8a40'; ctx.lineWidth = 5; ctx.setLineDash([]); ctx.stroke();
+        ctx.fillStyle = '#1a8a40';
+        ctx.font = 'bold 22px Inter, system-ui, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(fmtK(finalCost), x, y - 10);
+      }
+    }
+    ctx.restore();
+  }
+};
+
+Chart.register(bandPlugin);
+
+const chart = new Chart(document.getElementById('mainChart'), {
+  type: 'line',
+  data: { datasets: [
+    { label:'quota', data: [], hidden: true, fill:false, tension:0, pointRadius:0 }
+  ]},
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend:{display:false}, tooltip:{enabled:false}, bandPlugin:{} },
+    animation: { duration: 0 },
+    layout: { padding: { bottom: 44 } },
+    scales: {
+      x: { type:'linear', min:0.5, max:TURNS+0.5, ticks:{ color:'#3a3028', font:{weight:'600',size:11}, values: Array.from({length:TURNS},(_,i)=>i+1), callback: makeTick(5) }, grid:{ color:'#eeece8' } },
+      y: { ticks:{ color:'#3a3028', font:{weight:'600',size:11}, callback: v => fmtK(v) }, grid:{ color:'#eeece8' }, min:0 }
+    }
+  }
+});
+
+function sizeChart() {
+  chart.resize();
+}
+
+function makeTick(step) {
+  return v => {
+    if (_quotaHits.includes(v)) return '';
+    return (v === 1 || v % step === 0) ? v : '';
+  };
+}
+
+// ─────────────────────────────────────────────
+// ANIMATION
+// ─────────────────────────────────────────────
+let _animId = null;
+const ANIM_MS = 450;
+
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+function lerpPt(a, b, t) {
+  if (a.length !== b.length) return b;
+  return a.map((ba, i) => ({
+    type:   ba.type,
+    tokens: ba.tokens + (b[i].tokens - ba.tokens) * t,
+    factor: ba.factor + (b[i].factor - ba.factor) * t,
+  }));
+}
+
+function padCurves(arr, n) {
+  return arr.length >= n ? arr : [...arr, ...Array(n - arr.length).fill(arr[arr.length - 1])];
+}
+
+function animateTo(fromCurves, fromYMax, fromActive, toCurves, toActive, toYMax, toQuotaHits) {
+  if (_animId !== null) { cancelAnimationFrame(_animId); _animId = null; }
+  const n         = Math.max(fromCurves.length, toCurves.length);
+  const padFrom   = padCurves(fromCurves, n);
+  const padTo     = padCurves(toCurves,   n);
+  const midActive = fromActive.length >= toActive.length ? fromActive : toActive;
+  const start     = performance.now();
+
+  function frame(now) {
+    const raw = Math.min((now - start) / ANIM_MS, 1);
+    const t   = easeOut(raw);
+    _curves = padFrom.map((fc, ci) => fc.map((fp, ti) => lerpPt(fp, padTo[ci][ti], t)));
+    _active = midActive;
+    chart.options.scales.y.max = fromYMax + (toYMax - fromYMax) * t;
+    chart.update('none');
+    if (raw < 1) {
+      _animId = requestAnimationFrame(frame);
+    } else {
+      _curves    = toCurves;
+      _active    = toActive;
+      _quotaHits = toQuotaHits;
+      chart.options.scales.y.max = toYMax;
+      chart.update('none');
+      _animId = null;
+    }
+  }
+  _animId = requestAnimationFrame(frame);
+}
+
+// ─────────────────────────────────────────────
+// REDRAW
+// ─────────────────────────────────────────────
+function redraw(animate = false) {
+  if (!animate && _animId !== null) { cancelAnimationFrame(_animId); _animId = null; }
+  _renderMode = mode;
+  document.getElementById('breakdownToggle').style.visibility = 'visible';
+
+  if (mode === 'pertokens') {
+    const turns = simulate(getFullParams());
+    let tokMax = 0;
+    turns.forEach(turn => { const t = turn.reduce((s, b) => s + b.tokens, 0); tokMax = Math.max(tokMax, t); });
+    _curves    = [turns];
+    _active    = [];
+    _quotaHits = [];
+    chart.data.datasets[0].hidden = true;
+    chart.options.scales.y.max    = niceMax(tokMax * 1.05);
+    chart.update('none');
+    setTimeout(sizeChart, 20);
+    return;
+  }
+
+  const { curves, active, quotaHits } = buildCurves();
+  const lastCurve = curves[curves.length - 1];
+  let yMaxVal = 0;
+  if (mode === 'total') {
+    let cum = 0;
+    lastCurve.forEach(turn => { cum += turnCost(turn); yMaxVal = Math.max(yMaxVal, cum); });
+  } else {
+    lastCurve.forEach(turn => { yMaxVal = Math.max(yMaxVal, turnCost(turn)); });
+  }
+  const toYMax      = niceMax(yMaxVal * 1.05);
+  const toQuotaHits = mode === 'total' ? quotaHits : [];
+  if (animate && _curves.length > 0) {
+    animateTo(_curves, chart.options.scales.y.max, _active, curves, active, toYMax, toQuotaHits);
+  } else {
+    _curves    = curves;
+    _active    = active;
+    _quotaHits = toQuotaHits;
+    chart.options.scales.y.max = toYMax;
+    chart.update('none');
+  }
+  setTimeout(sizeChart, 20);
+}
+
+// ─────────────────────────────────────────────
+// BREAKDOWN CONSTRAINT
+// ─────────────────────────────────────────────
+function applyBreakdownConstraint() {
+  const forced = mode === 'total' && TURNS > 5;
+  _breakdown = forced ? 'type' : _breakdownPref;
+  document.querySelectorAll('.breakdown-btn').forEach(btn => {
+    const isSlot = btn.dataset.breakdown === 'slot';
+    btn.disabled = forced && isSlot;
+    btn.classList.toggle('active', btn.dataset.breakdown === _breakdown);
+  });
+}
+
+// ─────────────────────────────────────────────
+// MODE TOGGLE
+// ─────────────────────────────────────────────
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    mode = btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    applyBreakdownConstraint();
+    redraw();
+  });
+});
+
+// ─────────────────────────────────────────────
+// BREAKDOWN TOGGLE
+// ─────────────────────────────────────────────
+document.querySelectorAll('.breakdown-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.disabled) return;
+    _breakdownPref = btn.dataset.breakdown;
+    _breakdown = _breakdownPref;
+    document.querySelectorAll('.breakdown-btn').forEach(b => b.classList.toggle('active', b === btn));
+    redraw();
+  });
+});
+
+// ─────────────────────────────────────────────
+// TURNS CONTROL
+// ─────────────────────────────────────────────
+function applyTurns() {
+  TURNS = TURN_STEPS[turnStepIdx];
+  document.getElementById('turnsLabel').textContent = 'Turns: ' + TURNS;
+  const tickStep = TURNS <= 5 ? 1 : TURNS <= 20 ? 5 : 10;
+  chart.options.scales.x.max = TURNS + 0.5;
+  chart.options.scales.x.ticks.values = Array.from({length: TURNS}, (_, i) => i + 1);
+  chart.options.scales.x.ticks.callback = makeTick(tickStep);
+  applyBreakdownConstraint();
+  redraw();
+}
+document.getElementById('turnsDown').addEventListener('click', () => {
+  if (turnStepIdx > 0) { turnStepIdx--; applyTurns(); }
+});
+document.getElementById('turnsUp').addEventListener('click', () => {
+  if (turnStepIdx < TURN_STEPS.length - 1) { turnStepIdx++; applyTurns(); }
+});
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+applyBreakdownConstraint();
+redraw();
+setTimeout(sizeChart, 100);
+window.addEventListener('resize', () => setTimeout(() => { sizeChart(); chart.update('none'); }, 150));
+</script>
+</body>
+</html>
