@@ -197,6 +197,11 @@ First, what does it mean to "use the engine"
 		"MCP is a standardized discovery and transport layer, not a capability amplifier."
 		https://claude.ai/chat/88326aad-1ae9-428d-9b4a-d0aaf428c4e9
 		But can also be given to the LLM for it to fetch the tools
+		All tools used to be included; https://gemini.google.com/app/e3c67f67907d63d6?hl=da
+		Tool Neglect
+		epistemic uncertainty—basically, an internal gauge of how confident they are in an answer, or whether the answer relies on real-time/proprietary data.
+		MCP is basically just an LLM deciding which function to use. It works like an API, but instead of you manually calling the function, the LLM picks the right function by itself.
+		Two-Phase Lazy Schema Loading  - the "Goldilocks" Solution
 	Messages - finally
 		user - assistant, taking turns
 			The LLM just "completes" so a "chat conversation" is an artificial construct

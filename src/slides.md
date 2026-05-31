@@ -76,7 +76,7 @@ The commercial **AI Services** run in massive data centers.
 
 <img class="logo" src="images/intro/logo-deepseek.svg"> **DeepSeek** by DeepSeek *(Chinese)*
 
-<img class="logo" src="images/intro/logo-mistral.svg"> **Le Chat** by Mistral AI *(French)*
+<img class="logo" src="images/intro/logo-mistral.svg"> **Vibe** by Mistral AI *(French)*
 
 <br/>
 
@@ -513,11 +513,14 @@ Only 600 lines of Python code: 300 for `train.py`, 300 for `model.py`
 _Surprisingly, only a few things:_
 
 1. Reason about the chat to produce a response
-2. Understand documents and images
-3. Call internal tools; python, images
-4. Ask to use tools or MCP servers
-5. Use MCP servers itself
-6. Think harder
+2. Think harder
+3. Understand documents, images, ... and more
+4. Call tools
+
+
+Call internal tools; run python, produce images
+Call external tools via MCP servers
+Ask the caller to use tools or MCP servers
 
 Plus a few things on its own; caching, safeguards
 
